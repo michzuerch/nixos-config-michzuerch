@@ -1,0 +1,40 @@
+{
+  imports = [
+    ./nixpkgs.nix
+    ./cli
+    ./alacritty.nix
+    ./cursor.nix
+    ./fish.nix
+    ./flatpak.nix
+    ./ghostty.nix
+    ./graphic.nix
+    ./helix.nix
+    ./kitty.nix
+    ./latex.nix
+    ./libreoffice.nix
+    ./meld.nix
+    ./messenger.nix
+    ./mission-center.nix
+    ./multimedia.nix
+    ./nvf.nix
+    ./obs-studio.nix
+    ./pgbench.nix
+    ./qt-gtk-dconf.nix
+    ./sh.nix
+    ./starship.nix
+    ./stylix.nix
+    ./tmux.nix
+    ./torrent.nix
+    ./udiskie.nix
+    ./vscodium.nix
+    ./wallpapers.nix
+    # ./wezterm.nix #Broken for intel vulcan
+    ./windsurf.nix #Unfree package
+    ./xdg.nix
+    ./zellij.nix
+    ./zoxide.nix
+    ./hyprland
+    ./browsers
+    ./languages
+  ];
+}

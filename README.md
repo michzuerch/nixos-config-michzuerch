@@ -39,3 +39,5 @@ sops secrets.yaml
 
 1. The default entry is not selected in bootmenu. Press the 'd'-key to select your entry.
 2. Timeout doesnt count. Press 't'-key to start the timeout.
+
+Samples from olafkfreund/nixos_config

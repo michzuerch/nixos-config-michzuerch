@@ -140,7 +140,7 @@
           inputs.chaotic.nixosModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
-          inputs.nixai.nixosModules.default
+          # inputs.nixai.nixosModules.default
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.stylix.nixosModules.stylix

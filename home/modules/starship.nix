@@ -34,12 +34,13 @@
         "$shell"
         "$sudo"
         "$cmd_duration"
-        # "($cmd_duration)"
         "$fill"
-        "($nix_shell)"
+        # "($nix_shell)"
         "$git_branch"
         "$git_commit"
         "$git_status"
+        "$jobs"
+        "$status"
         # "$time"
         "$line_break"
         "$character"
@@ -74,16 +75,16 @@
       };
 
       status = {
-        style = "fg:#769ff0 bg:#303030";
+        style = "fg:color_fg0 bg:color_bg3";
         symbol = "";
-        success_symbol = "  ";
+        success_symbol = "";
         format = "[$symbol$status]($style) ";
         disabled = false;
       };
 
       jobs = {
-        symbol = "  ";
-        style = "fg:#769ff0 bg:#303030";
+        symbol = "";
+        style = "fg:color_fg0 bg:color_bg3";
         number_threshold = 1;
         format = "[$symbol]($style)";
       };
@@ -203,17 +204,6 @@
       aws.region_aliases = {
         eu-west-2 = "eu-w2";
         eu-west-1 = "eu-w1";
-      };
-
-      direnv = {
-        disabled = false;
-        allowed_msg = "";
-        not_allowed_msg = "";
-        denied_msg = "";
-        loaded_msg = "";
-        unloaded_msg = "";
-        style = "fg:#FFFFFF";
-        format = "[$loaded/$allowed ]($style)";
       };
 
       directory = {

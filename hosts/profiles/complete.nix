@@ -41,7 +41,7 @@
     ../modules/yubikey.nix
     ../modules/zram.nix
     ../modules/zsh.nix
-    ../modules/database
+    #../modules/database
     ../modules/desktop
   ];
 }

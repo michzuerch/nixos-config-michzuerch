@@ -9,10 +9,19 @@
     languagePacks = ["en-US" "de"];
     policies = {
       DisableTelemetry = true;
+      DisablePocket = true;
       DisableFirefoxStudies = true;
       DisableFormHistory = true;
       DisableFirefoxAccounts = true;
       NetworkPrediction = false;
+      NoDefaultBookmarks = true;
+      FirefoxHome = {
+        Search = true;
+        Pocket = false;
+        Snippets = false;
+        TopSites = false;
+        Highlights = false;
+      };
       UserMessaging = {
         WhatsNew = false;
         UrlbarInterventions = false;
@@ -32,13 +41,6 @@
       OfferToSaveLogins = false;
       # OfferToSaveLoginsDefault = false;
       PasswordManagerEnabled = false;
-      FirefoxHome = {
-        Search = true;
-        Pocket = false;
-        Snippets = false;
-        TopSites = false;
-        Highlights = false;
-      };
     };
     profiles = {
       michzuerch = {
@@ -46,20 +48,59 @@
         isDefault = true;
         name = "michzuerch";
         settings = {
+          "app.update.auto" = false;
           "beacon.enabled" = false;
+
           "browser.safebrowsing.malware.enabled" = false;
           "browser.search.hiddenOneOffs" = "Google,Yahoo,Bing,Amazon.com,Twitter";
           "browser.search.suggest.enabled" = false;
           "browser.send_pings" = false;
-          "dom.security.https_only_mode" = true;
           "browser.download.panel.shown" = true;
+          "browser.discovery.enabled" = false;
+
+          "extensions.autoDisableScopes" = 0;
+          "extensions.getAddons.showPane" = false;
+          "extensions.htmlaboutaddons.recommendations.enabled" = false;
+
+          # Auto-decline cookies
+          "cookiebanners.bannerClicking.enabled" = true;
+          "cookiebanners.service.mode" = 1;
+          "cookiebanners.service.mode.privateBrowsing" = 1;
+
+          # Tracking
+          "browser.contentblocking.category" = "strict";
+          "privacy.trackingprotection.enabled" = true;
+          "privacy.trackingprotection.pbmode.enabled" = true;
+          "privacy.trackingprotection.emailtracking.enabled" = true;
+          "privacy.trackingprotection.socialtracking.enabled" = true;
+          "privacy.trackingprotection.cryptomining.enabled" = true;
+          "privacy.trackingprotection.fingerprinting.enabled" = true;
+
+          "dom.security.https_only_mode" = true;
           "identity.fxaccounts.enabled" = false;
           "signon.rememberSignons" = false;
           "geo.enabled" = false;
           "gfx.webrender.all" = true;
+          "general.smoothScroll" = true;
           "layout.css.devPixelsPerPx" = 1;
           "media.navigator.enabled" = false;
           "media.video_stats.enabled" = false;
+          # Fingerprinting
+          "privacy.fingerprintingProtection" = true;
+          "privacy.resistFingerprinting" = true;
+          "privacy.resistFingerprinting.pbmode" = true;
+
+          # Query Tracking
+          "privacy.query_stripping.enabled" = true;
+          "privacy.query_stripping.enabled.pbmode" = true;
+          "privacy.donottrackheader.enabled" = true;
+          "privacy.donottrackheader.value" = 1;
+          "privacy.firstparty.isolate" = true;
+
+          # Phishing
+          # Disables cross-origin sub-resources from opening HTTP authentication credentials dialogs
+          "network.auth.subresource-http-auth-allow" = 1;
+
           "network.IDN_show_punycode" = true;
           "network.allow-experiments" = false;
           "network.dns.disablePrefetch" = true;
@@ -67,12 +108,12 @@
           "network.http.referer.XOriginTrimmingPolicy" = 2;
           "network.http.referer.trimmingPolicy" = 1;
           "network.prefetch-next" = false;
+
           "permissions.default.shortcuts" = 2; # Don't steal my shortcuts!
-          "privacy.donottrackheader.enabled" = true;
-          "privacy.donottrackheader.value" = 1;
-          "privacy.firstparty.isolate" = true;
+
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "ui.textScaleFactor" = 100;
+          "widget.dmabuf.force-enabled" = true;
         };
 
         search = {

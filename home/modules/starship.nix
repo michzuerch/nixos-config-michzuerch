@@ -27,11 +27,11 @@
         "$os"
         "$hostname"
         "[ ](fg:color_fg0 bg:color_bg3)"
-        "[ 󰒋 ](bold fg:color_bg0 bg:color_orange)"
-        "[ ](fg:color_orange bg:color_bg3)"
+        # "[ 󰒋 ](bold fg:color_bg0 bg:color_orange)"
+        # "[ ](fg:color_orange bg:color_bg3)"
         "$username"
         "$directory"
-        "$shell"
+        # "$shell"
         "$sudo"
         "$cmd_duration"
         "$fill"
@@ -39,8 +39,10 @@
         "$git_branch"
         "$git_commit"
         "$git_status"
-        "$jobs"
+        "[](fg:color_purple)"
+        # "$jobs"
         "$status"
+        "[ ](fg:color_purple)"
         # "$time"
         "$line_break"
         "$character"
@@ -75,9 +77,9 @@
       };
 
       status = {
-        style = "fg:color_fg0 bg:color_bg3";
-        symbol = "";
-        success_symbol = "";
+        style = "fg:color_fg0 bg:color_purple";
+        symbol = " ";
+        success_symbol = " ";
         format = "[$symbol$status]($style) ";
         disabled = false;
       };
@@ -90,7 +92,7 @@
       };
 
       nix_shell = {
-        format = "[](fg:color_fg0 bg:color_bg3)[($name \\(develop\\) <- )$symbol]($style)[](fg:color_yellow)";
+        format = "[](fg:color_fg0 bg:color_bg3)[($name \\(develop\\) <- )$symbol]($style)[](fg:color_fg0 bg:color_bg3)";
         impure_msg = "devbox";
         symbol = "  ";
         style = "bg:color_fg0 fg:color_bg3";

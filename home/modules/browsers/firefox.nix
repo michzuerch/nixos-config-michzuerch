@@ -8,6 +8,8 @@
     package = inputs.firefox.packages.${pkgs.system}.firefox-devedition-bin;
     languagePacks = ["en-US" "de"];
     policies = {
+      # ExtensionSettings = {
+      # };
       DisableTelemetry = true;
       DisablePocket = true;
       DisableFirefoxStudies = true;

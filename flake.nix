@@ -119,11 +119,8 @@
           # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
-          inputs.nur.modules.nixos.default
-          inputs.chaotic.nixosModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
-          # inputs.nixai.nixosModules.default
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.stylix.nixosModules.stylix
@@ -157,8 +154,6 @@
           ./hosts/profiles/complete.nix
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
-          inputs.nur.modules.nixos.default
-          inputs.chaotic.nixosModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko

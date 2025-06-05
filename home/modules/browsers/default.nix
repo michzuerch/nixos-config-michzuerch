@@ -5,5 +5,6 @@
     ./brave.nix
     ./qutebrowser.nix
     ./librewolf.nix
+    ./zen-browser.nix
   ];
 }

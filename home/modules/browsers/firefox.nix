@@ -190,7 +190,7 @@
             };
           };
         };
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           offline-qr-code-generator
           reddit-enhancement-suite
           ublock-origin

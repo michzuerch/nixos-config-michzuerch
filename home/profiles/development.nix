@@ -28,6 +28,7 @@
     ../modules/zoxide.nix
     ../modules/hyprland
     ../modules/browsers/firefox.nix
+    ../modules/browsers/zen-browser.nix
     ../modules/languages
   ];
 }

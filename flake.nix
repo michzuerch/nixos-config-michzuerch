@@ -68,6 +68,7 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # lanzaboote.url = "github:nix-community/lanzaboote";
     nixos-anywhere = {
       url = "github:numtide/nixos-anywhere";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -38,7 +38,7 @@
       kubecolor.enable = true;
       lazygit.enable = true;
       nvf = {
-        enable = true;
+        enable = false;
         plugin = "base16";
         transparentBackground = true;
       };

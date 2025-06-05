@@ -1,11 +1,12 @@
 {pkgs, ...}: {
-  environment.systemPackages = [
-    pkgs.gcc
-    pkgs.git
-    pkgs.gh
-    pkgs.ripgrep
-    pkgs.fzf
-    pkgs.yazi
-    pkgs.mc
+  environment.systemPackages = with pkgs; [
+    gcc
+    git
+    gh
+    ripgrep
+    fzf
+    yazi
+    mc
+    niv
   ];
 }

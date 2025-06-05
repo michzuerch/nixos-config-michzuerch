@@ -6,6 +6,7 @@
     initrd = {
       enable = true;
       systemd.enable = true;
+      supportedFilesystems = ["ext4"];
       verbose = false;
       availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod"];
     };
@@ -13,11 +14,13 @@
     kernelParams = [
       "quiet"
       "splash"
+      "systemd.show_status=auto"
       "loglevel=3"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
       "nowatchdog"
+      "plymouth.use-simpledrm"
     ];
 
     extraModulePackages = [];

@@ -16,7 +16,7 @@
     ../modules/messenger.nix
     ../modules/mission-center.nix
     ../modules/multimedia.nix
-    ../modules/nvf.nix
+    ../modules/nvf/nvf.nix
     ../modules/obs-studio.nix
     ../modules/pgbench.nix
     ../modules/qt-gtk-dconf.nix

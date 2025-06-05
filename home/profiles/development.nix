@@ -13,7 +13,7 @@
     ../modules/meld.nix
     ../modules/messenger.nix
     ../modules/mission-center.nix
-    ../modules/nvf.nix
+    ../modules/nvf/nvf.nix
     ../modules/qt-gtk-dconf.nix
     ../modules/sh.nix
     ../modules/starship.nix

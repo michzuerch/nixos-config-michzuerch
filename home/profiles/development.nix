@@ -29,6 +29,7 @@
     ../modules/hyprland
     ../modules/browsers/firefox.nix
     ../modules/browsers/zen-browser.nix
+    ../modules/browsers/ladybird.nix
     ../modules/languages
   ];
 }

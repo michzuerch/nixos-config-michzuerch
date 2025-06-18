@@ -164,6 +164,44 @@
           }
         ];
       };
+      ElitebookNomad = lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs system;
+        };
+        modules = [
+          ./hosts/ElitebookNomad/configuration.nix
+          ./hosts/profiles/complete.nix
+          # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
+          inputs.nvf.nixosModules.default
+          inputs.nix-index-database.nixosModules.nix-index
+          inputs.nur.modules.nixos.default
+          inputs.chaotic.nixosModules.default
+          inputs.nixos-cosmic.nixosModules.default
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+          # inputs.nixai.nixosModules.default
+          inputs.disko.nixosModules.disko
+          inputs.sops-nix.nixosModules.sops
+          inputs.stylix.nixosModules.stylix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit system outputs inputs;
+              };
+              backupFileExtension = "bkp";
+              users = {
+                michzuerch = {
+                  imports = [
+                    ./home/michzuerch/home.nix
+                  ];
+                };
+              };
+            };
+          }
+        ];
+      };
 
       VM = lib.nixosSystem {
         specialArgs = {

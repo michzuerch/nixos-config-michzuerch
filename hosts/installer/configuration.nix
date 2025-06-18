@@ -5,11 +5,13 @@
   ...
 }: {
   imports = [
-    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+    # "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
+    # "${modulesPath}/installer/cd-dvd/installation-cd-minimal-new-kernel.nix"
+    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-combined.nix"
     "${modulesPath}/installer/cd-dvd/channel.nix"
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" "bcachefs"];
 
   nixpkgs.config.pulseaudio = true;
@@ -30,7 +32,7 @@
     gh
     bat
     ripgrep
-    vscode
+    vscodium
     tmux
     tree
     nano
@@ -76,6 +78,6 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = false;
   nixpkgs.hostPlatform = "x86_64-linux";
 }

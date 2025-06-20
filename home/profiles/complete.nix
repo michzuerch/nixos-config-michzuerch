@@ -34,7 +34,7 @@
     ../modules/zellij.nix
     ../modules/zoxide.nix
     ../modules/hyprland
-    # ../modules/browsers
+    ../modules/browsers
     ../modules/languages
   ];
 }

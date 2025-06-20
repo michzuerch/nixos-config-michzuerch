@@ -1,9 +1,9 @@
 {
   imports = [
-    #./firefox.nix
+    ./firefox.nix
     ./chromium.nix
     ./brave.nix
-    #./qutebrowser.nix
-    #./librewolf.nix
+    ./qutebrowser.nix
+    ./librewolf.nix
   ];
 }

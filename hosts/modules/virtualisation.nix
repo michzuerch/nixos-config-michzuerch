@@ -10,7 +10,7 @@
       };
     };
     libvirtd.enable = true;
-    waydroid.enable = true;
+    waydroid.enable = false;
   };
 
   users.extraGroups.vboxusers.members = ["michzuerch"];

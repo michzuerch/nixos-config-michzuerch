@@ -28,7 +28,7 @@
     ../modules/openssh.nix
     ../modules/powermanagement.nix
     ../modules/rust.nix
-    ../modules/scanner.nix
+    #../modules/scanner.nix
     ../modules/security.nix
     ../modules/stylix.nix
     #../modules/syncthing.nix

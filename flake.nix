@@ -147,7 +147,7 @@
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs = false;
+              useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {
                 inherit system outputs inputs;

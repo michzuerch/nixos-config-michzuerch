@@ -10,7 +10,7 @@
     inputs.nix-index-database.hmModules.nix-index
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.ags.homeManagerModules.default
-    ../profiles/complete.nix
+    ../profiles/notebook.nix
   ];
   home = {
     username = "michzuerch";

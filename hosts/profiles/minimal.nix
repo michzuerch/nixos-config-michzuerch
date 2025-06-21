@@ -42,5 +42,6 @@
     ../modules/zsh.nix
     ../modules/database
     ../modules/desktop/hyprland.nix
+    ../modules/desktop/plasma6.nix
   ];
 }

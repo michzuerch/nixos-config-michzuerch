@@ -38,6 +38,6 @@
     ../modules/browsers/chromium.nix
     ../modules/browsers/brave.nix
     ../modules/browsers/librewolf.nix
-    ../modules/browsers/qutebrowser.nix
+    # ../modules/browsers/qutebrowser.nix
   ];
 }

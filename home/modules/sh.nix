@@ -61,9 +61,11 @@
     bat
     chatgpt-cli
     cowsay
+    flake-checker
     delta
     du-dust
     doggo
+    dysk
     gping
     just
     nix-output-monitor
@@ -71,6 +73,7 @@
     nix-init
     nix-melt
     nix-tree
+    nix-health
     fd
     gcc
     gnumake

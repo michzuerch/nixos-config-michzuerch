@@ -37,7 +37,7 @@
     ../modules/browsers/firefox.nix
     ../modules/browsers/chromium.nix
     ../modules/browsers/brave.nix
-    ../modules/browsers/librefox.nix
+    ../modules/browsers/librewolf.nix
     ../modules/browsers/qutebrowser.nix
   ];
 }

@@ -1,0 +1,29 @@
+{
+  imports = [
+    ../modules/audio.nix
+    ../modules/bluetooth.nix
+    ../modules/displaymanager.nix
+    ../modules/environment-variables.nix
+    ../modules/fonts.nix
+    ../modules/fwupd.nix
+    ../modules/gc.nix
+    ../modules/i18n.nix
+    ../modules/kernel.nix
+    ../modules/macchanger.nix
+    ../modules/networking.nix
+    ../modules/nh.nix
+    ../modules/nix-ld.nix
+    ../modules/nix-settings.nix
+    ../modules/nix-tools.nix
+    ../modules/powermanagement.nix
+    ../modules/rust.nix
+    ../modules/security.nix
+    ../modules/systemtools.nix
+    ../modules/time.nix
+    ../modules/zram.nix
+    ../modules/zsh.nix
+    ../modules/desktop/hyprland.nix
+    ../modules/desktop/xfce.nix
+    ../modules/desktop/plasma6.nix
+  ];
+}

@@ -155,7 +155,8 @@
         };
         modules = [
           ./hosts/ElitebookNomad/configuration.nix
-          ./hosts/profiles/development.nix
+          # ./hosts/profiles/development.nix
+          ./hosts/profiles/debug.nix
           # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
@@ -163,7 +164,6 @@
           inputs.chaotic.nixosModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
-          # inputs.nixai.nixosModules.default
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.stylix.nixosModules.stylix

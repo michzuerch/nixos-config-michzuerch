@@ -1,0 +1,50 @@
+{
+  imports = [
+    ../modules/audio.nix
+    ../modules/bluetooth.nix
+    ../modules/displaymanager.nix
+    ../modules/distrobox.nix
+    ../modules/documentation.nix
+    ../modules/environment-variables.nix
+    ../modules/firewall.nix
+    ../modules/flatpak.nix
+    ../modules/fonts.nix
+    ../modules/fwupd.nix
+    ../modules/gc.nix
+    ../modules/graphics.nix
+    ../modules/hacking.nix
+    ../modules/i18n.nix
+    ../modules/info-fetchers.nix
+    ../modules/kernel.nix
+    ../modules/macchanger.nix
+    ../modules/networking.nix
+    ../modules/nh.nix
+    # ../modules/nix-ai-help.nix
+    ../modules/nix-ld.nix
+    ../modules/nix-settings.nix
+    ../modules/nix-tools.nix
+    ../modules/nvf.nix
+    ../modules/ollama.nix
+    ../modules/openssh.nix
+    ../modules/powermanagement.nix
+    ../modules/rust.nix
+    ../modules/scanner.nix
+    ../modules/security.nix
+    ../modules/stylix.nix
+    ../modules/syncthing.nix
+    ../modules/systemtools.nix
+    ../modules/time.nix
+    #../modules/ventoy.nix
+    ../modules/virtualisation.nix
+    #../modules/wine.nix
+    ../modules/xdg.nix
+    ../modules/yubikey.nix
+    ../modules/zram.nix
+    ../modules/zsh.nix
+    ../modules/database/database-tools.nix
+    ../modules/database/postgres.nix
+    ../modules/desktop/hyprland.nix
+    ../modules/desktop/xfce.nix
+    ../modules/desktop/plasma6.nix
+  ];
+}

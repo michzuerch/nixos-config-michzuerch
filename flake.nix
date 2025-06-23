@@ -63,10 +63,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:danth/stylix";
-    firefox = {
-      url = "github:nix-community/flake-firefox-nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,23 +71,12 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixai.url = "github:olafkfreund/nix-ai-help";
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
       url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-anywhere = {
-      url = "github:numtide/nixos-anywhere";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.disko.follows = "disko";
-    };
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -147,7 +132,7 @@
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs = true;
+              useGlobalPkgs = false;
               useUserPackages = true;
               extraSpecialArgs = {
                 inherit system outputs inputs;
@@ -170,7 +155,7 @@
         };
         modules = [
           ./hosts/ElitebookNomad/configuration.nix
-          ./hosts/profiles/complete.nix
+          ./hosts/profiles/development.nix
           # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index

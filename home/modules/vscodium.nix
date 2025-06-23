@@ -83,4 +83,8 @@
       oderwat.indent-rainbow
     ];
   };
+  home.packages = with pkgs; [
+    nixd
+    alejandra
+  ];
 }

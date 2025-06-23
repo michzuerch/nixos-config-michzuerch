@@ -18,7 +18,7 @@
         #  enable = true;
         #  package = pkgs.lightdm-slick-greeter;
         #};
-        background = lib.mkDefault ./wallpapers/nixos-dark.jpg;
+        # background = lib.mkDefault ./wallpapers/nixos-dark.jpg;
       };
     };
 

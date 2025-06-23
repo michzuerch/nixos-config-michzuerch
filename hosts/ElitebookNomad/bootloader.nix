@@ -27,9 +27,9 @@
       systemd-boot.memtest86.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    plymouth = {
-      enable = true;
-      font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
-    };
+    # plymouth = {
+    #   enable = true;
+    #   font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
+    # };
   };
 }

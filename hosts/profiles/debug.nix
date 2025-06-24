@@ -3,10 +3,18 @@
     ../modules/audio.nix
     ../modules/bluetooth.nix
     ../modules/displaymanager.nix
+    ../modules/distrobox.nix
+    ../modules/documentation.nix
     ../modules/environment-variables.nix
     ../modules/fonts.nix
+    ../modules/firewall.nix
+    ../modules/flatpak.nix
     ../modules/fwupd.nix
     ../modules/gc.nix
+    ../modules/graphics.nix
+    ../modules/hacking.nix
+    ../modules/info-fetchers.nix
+
     ../modules/i18n.nix
     ../modules/kernel.nix
     ../modules/macchanger.nix

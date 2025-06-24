@@ -63,6 +63,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:danth/stylix";
+    firefox = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -155,8 +159,8 @@
         };
         modules = [
           ./hosts/ElitebookNomad/configuration.nix
-          # ./hosts/profiles/development.nix
-          ./hosts/profiles/debug.nix
+          ./hosts/profiles/development.nix
+          # ./hosts/profiles/debug.nix
           # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index

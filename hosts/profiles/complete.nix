@@ -19,7 +19,6 @@
     ../modules/macchanger.nix
     ../modules/networking.nix
     ../modules/nh.nix
-    # ../modules/nix-ai-help.nix
     ../modules/nix-ld.nix
     ../modules/nix-settings.nix
     ../modules/nix-tools.nix

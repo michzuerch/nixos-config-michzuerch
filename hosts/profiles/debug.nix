@@ -3,16 +3,16 @@
     ../modules/audio.nix
     ../modules/bluetooth.nix
     ../modules/displaymanager.nix
-    # ../modules/distrobox.nix
+    ../modules/distrobox.nix
     ../modules/documentation.nix
-    # ../modules/environment-variables.nix
+    ../modules/environment-variables.nix
     ../modules/firewall.nix
-    # ../modules/flatpak.nix
+    ../modules/flatpak.nix
     ../modules/fonts.nix
     ../modules/fwupd.nix
     ../modules/gc.nix
-    # ../modules/graphics.nix
-    # ../modules/hacking.nix
+    ../modules/graphics.nix
+    ../modules/hacking.nix
     ../modules/i18n.nix
     ../modules/info-fetchers.nix
     ../modules/kernel.nix
@@ -22,18 +22,18 @@
     ../modules/nix-ld.nix
     ../modules/nix-settings.nix
     ../modules/nix-tools.nix
-    # ../modules/ollama.nix
+    ../modules/ollama.nix
     ../modules/openssh.nix
     ../modules/powermanagement.nix
     ../modules/rust.nix
-    # ../modules/scanner.nix
+    ../modules/scanner.nix
     ../modules/security.nix
-    # ../modules/stylix.nix
-    # ../modules/syncthing.nix
+    ../modules/stylix.nix
+    ../modules/syncthing.nix
     ../modules/systemtools.nix
     ../modules/time.nix
-    # ../modules/virtualisation.nix
-    # ../modules/xdg.nix
+    ../modules/virtualisation.nix
+    ../modules/xdg.nix
     ../modules/zram.nix
     ../modules/zsh.nix
     ../modules/desktop/hyprland.nix

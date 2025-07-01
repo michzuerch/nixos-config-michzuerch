@@ -5,9 +5,9 @@
   # systemd.packages = with pkgs; [auto-cpufreq];
 
   services = {
-    # system76-scheduler.settings.cfsProfiles.enable = true;
-    throttled.enable = true;
+    # throttled.enable = true;
     thermald.enable = true;
+    system76-scheduler.settings.cfsProfiles.enable = true;
     # upower = {
     #   enable = true;
     #   percentageCritical = 10;

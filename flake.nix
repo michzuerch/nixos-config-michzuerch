@@ -23,7 +23,6 @@
       inputs.hyprland.follows = "hyprland";
     };
     ags.url = "github:aylur/ags";
-    hyprddm.url = "github:maotseantonio/hyprddm";
     nsearch = {
       url = "github:niksingh710/nsearch";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +41,7 @@
     };
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
+      inputs.hyprland.follows = "hyprland";
     };
     alejandra = {
       url = "github:kamadorueda/alejandra";
@@ -56,7 +55,6 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
@@ -126,10 +124,8 @@
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
-          inputs.chaotic.nixosModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
-          # inputs.nixai.nixosModules.default
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.stylix.nixosModules.stylix
@@ -165,7 +161,6 @@
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
-          inputs.chaotic.nixosModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko

@@ -39,7 +39,7 @@
         "$git_branch"
         "$git_commit"
         "$git_status"
-        "$jobs"
+        # "$jobs"
         "$status"
         # "$time"
         "$line_break"
@@ -75,10 +75,10 @@
       };
 
       status = {
-        style = "fg:color_fg0 bg:color_bg3";
+        style = "fg:color_fg0";
         symbol = "";
         success_symbol = "";
-        format = "[$symbol$status]($style) ";
+        format = "[$symbol $status]($style) ";
         disabled = false;
       };
 

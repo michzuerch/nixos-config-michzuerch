@@ -13,22 +13,22 @@
     ../modules/meld.nix
     ../modules/messenger.nix
     ../modules/mission-center.nix
-    # ../modules/multimedia.nix
-    # ../modules/obs-studio.nix
-    # ../modules/pgbench.nix
-    # ../modules/qt-gtk-dconf.nix
+    ../modules/multimedia.nix
+    ../modules/obs-studio.nix
+    ../modules/pgbench.nix
+    ../modules/qt-gtk-dconf.nix
     ../modules/sh.nix
     ../modules/starship.nix
-    # ../modules/stylix.nix
+    #../modules/stylix.nix
     ../modules/tmux.nix
     ../modules/torrent.nix
     ../modules/udiskie.nix
     ../modules/vscodium.nix
     ../modules/wallpapers.nix
-    # ../modules/wezterm.nix
-    # ../modules/xdg.nix
-    # ../modules/zellij.nix
-    # ../modules/zoxide.nix
+    ../modules/wezterm.nix
+    ../modules/xdg.nix
+    ../modules/zellij.nix
+    ../modules/zoxide.nix
     ../modules/cli
     ../modules/nvf.nix
     ../modules/hyprland

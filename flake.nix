@@ -60,7 +60,7 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix";
+    nix-colors.url = "github:misterio77/nix-colors";
     firefox = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -86,6 +86,7 @@
   outputs = {
     self,
     nixpkgs,
+    nix-colors,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -124,11 +125,11 @@
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
+          inputs.nix-colors.homeManagerModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
-          inputs.stylix.nixosModules.stylix
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -161,11 +162,11 @@
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
+          inputs.nix-colors.homeManagerModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
-          inputs.stylix.nixosModules.stylix
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -197,12 +198,11 @@
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
-          inputs.chaotic.nixosModules.default
+          inputs.nix-colors.homeManagerModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
-          inputs.stylix.nixosModules.stylix
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {

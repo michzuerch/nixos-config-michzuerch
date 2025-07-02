@@ -19,7 +19,6 @@
     ./macchanger.nix
     ./networking.nix
     ./nh.nix
-    ./nix-ai-help.nix
     ./nix-ld.nix
     ./nix-settings.nix
     ./nix-tools.nix
@@ -30,7 +29,6 @@
     ./rust.nix
     ./scanner.nix
     ./security.nix
-    ./stylix.nix
     ./syncthing.nix
     ./systemtools.nix
     ./time.nix

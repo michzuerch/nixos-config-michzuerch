@@ -29,7 +29,6 @@
     ../modules/rust.nix
     ../modules/scanner.nix
     ../modules/security.nix
-    ../modules/stylix.nix
     ../modules/syncthing.nix
     ../modules/systemtools.nix
     ../modules/time.nix

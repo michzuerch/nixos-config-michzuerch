@@ -22,7 +22,6 @@
     ./qt-gtk-dconf.nix
     ./sh.nix
     ./starship.nix
-    ./stylix.nix
     ./tmux.nix
     ./torrent.nix
     ./udiskie.nix

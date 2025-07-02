@@ -23,7 +23,6 @@
     ../modules/powermanagement.nix
     ../modules/scanner.nix
     ../modules/security.nix
-    ../modules/stylix.nix
     ../modules/systemtools.nix
     ../modules/time.nix
     ../modules/xdg.nix

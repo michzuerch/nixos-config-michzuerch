@@ -9,7 +9,7 @@
       verbose = false;
       availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod"];
     };
-    kernelModules = ["kvm-intel"];
+    kernelModules = [];
     kernelParams = [
       "quiet"
       "splash"

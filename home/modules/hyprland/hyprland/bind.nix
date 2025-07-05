@@ -16,7 +16,8 @@
       # "$mainMod SHIFT  P, exec, hyprpicker -a -n"
       "$mainMod,       N, exec, swaync-client -t"
       "$mainMod SHIFT, S, exec, grimblast --notify --freeze copysave area"
-      "$mainMod,       O, hyprexpo:expo, toggle"
+      "$mainMod,       Tab, hyprspace:toggleoverview"
+      #"$mainMod,       O, hyprexpo:expo, toggle"
       #"$mainMod SHIFT, O, Hyprspace:overview:toggle"
 
       "$mainMod,       Tab, focusmonitor, +1"

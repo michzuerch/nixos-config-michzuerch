@@ -7,6 +7,7 @@
       "XDG_SESSION_DESKTOP,Hyprland"
       "QT_QPA_PLATFORM,wayland"
       "XDG_SCREENSHOTS_DIR,$HOME/screens"
+      "WL_NO_HARDWARE_CURSORS,1"
     ];
   };
 }

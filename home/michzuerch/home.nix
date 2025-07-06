@@ -8,7 +8,6 @@
     inputs.nur.modules.homeManager.default
     inputs.nix-index-database.hmModules.nix-index
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    inputs.ags.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     # ../profiles/notebook.nix
     ../profiles/debug.nix

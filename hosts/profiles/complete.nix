@@ -22,7 +22,6 @@
     ../modules/nix-ld.nix
     ../modules/nix-settings.nix
     ../modules/nix-tools.nix
-    ../modules/nvf.nix
     ../modules/ollama.nix
     ../modules/openssh.nix
     ../modules/powermanagement.nix
@@ -32,14 +31,15 @@
     ../modules/syncthing.nix
     ../modules/systemtools.nix
     ../modules/time.nix
-    #../modules/ventoy.nix
     ../modules/virtualisation.nix
-    #../modules/wine.nix
     ../modules/xdg.nix
-    ../modules/yubikey.nix
     ../modules/zram.nix
     ../modules/zsh.nix
-    ../modules/database
-    ../modules/desktop
+    ../modules/database/database-tools.nix
+    ../modules/database/postgres.nix
+    ../modules/desktop/hyprland.nix
+    ../modules/desktop/xfce.nix
+    ../modules/desktop/plasma6.nix
+    ../modules/desktop/cinnamon.nix
   ];
 }

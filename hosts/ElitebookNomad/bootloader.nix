@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   boot = {
     bootspec.enable = true;
     tmp.cleanOnBoot = true;
@@ -9,7 +13,7 @@
       verbose = false;
       availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod"];
     };
-    kernelModules = [];
+    kernelModules = ["acpi_call"];
     kernelParams = [
       "quiet"
       "splash"
@@ -20,16 +24,22 @@
       "nowatchdog"
     ];
 
-    extraModulePackages = [];
+    extraModulePackages = with config.boot.kernelPackages;
+      [
+        acpi_call
+        cpupower
+      ]
+      ++ [pkgs.cpupower-gui];
+
     loader = {
       timeout = 10;
       systemd-boot.enable = true;
       systemd-boot.memtest86.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    # plymouth = {
-    #   enable = true;
-    #   font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
-    # };
+    plymouth = {
+      enable = true;
+      font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
+    };
   };
 }

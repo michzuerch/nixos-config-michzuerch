@@ -9,11 +9,21 @@
         dates = "weekly";
       };
     };
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [pkgs.OVMFFull.fd];
+      };
+    };
     # waydroid.enable = true;
   };
 
-  users.extraGroups.vboxusers.members = ["michzuerch"];
+  users.extraGroups = {
+    vboxusers.members = ["michzuerch"];
+    libvirtd.members = ["michzuerch"];
+  };
 
   environment.systemPackages = with pkgs; [
     consul
@@ -32,6 +42,12 @@
     virt-manager
     virt-viewer
     wander
+    spice
+    spice-gtk
+    spice-protocol
+    win-virtio
+    win-spice
+    adwaita-icon-theme
   ];
   environment.variables = {
     DOCKER_HOST = "unix:///var/run/podman/podman.sock";

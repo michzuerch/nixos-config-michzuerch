@@ -9,8 +9,7 @@
     inputs.nix-index-database.hmModules.nix-index
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.nix-colors.homeManagerModules.default
-    # ../profiles/notebook.nix
-    ../profiles/debug.nix
+    ../profiles/complete.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.da-one-paper;

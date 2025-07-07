@@ -5,7 +5,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
+        height = 60;
         margin-top = 0;
         margin-bottom = 0;
         margin-left = 10;
@@ -200,7 +200,7 @@
           background: #323232;
           color: white;
           font-family: Cantarell, Noto Sans, sans-serif;
-          font-size: 13px;
+          font-size: 24px;
       }
 
       /* Each module */

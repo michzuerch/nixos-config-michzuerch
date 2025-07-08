@@ -35,8 +35,22 @@
     ../modules/browsers/brave.nix
     ../modules/browsers/librewolf.nix
     ../modules/hyprland/hyprland2/animations.nix
+    ../modules/hyprland/hyprland2/decorations.nix
+    ../modules/hyprland/hyprland2/general.nix
+    ../modules/hyprland/hyprland2/env.nix
+    ../modules/hyprland/hyprland2/exec.nix
     ../modules/hyprland/hyprland2/keybindings.nix
     ../modules/hyprland/hyprland2/monitors.nix
+    ../modules/hyprland/hyprland2/plugins/hypr-dynamic-cursors.nix
+    ../modules/hyprland/hyprland2/plugins/hyprexpo.nix
+    ../modules/hyprland/hyprland2/plugins/split-monitor-workspaces.nix
     ../modules/hyprland/hyprland2/main-config.nix
+    ../modules/hyprland/hypridle.nix
+    ../modules/hyprland/hyprpaper.nix
+    ../modules/hyprland/rofi.nix
+    ../modules/hyprland/hypridle.nix
+    ../modules/hyprland/swaync.nix
+    ../modules/hyprland/waybar.nix
+    ../modules/hyprland/wlogout.nix
   ];
 }

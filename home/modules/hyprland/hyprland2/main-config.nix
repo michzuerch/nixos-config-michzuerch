@@ -66,12 +66,34 @@
   };
 
   home.packages = with pkgs; [
-    waybar
-    swaylock
-    swayidle
+    nemo-with-extensions
+    copyq
+    ffmpegthumbnailer
+    grimblast
+    gsettings-desktop-schemas
+    hyprpicker
+    hyprsysteminfo
+    hyprpolkitagent
+    kdePackages.filelight
+    kdePackages.qtwayland
+    networkmanagerapplet
+    nwg-look
+    pamixer
+    pavucontrol
+    qt6.qtwayland
+    shotman
+    slurp
+    sov
+    squeekboard # virtual keyboard
+    swayosd
+    wf-recorder
     wl-clipboard
-    mako # notification daemon
-    grim # screenshot utility
-    slurp # region selection
+    wlogout
+    wlr-randr
+    wlsunset
+    wofi-emoji
+    wtype
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
   ];
 }

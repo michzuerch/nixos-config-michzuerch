@@ -26,7 +26,6 @@
     ../modules/vscodium.nix
     ../modules/wallpapers.nix
     ../modules/wezterm.nix
-    ../modules/xdg.nix
     ../modules/zellij.nix
     ../modules/zoxide.nix
     ../modules/cli
@@ -35,6 +34,7 @@
     ../modules/browsers/chromium.nix
     ../modules/browsers/brave.nix
     ../modules/browsers/librewolf.nix
+    ../modules/hyprland/hyprland2/animations.nix
     ../modules/hyprland/hyprland2/keybindings.nix
     ../modules/hyprland/hyprland2/monitors.nix
     ../modules/hyprland/hyprland2/main-config.nix

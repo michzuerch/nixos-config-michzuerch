@@ -7,5 +7,6 @@
     pkgs.fzf
     pkgs.yazi
     pkgs.mc
+    pkgs.cpupower-gui
   ];
 }

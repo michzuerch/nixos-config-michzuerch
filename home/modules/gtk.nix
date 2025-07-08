@@ -1,18 +1,36 @@
 {pkgs, ...}: {
-  home = {
-    packages = with pkgs; [
-      papirus-folders
-      kdePackages.qt6ct
-      nautilus
-    ];
-  };
-
-  qt.enable = true;
-  gtk.enable = true;
-  dconf = {
+  gtk = {
     enable = true;
-    settings = {
-      "org/gnome/desktop/peripherals/mouse" = {natural-scroll = true;};
+
+    cursorTheme = {
+      name = "Catppuccin-Macchiato-Blue";
+      package = pkgs.catppuccin-cursors.macchiatoBlue;
+    };
+
+    theme = {
+      name = "Catppuccin-Macchiato-Compact-Blue-dark";
+      package = pkgs.catppuccin-gtk.override {
+        size = "compact";
+        accents = ["blue"];
+        variant = "macchiato";
+      };
+    };
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-folders;
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme = 1;
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme = 1;
+      '';
     };
   };
 }

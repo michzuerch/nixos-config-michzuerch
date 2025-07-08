@@ -31,10 +31,12 @@
     ../modules/zoxide.nix
     ../modules/cli
     ../modules/nvf.nix
-    ../modules/hyprland
     ../modules/browsers/firefox.nix
     ../modules/browsers/chromium.nix
     ../modules/browsers/brave.nix
     ../modules/browsers/librewolf.nix
+    ../modules/hyprland/hyprland2/keybindings.nix
+    ../modules/hyprland/hyprland2/monitors.nix
+    ../modules/hyprland/hyprland2/main-config.nix
   ];
 }

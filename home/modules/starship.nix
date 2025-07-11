@@ -37,7 +37,6 @@
         # color_yellow = "#d79921";
       };
       format = lib.concatStrings [
-        "Start${config.colorScheme.palette.base00}"
         "[](fg:color_bg3)"
         "[ ](fg:color_fg0 bg:color_bg3)"
         "($container)"

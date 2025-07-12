@@ -153,7 +153,7 @@
 
           motion = {
             hop.enable = true;
-            leap.enable = true;
+            leap.enable = false;
             precognition.enable = true;
           };
 

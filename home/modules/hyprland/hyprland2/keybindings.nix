@@ -1,23 +1,23 @@
 {pkgs, ...}: {
   wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
+    "$mainMod" = "SUPER";
 
     bind = [
       "$mainMod,       Return, exec, ${pkgs.alacritty}/bin/alacritty"
       "$mainMod,       Q, killactive,"
-      "$mainMod,       E, exec, ${pkgs.alacritty}/bin/nemo"
+      "$mainMod,       E, exec, ${pkgs.nemo}/bin/nemo"
       "$mainMod,       F, fullscreen"
-      "$mainMod,       D, exec, ${pkgs.alacritty}/bin/rofi -show drun"
+      "$mainMod,       D, exec, ${pkgs.rofi}/bin/rofi -show drun"
       "$mainMod,       P, pin,"
       "$mainMod,       J, togglesplit,"
-      "$mainMod,       period, exec, ${pkgs.alacritty}/bin/wofi-emoji"
+      "$mainMod,       period, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji"
       # "$mainMod,       V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       "$mainMod,       B, exec, pkill -SIGUSR2 waybar"
       "$mainMod SHIFT, B, exec, pkill -SIGUSR1 waybar"
       "$mainMod,       L, exec, loginctl lock-session"
       # "$mainMod SHIFT  P, exec, hyprpicker -a -n"
-      "$mainMod,       N, exec, ${pkgs.alacritty}/bin/swaync-client -t"
-      "$mainMod SHIFT, S, exec, ${pkgs.alacritty}/bin/grimblast --notify --freeze copysave area"
+      "$mainMod,       N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
+      "$mainMod SHIFT, S, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave area"
       "$mainMod,       O, hyprexpo:expo, toggle"
 
       "$mainMod,       Tab, focusmonitor, +1"

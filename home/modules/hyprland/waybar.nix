@@ -5,7 +5,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 60;
+        height = 30;
         margin-top = 0;
         margin-bottom = 0;
         margin-left = 10;
@@ -13,7 +13,7 @@
         modules-left = ["hyprland/workspaces"];
         modules-center = ["hyprland/window"];
         # modules-right = ["cpu" "memory" "network" "tray"];
-        modules-right = ["cpu" "memory" "custom/weather" "idle_inhibitor" "custom/notification" "pulseaudio" "backlight" "network" "bluetooth" "battery" "clock" "tray" "custom/power"];
+        modules-right = ["cpu" "memory" "custom/weather" "idle_inhibitor" "custom/notification" "pulseaudio" "backlight" "network" "bluetooth" "battery" "clock" "tray" "power-profiles-daemon" "custom/power"];
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -65,6 +65,7 @@
           };
           on-click = "pavucontrol";
         };
+
         memory = {
           interval = 1;
           format = "󰻠 {percentage}%";
@@ -72,6 +73,7 @@
             warning = 85;
           };
         };
+
         cpu = {
           interval = 1;
           format = "󰍛 {usage}%";
@@ -85,6 +87,7 @@
           on-click = "brightnessctl set 0";
           tooltip = false;
         };
+
         bluetooth = {
           format-disabled = "   ";
           format-off = "   ";
@@ -95,6 +98,7 @@
           on-click = "blueberry";
           tooltip = true;
         };
+
         network = {
           format-disconnected = "󰯡  Disconnected";
           format-ethernet = "󰒢 Connected!";
@@ -104,6 +108,19 @@
           tooltip = true;
           format-alt = "󰅢  {bandwidthDownBytes} /   {bandwidthUpBytes} ";
         };
+
+        power-profiles-daemon = {
+          format = "{icon}   {profile}";
+          tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+          tooltip = true;
+          format-icons = {
+            default = "";
+            performance = "";
+            balanced = "";
+            power-saver = "";
+          };
+        };
+
         "custom/weather" = {
           format = "{} °";
           tooltip = true;
@@ -111,6 +128,7 @@
           exec = "wttrbar --location Radolfzell";
           "return-type" = "json";
         };
+
         "custom/notification" = {
           tooltip = false;
           format = "{icon} {}";
@@ -133,7 +151,7 @@
         };
 
         idle_inhibitor = {
-          format = "{icon}";
+          format = "{icon} ";
           "format-icons" = {
             activated = "󰈈";
             deactivated = "󰈉";
@@ -159,7 +177,7 @@
         };
 
         "tray" = {
-          icon-size = 14;
+          icon-size = 18;
           spacing = 3;
         };
       };
@@ -200,7 +218,7 @@
           background: #323232;
           color: white;
           font-family: Cantarell, Noto Sans, sans-serif;
-          font-size: 24px;
+          font-size: 12px;
       }
 
       /* Each module */

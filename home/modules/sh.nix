@@ -68,6 +68,7 @@
     dysk
     gping
     just
+    nethogs
     nix-output-monitor
     hydra-check
     nix-init

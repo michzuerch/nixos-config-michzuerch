@@ -152,7 +152,7 @@
           smart-splits.enable = true;
 
           motion = {
-            hop.enable = true;
+            hop.enable = false;
             leap.enable = false;
             precognition.enable = true;
           };

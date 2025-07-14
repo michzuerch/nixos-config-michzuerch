@@ -12,7 +12,6 @@
         margin-right = 10;
         modules-left = ["hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        # modules-right = ["cpu" "memory" "network" "tray"];
         modules-right = ["cpu" "memory" "custom/weather" "idle_inhibitor" "custom/notification" "pulseaudio" "backlight" "network" "bluetooth" "battery" "clock" "tray" "power-profiles-daemon" "custom/power"];
 
         "hyprland/workspaces" = {
@@ -36,7 +35,7 @@
         };
 
         clock = {
-          format = "{:%a, %d %b, %I:%M}";
+          format = "{:%a, %d %b, %H:%M}";
           locale = "de_DE.UTF-8";
           timezone = "Europe/Busingen";
           tooltip = "true";
@@ -133,14 +132,14 @@
           tooltip = false;
           format = "{icon} {}";
           "format-icons" = {
-            notification = "󱅫";
-            none = "";
-            "dnd-notification" = " ";
-            "dnd-none" = "󰂛";
+            notification = "󱅫 ";
+            none = " ";
+            "dnd-notification" = "  ";
+            "dnd-none" = "󰂛 ";
             "inhibited-notification" = " ";
-            "inhibited-none" = "";
+            "inhibited-none" = " ";
             "dnd-inhibited-notification" = " ";
-            "dnd-inhibited-none" = " ";
+            "dnd-i:waybarnhibited-none" = " ";
           };
           "return-type" = "json";
           "exec-if" = "which swaync-client";
@@ -166,7 +165,7 @@
           format = "{icon}  {capacity}%";
           format-charging = "  {capacity}%";
           format-alt = "{time}  {icon}";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [" " " " " " " " " "];
         };
 
         "custom/power" = {

@@ -1,7 +1,7 @@
 {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
-      # "waybar"
+      "waybar"
       "systemctl --user start hyprpolkitagent"
       "pypr --debug /tmp/pypr.log"
       "swaync"

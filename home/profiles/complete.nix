@@ -1,6 +1,7 @@
 {
   imports = [
     ../modules/alacritty.nix
+    ../module/clock-rs.nix
     ../modules/environment-variables.nix
     ../modules/fish.nix
     ../modules/flatpak.nix

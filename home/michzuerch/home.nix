@@ -6,7 +6,7 @@
   imports = [
     inputs.nvf.homeManagerModules.default
     inputs.nur.modules.homeManager.default
-    inputs.nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.homeModules.nix-index
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.nix-colors.homeManagerModules.default
     ../profiles/complete.nix

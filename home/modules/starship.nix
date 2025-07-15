@@ -10,8 +10,8 @@
     settings = {
       add_newline = true;
       command_timeout = 2000;
-      palette = "da-one-paper";
-      palettes.da-one-paper = {
+      palette = "catppuccin-mocha";
+      palettes.catppuccin-mocha = {
         color_fg0 = "${config.colorScheme.palette.base04}";
         color_bg0 = "${config.colorScheme.palette.base00}";
         color_bg1 = "${config.colorScheme.palette.base01}";
@@ -23,20 +23,10 @@
         color_purple = "${config.colorScheme.palette.base0E}";
         color_red = "${config.colorScheme.palette.base07}";
         color_yellow = "${config.colorScheme.palette.base08}";
-
-        # color_fg0 = "#fbf1c7";
-        # color_bg1 = "#3c3836";
-        # color_bg0 = "#282828";
-        # color_bg3 = "#665c54";
-        # color_blue = "#83a598";
-        # color_aqua = "#689d6a";
-        # color_green = "#98971a";
-        # color_orange = "#d65d0e";
-        # color_purple = "#b16286";
-        # color_red = "#cc241d";
-        # color_yellow = "#d79921";
       };
       format = lib.concatStrings [
+        "fg0(fg: color_fg0)"
+        "bg0(fg: color_bg0)"
         "[](fg:color_bg3)"
         "[ ](fg:color_fg0 bg:color_bg3)"
         "($container)"

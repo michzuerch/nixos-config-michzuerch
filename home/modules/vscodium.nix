@@ -4,6 +4,8 @@
     package = pkgs.vscodium;
     mutableExtensionsDir = false;
     profiles.default.userSettings = {
+      "editor.fontFamily" = "JetBrains Mono";
+      "editor.fontSize" = 13;
       "editor.formatOnSave" = true;
       "editor.fontLigatures" = true;
       "editor.mouseWheelZoom" = true;

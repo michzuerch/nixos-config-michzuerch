@@ -42,6 +42,6 @@
     ../modules/desktop/plasma6.nix
     # ../modules/desktop/cinnamon.nix
     ../modules/desktop/gnome.nix
-    ../modules/desktop/cosmic.nix
+    # ../modules/desktop/cosmic.nix
   ];
 }

@@ -1,17 +1,24 @@
-{inputs, ...}: {
-  imports = [
-    inputs.hyprshell.homeModules.hyprshell
-  ];
+{
   programs.hyprshell = {
     enable = true;
-    systemd.args = "-v";
+    systemd = {
+      enable = true;
+      args = "-v";
+    };
     settings = {
       windows = {
+        enable = true;
+        scale = 8.5;
+        items_per_row = 5;
         overview = {
-          key = "super_l";
-          mod = "super";
+          enable = true;
+          strip_html_from_workspace_title = true;
+          key = "h";
+          modifier = "ctrl";
+          filter_by = ["same_class"];
           launcher = {
             max_items = 6;
+            launch_modifier = "super";
             plugins.websearch = {
               enable = true;
               engines = [
@@ -24,7 +31,10 @@
             };
           };
         };
-        switcher.enable = false;
+        switch = {
+          enable = true;
+          modifier = "alt";
+        };
       };
     };
   };

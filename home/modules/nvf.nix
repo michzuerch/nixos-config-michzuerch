@@ -154,7 +154,7 @@
           motion = {
             hop.enable = false;
             leap.enable = false;
-            precognition.enable = true;
+            precognition.enable = false;
           };
 
           images = {

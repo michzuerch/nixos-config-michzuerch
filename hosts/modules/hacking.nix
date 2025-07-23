@@ -19,6 +19,9 @@
     nmap
     ngrep
     tcpdump
+    recon-ng
+    sherlock
+    sn0int
     snort
     wavemon
     wifite2

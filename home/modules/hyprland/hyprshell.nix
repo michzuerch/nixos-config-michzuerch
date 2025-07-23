@@ -13,9 +13,9 @@
         overview = {
           enable = true;
           strip_html_from_workspace_title = true;
-          key = "h";
+          key = "o";
           modifier = "ctrl";
-          filter_by = ["same_class"];
+          filter_by = [];
           launcher = {
             max_items = 6;
             launch_modifier = "super";

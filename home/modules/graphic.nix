@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     # darktable
     # font-manager
-    # gimp
+    gimp
     # glaxnimate
     #kdePackages.gwenview
     inkscape-with-extensions

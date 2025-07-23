@@ -103,7 +103,6 @@
         "[](bg:yellow fg:peach)"
         "$git_branch"
         "$git_status"
-        "$git_commit"
         "$git_metrics(fg:crust bg:yellow)"
         "[](fg:yellow bg:green)"
         "$lua"
@@ -170,39 +169,12 @@
         };
       };
 
-      time = {
-        disabled = false;
-        style = "fg:color_fg0 bg:color_bg3";
-        format = "[](fg:color_orange)[ ](bold fg:color_bg0 bg:color_orange)[ $time]($style)[](fg:color_bg3)";
-      };
-
-      env_var = {
-        variable = "CONTAINER_ID";
-        symbol = "📦 ";
-        style = "color_rosewater";
-        format = "running on: [$env_value]($style)";
-      };
-
       status = {
         style = "fg:color_teal";
         symbol = "";
         success_symbol = "";
         format = "[$symbol $status]($style) ";
         disabled = false;
-      };
-
-      jobs = {
-        symbol = "";
-        style = "fg:color_fg0 bg:color_bg3";
-        number_threshold = 1;
-        format = "[$symbol]($style)";
-      };
-
-      nix_shell = {
-        format = "[](fg:color_fg0 bg:color_bg3)[($name \\(develop\\) <- )$symbol]($style)[](fg:color_yellow)";
-        impure_msg = "devbox";
-        symbol = "  ";
-        style = "bg:color_fg0 fg:color_bg3";
       };
 
       fill = {
@@ -223,42 +195,12 @@
         disabled = false;
       };
 
-      git_commit = {
-        style = "fg:crust bg:yellow";
-        commit_hash_length = 4;
-        tag_symbol = "🔖 ";
-        format = "[$hash]($style)";
-        disabled = false;
-      };
-
       git_metrics = {
         added_style = "fg:crust bg:yellow";
         deleted_style = "fg:crust bg:yellow";
         format = "[[+$added]($added_style)/[-$deleted]($deleted_style)](fg:crust bg:yellow)";
         disabled = false;
       };
-
-      # git_commit = {
-      #   format = "[$hash]($style)";
-      #   style = "bg:color_bg3 fg:color_fg0";
-      #   only_detached = true;
-      #   tag_symbol = "🏷 ";
-      # };
-      # git_status = {
-      #   conflicted = " 🏳";
-      #   ahead = " 🏎💨";
-      #   behind = " 😰";
-      #   diverged = " 😵";
-      #   up_to_date = " ✓";
-      #   untracked = " 🤷";
-      #   stashed = " 📦";
-      #   modified = " 📝";
-      #   staged = "[++\($count\)](fg:color_fg0 bg:color_bg3)";
-      #   renamed = " 👅";
-      #   deleted = " 🗑";
-      #   format = "[[($all_status$ahead_behind) ](fg:color_fg0 bg:color_bg3)]($style)[ ](fg:color_bg3)";
-      #   style = "bg:color_bg3";
-      # };
 
       hostname = {
         format = "[$ssh_symbol]($style)[$hostname ]($style)";

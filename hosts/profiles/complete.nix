@@ -1,5 +1,7 @@
 {
   imports = [
+    ../modules/sops.nix
+
     ../modules/audio.nix
     ../modules/bluetooth.nix
     ../modules/displaymanager.nix

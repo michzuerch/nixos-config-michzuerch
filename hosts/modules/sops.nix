@@ -1,6 +1,10 @@
 {
-  sops.defaultSopsFile = ../../secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
+  sops = {
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
 
-  sops.age.keyFile = "/home/michzuerch/.config/sops/age/keys.txt";
+    age.keyFile = "/home/michzuerch/.config/sops/age/keys.txt";
+
+    secrets.github_api_key = {};
+  };
 }

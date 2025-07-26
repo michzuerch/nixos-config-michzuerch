@@ -34,7 +34,20 @@
         init.defaultBranch = "main";
       };
     };
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      settings = {
+        gui = {
+          showIcons = true;
+          theme = {
+            lightTheme = false;
+            activeBorderColor = ["green" "bold"];
+            inactiveBorderColor = ["grey"];
+            selectedLineBgColor = ["blue"];
+          };
+        };
+      };
+    };
   };
   home.packages = with pkgs; [act github-desktop github-runner];
 }

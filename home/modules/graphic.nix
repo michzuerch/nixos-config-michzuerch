@@ -4,8 +4,9 @@
     # font-manager
     gimp
     # glaxnimate
-    #kdePackages.gwenview
+    kdePackages.gwenview
     inkscape-with-extensions
+    pinta
     hypnotix
     krita
     scribus

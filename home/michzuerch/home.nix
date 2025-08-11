@@ -10,7 +10,8 @@
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.nix-colors.homeManagerModules.default
     inputs.hyprshell.homeModules.hyprshell
-    ../profiles/complete.nix
+    # ../profiles/complete.nix
+    ../profiles/onlyplasma6.nix
   ];
 
   # colorScheme = inputs.nix-colors.colorSchemes.da-one-paper;

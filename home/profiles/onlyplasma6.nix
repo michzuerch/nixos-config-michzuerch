@@ -3,40 +3,20 @@
     ../modules/alacritty.nix
     ../modules/clock-rs.nix
     # ../modules/environment-variables.nix
-    ../modules/fish.nix
     ../modules/flatpak.nix
     ../modules/nixpkgs.nix
-    ../modules/gallery-dl.nix
-    ../modules/ghostty.nix
-    ../modules/graphic.nix
     # ../modules/helix.nix
     ../modules/kitty.nix
-    ../modules/latex.nix
-    # ../modules/libreoffice.nix
-    ../modules/meld.nix
-    ../modules/messenger.nix
-    ../modules/mission-center.nix
-    ../modules/multimedia.nix
-    ../modules/obs-studio.nix
-    ../modules/pgbench.nix
     # ../modules/gtk.nix
     ../modules/sh.nix
     ../modules/starship.nix
     ../modules/tmux.nix
-    ../modules/torrent.nix
     ../modules/udiskie.nix
     ../modules/vscodium.nix
     ../modules/wallpapers.nix
-    ../modules/wezterm.nix
-    ../modules/zellij.nix
-    ../modules/zoxide.nix
     ../modules/zsh.nix
     ../modules/cli
     ../modules/nvf.nix
     ../modules/browsers/firefox.nix
-    # ../modules/browsers/chromium.nix
-    # ../modules/browsers/brave.nix
-    # ../modules/browsers/librewolf.nix
-    # ../modules/hyprland
   ];
 }

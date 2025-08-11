@@ -159,7 +159,7 @@
         };
         modules = [
           ./hosts/ElitebookNomad/configuration.nix
-          ./hosts/profile/onlyplasma6.nix
+          ./hosts/profiles/onlyplasma6.nix
           # ./hosts/profiles/complete.nix
           # ./hosts/profiles/debug.nix
           # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}

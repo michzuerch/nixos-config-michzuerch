@@ -24,6 +24,7 @@
     ../modules/nix-ld.nix
     ../modules/nix-settings.nix
     ../modules/nix-tools.nix
+    ../modules/nix-auth.nix
     ../modules/ollama.nix
     ../modules/openssh.nix
     ../modules/powermanagement.nix

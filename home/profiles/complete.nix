@@ -29,6 +29,7 @@
     ../modules/wezterm.nix
     ../modules/zellij.nix
     ../modules/zoxide.nix
+    ../modules/zsh.nix
     ../modules/cli
     ../modules/nvf.nix
     ../modules/browsers/firefox.nix

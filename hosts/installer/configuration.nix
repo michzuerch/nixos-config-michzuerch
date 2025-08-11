@@ -73,7 +73,7 @@
   };
 
   isoImage.volumeID = lib.mkForce "nixos-live-michzuerch";
-  isoImage.isoName = lib.mkForce "nixos-live-michzuerch.iso";
+  image.fileName = lib.mkForce "nixos-live-michzuerch.iso";
   isoImage.squashfsCompression = "zstd -Xcompression-level 6";
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

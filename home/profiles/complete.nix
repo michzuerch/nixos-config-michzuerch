@@ -6,6 +6,7 @@
     ../modules/fish.nix
     ../modules/flatpak.nix
     ../modules/nixpkgs.nix
+    ../modules/gallery-dl.nix
     ../modules/ghostty.nix
     ../modules/graphic.nix
     ../modules/helix.nix

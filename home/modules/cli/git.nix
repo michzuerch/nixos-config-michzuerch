@@ -7,12 +7,12 @@
       userEmail = "michzuerch@gmail.com";
       delta = {
         enable = true;
+        options = {
+          navigate = true;
+          line-numbers = true;
+        };
       };
       lfs.enable = true;
-      #signing = {
-      #  key = "523D5DC389D273BC";
-      #  signByDefault = true;
-      #};
       aliases = {
         cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
         prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
@@ -20,6 +20,7 @@
       };
       ignores = ["*~" "*.swp"];
       extraConfig = {
+        init.defaultBranch = "main";
         branch.autosetuprebase = "always";
         color.ui = true;
         core = {
@@ -29,9 +30,8 @@
         };
         credential.helper = "libsecret"; # want to make this more secure
         github.user = "michzuerch";
-        pull.rebase = "false";
+        pull.rebase = true;
         push.default = "tracking";
-        init.defaultBranch = "main";
       };
     };
     lazygit = {

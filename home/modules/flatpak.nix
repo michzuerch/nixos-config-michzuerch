@@ -5,7 +5,7 @@
   ];
 
   services.flatpak = {
-    update.onActivation = true;
+    update.onActivation = false;
     remotes = [
       {
         name = "flathub-beta";
@@ -13,12 +13,12 @@
       }
     ];
     packages = [
-      {
-        appId = "com.brave.Browser";
-        origin = "flathub";
-      }
-      "com.obsproject.Studio"
-      "im.riot.Riot"
+      # {
+      #   appId = "com.brave.Browser";
+      #   origin = "flathub";
+      # }
+      # "com.obsproject.Studio"
+      # "im.riot.Riot"
     ];
   };
 }

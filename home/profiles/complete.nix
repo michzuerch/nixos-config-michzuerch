@@ -37,6 +37,6 @@
     ../modules/browsers/chromium.nix
     ../modules/browsers/brave.nix
     ../modules/browsers/librewolf.nix
-    # ../modules/hyprland
+    ../modules/hyprland
   ];
 }

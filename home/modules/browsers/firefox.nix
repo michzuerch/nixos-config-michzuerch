@@ -41,10 +41,12 @@
       };
     };
     profiles = {
-      michzuerch = {
-        id = 0;
-        isDefault = true;
-        name = "michzuerch";
+      # michzuerch = {
+      #   id = 0;
+      #   isDefault = true;
+      #   name = "michzuerch";
+      # };
+      default = {
         settings = {
           "beacon.enabled" = false;
           "browser.safebrowsing.malware.enabled" = false;
@@ -147,31 +149,44 @@
             };
           };
         };
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          offline-qr-code-generator
-          reddit-enhancement-suite
-          ublock-origin
-          wayback-machine
-          vue-js-devtools
-          rust-search-extension
-          search-by-image
-          proton-pass
-          proton-vpn
-          darkreader
-          firefox-color
-          about-sync
-          header-editor
-          print-to-pdf-document
-          prometheus-formatter
-          tomato-clock
-          torrent-control
-          unpaywall
+        extensions = {
+          packages = with pkgs.nur.repos.rycee.firefox-addons; [
+            offline-qr-code-generator
+            reddit-enhancement-suite
+            ublock-origin
+            wayback-machine
+            vue-js-devtools
+            rust-search-extension
+            search-by-image
+            proton-pass
+            proton-vpn
+            darkreader
+            firefox-color
+            about-sync
+            header-editor
+            print-to-pdf-document
+            prometheus-formatter
+            tomato-clock
+            torrent-control
+            unpaywall
 
-          clearcache
-          hacktools
-          i-dont-care-about-cookies
-          web-developer
-        ];
+            clearcache
+            hacktools
+            i-dont-care-about-cookies
+            web-developer
+          ];
+          # settings = {
+          #   "uBlock0@raymondhill.net" = {
+          #     settings = {
+          #       selectedFilterLists = [
+          #         "ublock-filters"
+          #         "ublock-privacy"
+          #       ];
+          #     };
+          #     force = true;
+          #   };
+          # };
+        };
       };
     };
   };

@@ -3,6 +3,7 @@
     ../modules/alacritty.nix
     ../modules/clock-rs.nix
     ../modules/dconf.nix
+    ../modules/emacs.nix
     ../modules/environment-variables.nix
     ../modules/fish.nix
     ../modules/flatpak.nix
@@ -17,6 +18,7 @@
     ../modules/libreoffice.nix
     ../modules/meld.nix
     ../modules/messenger.nix
+    ../modules/mime.nix
     ../modules/mission-center.nix
     ../modules/multimedia.nix
     ../modules/obs-studio.nix

@@ -16,5 +16,11 @@ with lib.hm.gvariant; {
       search-filter-time-type = "last_modified";
       search-view = "list-view";
     };
+
+    #qemu
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
   };
 }

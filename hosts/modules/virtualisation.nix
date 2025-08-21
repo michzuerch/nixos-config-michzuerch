@@ -27,6 +27,7 @@
 
   users.extraGroups = {
     vboxusers.members = ["michzuerch"];
+    kvm.members = ["michzuerch"];
     libvirtd.members = ["michzuerch"];
   };
 
@@ -41,7 +42,6 @@
     podman-desktop
     podman-tui
     #terraform
-    just
     openstackclient
     opentofu
     virt-manager
@@ -50,6 +50,8 @@
     spice
     spice-gtk
     spice-protocol
+    swtpm
+    virglrenderer
     win-virtio
     win-spice
     adwaita-icon-theme

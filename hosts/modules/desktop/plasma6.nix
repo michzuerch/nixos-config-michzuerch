@@ -32,5 +32,7 @@
     plasma-browser-integration
     konsole
     oxygen
+    discover
+    kate
   ];
 }

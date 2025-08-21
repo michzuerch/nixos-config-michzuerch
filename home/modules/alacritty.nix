@@ -1,20 +1,43 @@
-_: {
+{pkgs, ...}: {
   programs.alacritty = {
     enable = true;
     settings = {
-      # font = {size = 12;};
-      # window = {
-      #   opacity = 0.7;
-      #   padding = {
-      #     x = 15;
-      #     y = 15;
-      #   };
-      # };
-      selection = {save_to_clipboard = true;};
+      bell = {
+        animation = "EaseOutExpo";
+        duration = 5;
+        color = "#ffffff";
+      };
+      colors = {
+        primary = {
+          background = "#040404";
+          foreground = "#c5c8c6";
+        };
+      };
+      font = {
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Medium";
+        };
+        size = 10;
+      };
+      hints.enabled = [
+        {
+          regex = ''(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>"\\s{-}\\^⟨⟩`]+'';
+          command = "${pkgs.mimeo}/bin/mimeo";
+          post_processing = true;
+          mouse.enabled = true;
+        }
+      ];
+      # shell.program = "${pkgs.zsh}/bin/zsh";
+      window = {
+        decorations = "full";
+        opacity = 0.85;
+        padding = {
+          x = 5;
+          y = 5;
+        };
+      };
+      selection.save_to_clipboard = true;
     };
   };
 }
-# [font.normal]
-# family = "FiraCode Nerd Font"
-# style = "Regular"
-

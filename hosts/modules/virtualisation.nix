@@ -11,13 +11,18 @@
     };
     libvirtd = {
       enable = true;
+      allowedBridges = [
+        "nm-bridge"
+        "virbr0"
+      ];
       qemu = {
+        runAsRoot = false;
         swtpm.enable = true;
         ovmf.enable = true;
         ovmf.packages = [pkgs.OVMFFull.fd];
       };
     };
-    # waydroid.enable = true;
+    waydroid.enable = true;
   };
 
   users.extraGroups = {

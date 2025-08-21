@@ -15,11 +15,19 @@
         variant = "macchiato";
       };
     };
+    # theme = {
+    #   name = "Juno-ocean";
+    #   package = pkgs.juno-theme;
+    # };
 
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-folders;
     };
+    # iconTheme = {
+    #   name = "BeautyLine";
+    #   package = pkgs.beauty-line-icon-theme;
+    # };
 
     gtk3.extraConfig = {
       Settings = ''

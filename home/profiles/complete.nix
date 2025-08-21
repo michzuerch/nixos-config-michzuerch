@@ -2,12 +2,14 @@
   imports = [
     ../modules/alacritty.nix
     ../modules/clock-rs.nix
+    ../modules/dconf.nix
     ../modules/environment-variables.nix
     ../modules/fish.nix
     ../modules/flatpak.nix
     ../modules/nixpkgs.nix
     ../modules/gallery-dl.nix
     ../modules/ghostty.nix
+    ../modules/gtk.nix
     ../modules/graphic.nix
     ../modules/helix.nix
     ../modules/kitty.nix
@@ -19,6 +21,7 @@
     ../modules/multimedia.nix
     ../modules/obs-studio.nix
     ../modules/pgbench.nix
+    ../modules/plasma.nix
     ../modules/gtk.nix
     ../modules/sh.nix
     ../modules/starship.nix
@@ -33,6 +36,7 @@
     ../modules/zsh.nix
     ../modules/cli
     ../modules/nvf.nix
+    ../modules/zathura.nix
     ../modules/browsers/firefox.nix
     ../modules/browsers/chromium.nix
     ../modules/browsers/brave.nix

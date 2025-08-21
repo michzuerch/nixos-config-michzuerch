@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   services = {
-    # xserver.desktopManager.plasma5.enable = true;
     desktopManager = {
-      plasma6.enable = true;
+      plasma6 = {
+        enable = true;
+        enableQt5Integration = false;
+      };
     };
   };
 
@@ -26,9 +28,9 @@
     kdegraphics-thumbnailers
   ];
 
-  # environment.plasma6.excludePackages = with pkgs.kdePackages; [
-  #   plasma-browser-integration
-  #   konsole
-  #   oxygen
-  # ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    oxygen
+  ];
 }

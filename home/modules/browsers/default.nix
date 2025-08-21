@@ -4,6 +4,7 @@
     ./chromium.nix
     ./brave.nix
     #./qutebrowser.nix
+    ./ladybird.nix
     ./librewolf.nix
   ];
 }

@@ -8,7 +8,6 @@
     ./lf.nix
     ./mc.nix
     ./nix-index-comma.nix
-    ./ranger.nix
     ./yazi.nix
     ./zsh.nix
   ];

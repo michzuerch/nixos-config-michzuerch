@@ -7,6 +7,19 @@
 
     bat = {
       enable = true;
+      config = {
+        pager = "less -FR";
+        theme = "gruvbox-dark";
+      };
+      extraPackages = with pkgs.bat-extras; [
+        batman
+        batpipe
+        batgrep
+        batdiff
+      ];
+    };
+    fd = {
+      enable = true;
     };
 
     fzf = {
@@ -18,7 +31,11 @@
 
     jq.enable = true;
 
-    broot.enable = true;
+    broot = {
+      enable = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+    };
 
     gitui.enable = true;
 
@@ -74,7 +91,6 @@
     nix-melt
     nix-tree
     nix-health
-    fd
     gcc
     gnumake
     grex

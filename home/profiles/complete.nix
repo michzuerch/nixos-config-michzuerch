@@ -3,6 +3,7 @@
     ../modules/alacritty.nix
     ../modules/clock-rs.nix
     ../modules/dconf.nix
+    ../modules/discord.nix
     ../modules/emacs.nix
     ../modules/environment-variables.nix
     ../modules/fish.nix

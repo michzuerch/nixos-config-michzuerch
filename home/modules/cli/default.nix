@@ -1,6 +1,7 @@
 {
   imports = [
     ./atiun.nix
+    ./btop.nix
     ./f3.nix
     ./fastfetch.nix
     ./git.nix

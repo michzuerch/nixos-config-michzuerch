@@ -7,7 +7,15 @@
       enable = true;
       systemd.enable = true;
       verbose = false;
-      availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod"];
+      availableKernelModules = [
+        "ahci"
+        "virtio_pci"
+        "nvme"
+        "xhci_pci"
+        "usb_storage"
+        "sd_mod"
+        "virtio_blk"
+      ];
     };
     kernelModules = ["kvm-intel"];
     kernelParams = [
@@ -19,12 +27,11 @@
       "udev.log_priority=3"
       "nowatchdog"
     ];
-
     extraModulePackages = [];
     loader = {
       timeout = 10;
       systemd-boot.enable = true;
-      systemd-boot.memtest86.enable = true;
+      systemd-boot.memtest86.enable = false;
       efi.canTouchEfiVariables = true;
     };
     plymouth = {

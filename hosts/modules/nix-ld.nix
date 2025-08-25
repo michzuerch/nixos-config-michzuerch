@@ -1,3 +1,6 @@
 {
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = [];
+  };
 }

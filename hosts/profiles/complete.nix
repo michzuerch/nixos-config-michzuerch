@@ -4,6 +4,7 @@
 
     ../modules/audio.nix
     ../modules/bluetooth.nix
+    ../modules/console.nix
     ../modules/displaymanager.nix
     ../modules/distrobox.nix
     ../modules/documentation.nix

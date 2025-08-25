@@ -12,7 +12,7 @@
         margin-right = 10;
         modules-left = ["hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        modules-right = ["cpu" "memory" "custom/weather" "idle_inhibitor" "custom/notification" "pulseaudio" "backlight" "network" "bluetooth" "battery" "clock" "tray" "power-profiles-daemon" "custom/power"];
+        modules-right = ["cpu" "memory" "hyprland/language" "custom/weather" "idle_inhibitor" "custom/notification" "pulseaudio" "backlight" "network" "bluetooth" "battery" "clock" "tray" "power-profiles-daemon" "custom/power"];
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -126,6 +126,12 @@
           interval = 3600;
           exec = "wttrbar --location Radolfzell";
           "return-type" = "json";
+        };
+
+        "hyprland/language" = {
+          format = "<span foreground='#FABD2F'> </span> {}";
+          format-de = "DE";
+          format-en = "US";
         };
 
         "custom/notification" = {

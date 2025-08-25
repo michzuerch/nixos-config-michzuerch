@@ -1,6 +1,11 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    bun
     nodejs
   ];
+  programs = {
+    bun = {
+      enable = true;
+      enableGitIntegration = true;
+    };
+  };
 }

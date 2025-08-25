@@ -125,11 +125,11 @@
           {
             iconTasks = {
               launchers = [
-                "applications:firefox.desktop"
+                "applications:firefox-devedition.desktop"
                 "applications:systemsettings.desktop"
                 "applications:org.kde.dolphin.desktop"
-                "applications:org.kde.konsole.desktop"
-                "applications:org.kde.kate.desktop"
+                # "applications:org.kde.konsole.desktop"
+                # "applications:org.kde.kate.desktop"
               ];
               behavior = {
                 showTasks = {

@@ -5,24 +5,26 @@
       # dim_inactive = false;
       active_opacity = 1;
       inactive_opacity = 0.75;
+
       shadow = {
         enabled = true;
         ignore_window = true;
+        offset = "0 2";
         range = 20;
-        render_power = 5;
+        render_power = 3;
+        color = "rgba(00000055)";
       };
 
       blur = {
         enabled = true;
-        size = 16;
+        size = 3;
         passes = 2;
-        popups = true;
-        # new_optimizations = true;
-        # ignore_opacity = true;
-        # noise = 0.0117;
-        # contrast = 1.2;
-        # xray = false;
-        # brightness = 1;
+        brightness = 1;
+        contrast = 1.4;
+        ignore_opacity = true;
+        noise = 0;
+        new_optimizations = true;
+        xray = true;
       };
     };
   };

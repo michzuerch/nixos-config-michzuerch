@@ -6,5 +6,6 @@
     #./qutebrowser.nix
     ./ladybird.nix
     ./librewolf.nix
+    ./zen.nix
   ];
 }

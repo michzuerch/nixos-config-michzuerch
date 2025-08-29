@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    darktable
+    # darktable
     # font-manager
     gimp
     # glaxnimate

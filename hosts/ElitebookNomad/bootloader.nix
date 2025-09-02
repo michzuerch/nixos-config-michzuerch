@@ -13,7 +13,7 @@
       verbose = false;
       availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod"];
     };
-    kernelModules = ["acpi_call"];
+    kernelModules = ["acpi_call" "v4l2loopback"];
     kernelParams = [
       "quiet"
       "splash"
@@ -28,6 +28,7 @@
       [
         acpi_call
         cpupower
+        v4l2loopback
       ]
       ++ [pkgs.cpupower-gui];
 

@@ -10,7 +10,7 @@
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.nix-colors.homeManagerModules.default
     # inputs.nix-doom-emacs-unstraightened.homeModule
-    inputs.plasma-manager.homeManagerModules.plasma-manager
+    inputs.plasma-manager.homeModules.plasma-manager
     inputs.hyprshell.homeModules.hyprshell
     ../profiles/complete.nix
     # ../profiles/onlyplasma6.nix

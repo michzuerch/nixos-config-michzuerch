@@ -98,11 +98,12 @@
         };
 
         network = {
-          format-disconnected = "󰯡  Disconnected";
+          format-disconnected = "󰯡 Disconnected";
           format-ethernet = "󰒢 Connected!";
           format-linked = "󰖪  {essid} (No IP)";
           format-wifi = "󰖩  {essid}";
           interval = 1;
+          max-length = 30;
           tooltip = true;
           format-alt = "󰅢  {bandwidthDownBytes} /   {bandwidthUpBytes} ";
         };
@@ -129,8 +130,8 @@
 
         "hyprland/language" = {
           format = "<span> </span> {}";
-          format-de = "DE";
-          format-en = "US";
+          format-de = "de";
+          format-en = "us";
         };
 
         "custom/notification" = {
@@ -181,8 +182,8 @@
         };
 
         "tray" = {
-          icon-size = 18;
-          spacing = 3;
+          icon-size = 20;
+          spacing = 4;
         };
       };
     };

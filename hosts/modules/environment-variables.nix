@@ -11,6 +11,7 @@
     DIRENV_LOG_FORMAT = "";
     JDK_PATH = "${pkgs.jdk}/";
     NODEJS_PATH = "${pkgs.nodePackages_latest.nodejs}/";
+    QML_IMPORT_PATH = "${pkgs.hyprland-qt-support}/lib/qt-6/qml";
 
     CI = "1";
     CLIPBOARD_NOAUDIO = "1";
@@ -25,6 +26,7 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     GSK_RENDERER = "gl";
+
     GITHUB_API_TOKEN = config.sops.secrets.github_api_key.path;
   };
 }

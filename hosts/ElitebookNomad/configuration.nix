@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  options,
+  lib,
+  ...
+}: {
   imports = [
     ./disko.nix
     ./bootloader.nix
@@ -9,6 +13,7 @@
 
   networking.hostName = "ElitebookNomad";
   networking.networkmanager.enable = true;
+  networking.timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
 
   swapDevices = lib.mkForce [];
 

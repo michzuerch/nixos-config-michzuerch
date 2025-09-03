@@ -46,5 +46,6 @@
     ../modules/browsers/librewolf.nix
     ../modules/browsers/zen.nix
     ../modules/hyprland
+    ../modules/niri/niri.nix
   ];
 }

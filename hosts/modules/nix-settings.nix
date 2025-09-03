@@ -1,19 +1,24 @@
 {lib, ...}: {
   nix = {
+    channel.enable = false;
+    extraOptions = ''
+      warn-dirty = false
+    '';
     settings = {
       builders-use-substitutes = true;
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       trusted-users = ["michzuerch"];
-
+      download-buffer-size = 262144000;
       substituters = [
-        "https://cache.nixos.org/"
+        "https://cache.nixos.org?priority=10"
         "https://nix-community.cachix.org"
         "https://hyprland.cachix.org"
         "https://cosmic.cachix.org/"
         "https://prismlauncher.cachix.org"
         "https://cachix.cachix.org"
         "https://nixpkgs.cachix.org"
+        "https://numtide.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -23,6 +28,7 @@
         "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
         "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
         "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+        "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
       ];
     };
   };

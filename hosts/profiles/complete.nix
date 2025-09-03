@@ -44,10 +44,11 @@
     ../modules/database/postgres.nix
     ../modules/desktop/hyprland/hyprland.nix
     ../modules/desktop/hyprland/quickshell.nix
+    ../modules/desktop/niri/niri.nix
     ../modules/desktop/xfce.nix
     ../modules/desktop/plasma6.nix
     # ../modules/desktop/cinnamon.nix
-    ../modules/desktop/gnome.nix
+    # ../modules/desktop/gnome.nix
     # ../modules/desktop/cosmic.nix
   ];
 }

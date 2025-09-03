@@ -52,8 +52,9 @@
     spice-protocol
     swtpm
     virglrenderer
-    win-virtio
+    # win-virtio
     win-spice
+    quickemu
     adwaita-icon-theme
   ];
   environment.variables = {

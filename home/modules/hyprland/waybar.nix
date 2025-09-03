@@ -105,7 +105,7 @@
           interval = 1;
           max-length = 30;
           tooltip = true;
-          format-alt = "󰅢  {bandwidthDownBytes} /   {bandwidthUpBytes} ";
+          tooltip-format = "󰅢  {bandwidthDownBytes} /   {bandwidthUpBytes} ";
         };
 
         power-profiles-daemon = {
@@ -129,7 +129,7 @@
         };
 
         "hyprland/language" = {
-          format = "<span> </span> {}";
+          format = "  {}";
           format-de = "de";
           format-en = "us";
         };
@@ -216,7 +216,10 @@
           min-height: 0;
           margin: 0;
           padding: 0;
+          font-family: Cantarell, Noto Sans, sans-serif;
+          font-size: 13px;
       }
+
 
       /* The whole bar */
       #waybar {
@@ -225,6 +228,30 @@
           font-family: Cantarell, Noto Sans, sans-serif;
           font-size: 12px;
       }
+
+      window#waybar {
+        background: rgba(0,0,0, 0.5);
+        border-bottom: 3px solid transparent;
+        color: white;
+      }
+
+      #workspaces button {
+        padding: 0 5px;
+        margin: 0 3px;
+        color: white;
+        border-bottom: 3px solid transparent;
+      }
+
+      #workspaces button.focused {
+        background: rgba(100, 114, 125, 0.2);
+        border-bottom: 3px solid @color15;
+      }
+
+
+
+
+
+
 
       /* Each module */
       #battery,
@@ -243,9 +270,13 @@
       #network,
       #pulseaudio,
       #temperature,
+      #hyprland-language,
       #tray {
           padding-left: 10px;
           padding-right: 10px;
+          font-family: Cantarell, Noto Sans, sans-serif;
+          font-size: 12px;
+
       }
 
       #battery {
@@ -334,26 +365,6 @@
 
       #window {
           font-weight: bold;
-      }
-
-      #workspaces button {
-        border-top: 2px solid transparent;
-        /* To compensate for the top border and still have vertical centering */
-        padding-bottom: 2px;
-        padding-left: 10px;
-        padding-right: 10px;
-        color: #888888;
-      }
-
-      #workspaces button.focused {
-        border-color: #4c7899;
-        color: white;
-        background-color: #285577;
-      }
-
-      #workspaces button.urgent {
-        border-color: #c9545d;
-        color: #c9545d;
       }
 
     '';

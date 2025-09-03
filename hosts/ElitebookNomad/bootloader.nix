@@ -3,6 +3,7 @@
   config,
   ...
 }: {
+  systemd.settings.Manager = {DefaultTimeoutStopSec = "10s";};
   boot = {
     bootspec.enable = true;
     tmp.cleanOnBoot = true;
@@ -22,6 +23,7 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
       "nowatchdog"
+      "boot.shell_on_fail"
     ];
 
     extraModulePackages = with config.boot.kernelPackages;
@@ -33,10 +35,12 @@
       ++ [pkgs.cpupower-gui];
 
     loader = {
-      timeout = 10;
-      systemd-boot.enable = true;
-      systemd-boot.memtest86.enable = true;
       efi.canTouchEfiVariables = true;
+      timeout = 10;
+      systemd-boot = {
+        enable = true;
+        memtest86.enable = true;
+      };
     };
     plymouth = {
       enable = true;

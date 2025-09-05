@@ -13,6 +13,7 @@
     ../modules/flatpak.nix
     ../modules/fonts.nix
     ../modules/fwupd.nix
+    ../modules/fprintd.nix
     ../modules/gc.nix
     ../modules/graphics.nix
     ../modules/hacking.nix

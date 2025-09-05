@@ -2,11 +2,23 @@
   programs.hyprlock = {
     enable = true;
     settings = {
+      auth.fingerprint.enabled = true;
       general = {
         disable_loading_bar = true;
         grace = 10;
         hide_cursor = true;
         no_fade_in = false;
+      };
+      animations = {
+        enabled = true;
+        bezier = [
+          "easeout,0.5, 1, 0.9, 1"
+          "easeoutback,0.34,1.22,0.65,1"
+        ];
+        animation = [
+          "fade, 1, 3, easeout"
+          "inputField, 1, 1, easeoutback"
+        ];
       };
 
       background = {

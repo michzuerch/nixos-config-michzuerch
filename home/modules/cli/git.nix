@@ -5,6 +5,20 @@
       enable = true;
       userName = "Michael Zuercher";
       userEmail = "michzuerch@gmail.com";
+      ignores = [
+        ".cache/"
+        ".DS_Store"
+        ".idea/"
+        "*~"
+        "*.swp"
+        "*.elc"
+        "auto-save-list"
+        ".envrc"
+        ".direnv/"
+        "node_modules"
+        "result"
+        "result-*"
+      ];
       delta = {
         enable = true;
         options = {
@@ -18,12 +32,6 @@
         prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
         root = "rev-parse --show-toplevel";
       };
-      ignores = [
-        ".envrc"
-        ".direnv/"
-        "*~"
-        "*.swp"
-      ];
       extraConfig = {
         init.defaultBranch = "main";
         branch.autosetuprebase = "always";
@@ -42,14 +50,33 @@
     lazygit = {
       enable = true;
       settings = {
+        disableStartupPopups = true;
+        notARepository = "skip";
+        promptToReturnFromSubprocess = false;
+        update.method = "never";
+        git = {
+          commit.signOff = true;
+          overrideGpg = true;
+          parseEmoji = true;
+        };
         gui = {
           showIcons = true;
+          # theme = {
+          #   lightTheme = false;
+          #   activeBorderColor = ["green" "bold"];
+          #   inactiveBorderColor = ["grey"];
+          #   selectedLineBgColor = ["blue"];
+          # };
           theme = {
-            lightTheme = false;
             activeBorderColor = ["green" "bold"];
             inactiveBorderColor = ["grey"];
             selectedLineBgColor = ["blue"];
           };
+          showListFooter = false;
+          showRandomTip = false;
+          showCommandLog = false;
+          showBottomLine = false;
+          nerdFontsVersion = "3";
         };
       };
     };

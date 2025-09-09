@@ -43,8 +43,7 @@
     ../modules/zsh.nix
     ../modules/database/database-tools.nix
     ../modules/database/postgres.nix
-    ../modules/desktop/hyprland/hyprland.nix
-    ../modules/desktop/hyprland/quickshell.nix
+    ../modules/desktop/hyprland
     ../modules/desktop/niri/niri.nix
     ../modules/desktop/xfce.nix
     ../modules/desktop/plasma6.nix

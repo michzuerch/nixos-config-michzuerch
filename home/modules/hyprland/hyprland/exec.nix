@@ -11,6 +11,7 @@
       "wl-paste --type image --watch cliphist store"
       "nm-applet --indicator"
       "blueman-applet"
+      "swayosd-server"
       # "hyprctl setcursor Bibata-Modern-Ice 24 &"
     ];
   };

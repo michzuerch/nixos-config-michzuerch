@@ -18,7 +18,7 @@
       # "$mainMod SHIFT  P, exec, hyprpicker -a -n"
       "$mainMod,       N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
       "$mainMod SHIFT, S, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave area"
-      # "$mainMod,       O, hyprexpo:expo, toggle"
+      "$mainMod,       O, hyprexpo:expo, toggle"
 
       "$mainMod,       Tab, focusmonitor, +1"
       "$mainMod SHIFT, Tab, focusmonitor, +1"
@@ -89,18 +89,18 @@
     ];
 
     bindel = [
-      ",XF86AudioRaiseVolume,  exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-      ",XF86AudioLowerVolume,  exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ",XF86AudioMute,         exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ",XF86AudioMicMute,      exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ",XF86AudioRaiseVolume,  exec swayosd-client --output-volume raise"
+      ",XF86AudioLowerVolume,  exec swayosd-client --output-volume lower"
+      ",XF86AudioMute,         exec swayosd-client --output-volume mute-toggle"
+
+      #",XF86AudioRaiseVolume,  exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+      #",XF86AudioLowerVolume,  exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      #",XF86AudioMute,         exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      #",XF86AudioMicMute,      exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
       ",XF86MonBrightnessDown,  exec, brightnessctl s 10%-"
       ",switch:on:Lid Switch, exec, hyprctl dispatch dpms off"
       ",switch:off:Lid Switch, exec, hyprctl dispatch dpms on"
-      #", XF86AudioNext,  exec, playerctl next"
-      #", XF86AudioPause, exec, playerctl play-pause"
-      #", XF86AudioPlay,  exec, playerctl play-pause"
-      #", XF86AudioPrev,  exec, playerctl previous"
     ];
   };
 }

@@ -101,8 +101,8 @@
       ",XF86MonBrightnessUp,    exec, swayosd-client --brightness raise"
       ",XF86MonBrightnessDown,  exec, swayosd-client --brightness lower"
 
-      ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-      ",XF86MonBrightnessDown,  exec, brightnessctl s 10%-"
+      #",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
+      #",XF86MonBrightnessDown,  exec, brightnessctl s 10%-"
       ",switch:on:Lid Switch, exec, hyprctl dispatch dpms off"
       ",switch:off:Lid Switch, exec, hyprctl dispatch dpms on"
     ];

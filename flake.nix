@@ -63,6 +63,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-bitcoin = {
+      url = "github:fort-nix/nix-bitcoin/release";
+      inputs.nixpkgs.follows = "nix-bitcoin/nixpkgs";
+    };
     # emacs-overlay = {
     #   url = "github:nix-community/emacs-overlay";
     #   flake = false;
@@ -163,6 +167,7 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
+          inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;
@@ -201,6 +206,7 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
+          inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;
@@ -237,6 +243,7 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
+          inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;

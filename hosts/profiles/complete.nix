@@ -50,5 +50,6 @@
     # ../modules/desktop/cinnamon.nix
     # ../modules/desktop/gnome.nix
     # ../modules/desktop/cosmic.nix
+    ../modules/nix-bitcoin.nix
   ];
 }

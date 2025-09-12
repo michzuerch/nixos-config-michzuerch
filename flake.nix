@@ -65,7 +65,7 @@
     };
     nix-bitcoin = {
       url = "github:fort-nix/nix-bitcoin/release";
-      inputs.nixpkgs.follows = "nix-bitcoin/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # emacs-overlay = {
     #   url = "github:nix-community/emacs-overlay";

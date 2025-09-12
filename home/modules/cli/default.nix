@@ -10,6 +10,5 @@
     ./mc.nix
     ./nix-index-comma.nix
     ./yazi.nix
-    ./zsh.nix
   ];
 }

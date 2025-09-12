@@ -4,6 +4,10 @@
     extraOptions = ''
       warn-dirty = false
     '';
+
+    # Build everything from source, dont use nix cache
+    # extraOptions = "substitute = false";
+
     settings = {
       builders-use-substitutes = true;
       experimental-features = ["nix-command" "flakes"];

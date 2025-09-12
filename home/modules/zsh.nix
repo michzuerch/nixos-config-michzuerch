@@ -5,8 +5,9 @@ _: {
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    defaultKeymap = "viins";
     shellAliases = {
-      ll = "ls -l";
+      # ll = "ls -l";
       # update = "sudo nixos-rebuild switch";
     };
     history = {

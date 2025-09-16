@@ -36,6 +36,23 @@
           };
         };
       };
+      bitcoin = {
+        device = "/dev/disk/by-id/ata-ST1000LX015-1U7172_WES28Q1N";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            bitcoin = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/bitcoin";
+              };
+            };
+          };
+        };
+      };
     };
   };
 }

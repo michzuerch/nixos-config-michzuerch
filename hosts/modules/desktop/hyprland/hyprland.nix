@@ -20,7 +20,6 @@
       mousepad
       thunar-archive-plugin
       thunar-volman
-      tumbler
     ];
   };
 }

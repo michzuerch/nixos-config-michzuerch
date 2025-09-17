@@ -17,6 +17,7 @@
       material-symbols
       nerd-fonts.jetbrains-mono
       nerd-fonts.caskaydia-cove
+      nerd-fonts.iosevka
       noto-fonts
     ];
   };

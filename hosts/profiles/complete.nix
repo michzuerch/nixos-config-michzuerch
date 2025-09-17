@@ -30,7 +30,7 @@
     ../modules/ollama.nix
     ../modules/openssh.nix
     ../modules/powermanagement.nix
-    ../modules/prismlauncher.nix
+    # ../modules/prismlauncher.nix
     ../modules/rust.nix
     ../modules/scanner.nix
     ../modules/security.nix

@@ -167,7 +167,7 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
-          inputs.nix-bitcoin.nixosModules.default
+          # inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;
@@ -194,8 +194,6 @@
         modules = [
           ./hosts/ElitebookNomad/configuration.nix
           ./hosts/profiles/complete.nix
-          # ./hosts/profiles/complete.nix
-          # ./hosts/profiles/debug.nix
           # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
@@ -206,7 +204,7 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
-          inputs.nix-bitcoin.nixosModules.default
+          # inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;

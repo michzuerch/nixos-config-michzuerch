@@ -42,7 +42,7 @@
         content = {
           type = "gpt";
           partitions = {
-            bitcoin = {
+            bitcoindata = {
               size = "100%";
               content = {
                 type = "filesystem";

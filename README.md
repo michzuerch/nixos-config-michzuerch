@@ -24,6 +24,8 @@ github:michzuerch/nixos-config-michzuerch#<hostname> ''
 
 ## sops
 
+Copy your key.txt-file to ~/.config/sops-age/key.txt
+
 ''bash sops secrets.yaml ''
 
 ## Issues with systemd-boot

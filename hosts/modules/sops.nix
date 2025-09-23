@@ -1,9 +1,9 @@
 {config, ...}: {
   sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFile = ./secrets.yaml;
     defaultSopsFormat = "yaml";
 
-    age.keyFile = "/home/michzuerch/.config/sops/age/keys.txt";
+    age.keyFile = "./keys.txt";
 
     secrets.github_api_key = {
       owner = config.users.users.michzuerch.name;

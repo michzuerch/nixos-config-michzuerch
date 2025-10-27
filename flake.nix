@@ -202,7 +202,7 @@
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
-          inputs.sops-nix.nixosModules.sops
+          # inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
           # inputs.nix-bitcoin.nixosModules.default
           {

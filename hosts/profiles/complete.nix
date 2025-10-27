@@ -1,6 +1,6 @@
 {
   imports = [
-    ../modules/sops.nix
+    # ../modules/sops.nix
 
     ../modules/audio.nix
     ../modules/bluetooth.nix

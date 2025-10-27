@@ -27,6 +27,6 @@
     VISUAL = "nvim";
     GSK_RENDERER = "gl";
 
-    GITHUB_API_TOKEN = config.sops.secrets.github_api_key.path;
+    # GITHUB_API_TOKEN = config.sops.secrets.github_api_key.path;
   };
 }

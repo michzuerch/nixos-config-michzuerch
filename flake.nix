@@ -23,14 +23,10 @@
       url = "github:H3rmt/hyprshell?ref=hyprshell-release";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # apple-fonts = {
-    #   url = "github:Lyndeno/apple-fonts.nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     nsearch = {
       url = "github:niksingh710/nsearch";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,6 +37,10 @@
     };
     fenix = {
       url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    claude-desktop = {
+      url = "github:k3d3/claude-desktop-linux-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvf = {
@@ -63,10 +63,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-bitcoin = {
-      url = "github:fort-nix/nix-bitcoin/release";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nix-bitcoin = {
+    #   url = "github:fort-nix/nix-bitcoin/release";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # emacs-overlay = {
     #   url = "github:nix-community/emacs-overlay";
     #   flake = false;
@@ -93,7 +93,6 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-colors.url = "github:misterio77/nix-colors";
     firefox = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -119,18 +118,16 @@
   outputs = {
     self,
     nixpkgs,
-    nix-colors,
     ...
   } @ inputs: let
     inherit (self) outputs;
     lib = nixpkgs.lib // inputs.home-manager.lib;
-    system = "x86_64-linux"; # change to whatever your system should be
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
     inherit lib;
-    formatter.${system} = pkgs.alejandra;
+    formatter.x86_64-linux = pkgs.alejandra;
 
-    devShells.${system}.default = pkgs.mkShell {
+    devShells.x86_64-linux.default = pkgs.mkShell {
       packages = with pkgs; [
         age
         sops
@@ -152,16 +149,14 @@
     nixosConfigurations = {
       ThinkpadNomad = lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs system;
+          inherit inputs outputs;
         };
         modules = [
           ./hosts/ThinkpadNomad/configuration.nix
           ./hosts/profiles/complete.nix
-          # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
-          inputs.nix-colors.homeManagerModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
@@ -173,7 +168,7 @@
               useGlobalPkgs = false;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit system outputs inputs;
+                inherit outputs inputs;
               };
               backupFileExtension = "bkp";
               users = {
@@ -189,28 +184,25 @@
       };
       ElitebookNomad = lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs system;
+          inherit inputs outputs;
         };
         modules = [
           ./hosts/ElitebookNomad/configuration.nix
           ./hosts/profiles/complete.nix
-          # {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
-          inputs.nix-colors.homeManagerModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
           # inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
-          # inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit system outputs inputs;
+                inherit outputs inputs;
               };
               backupFileExtension = "bkp";
               users = {
@@ -227,7 +219,7 @@
 
       VM = lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs system;
+          inherit inputs outputs;
         };
         modules = [
           ./hosts/VM/configuration.nix
@@ -235,19 +227,18 @@
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
-          inputs.nix-colors.homeManagerModules.default
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
-          inputs.nix-bitcoin.nixosModules.default
+          # inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit inputs;
+                inherit outputs inputs;
               };
               backupFileExtension = "backup";
               users = {
@@ -264,7 +255,7 @@
 
       installer = lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs system;
+          inherit inputs outputs;
         };
         modules = [
           ./hosts/installer/configuration.nix

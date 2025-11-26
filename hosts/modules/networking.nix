@@ -16,6 +16,7 @@
     usePredictableInterfaceNames = false;
     wireguard.enable = true;
     firewall = {
+      logRefusedConnections = true;
       checkReversePath = "loose"; # loose instead of strict for wireguard connections
       allowedTCPPorts = [
         22000 # Syncthing

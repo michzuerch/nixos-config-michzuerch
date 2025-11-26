@@ -7,9 +7,14 @@
     vulnix #scan command: vulnix --system
     #clamav       #scan command: sudo freshclam; clamscan [options] [file/directory/-]
   ];
+
+  boot.loader.systemd-boot.editor = false;
+
   security = {
     rtkit.enable = true;
     polkit.enable = true;
+    protectKernelImage = true;
+    acme.acceptTerms = true;
     # tpm2 = {
     #   enable = true;
     #   pkcs11.enable = true;

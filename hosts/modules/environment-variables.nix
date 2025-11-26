@@ -27,6 +27,7 @@
     VISUAL = "nvim";
     GSK_RENDERER = "gl";
 
+    # NIX_PATH = "nixpkgs=flake:nixpkgs";
     # GITHUB_API_TOKEN = config.sops.secrets.github_api_key.path;
   };
 }

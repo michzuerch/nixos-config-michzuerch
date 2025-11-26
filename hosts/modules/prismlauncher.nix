@@ -3,5 +3,5 @@
   inputs,
   ...
 }: {
-  environment.systemPackages = [inputs.prismlauncher.packages.${pkgs.system}.prismlauncher];
+  environment.systemPackages = [inputs.prismlauncher.packages.x86_64-linux.prismlauncher];
 }

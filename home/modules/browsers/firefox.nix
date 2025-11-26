@@ -6,7 +6,7 @@
 }: {
   programs.firefox = {
     enable = true;
-    package = inputs.firefox.packages.${pkgs.system}.firefox-devedition-bin;
+    package = inputs.firefox.packages.x86_64-linux.firefox-devedition-bin;
     languagePacks = ["en-US" "de"];
     policies = {
       DisableTelemetry = true;

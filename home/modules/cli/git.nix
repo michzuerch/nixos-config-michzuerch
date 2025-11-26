@@ -1,10 +1,39 @@
 {pkgs, ...}: {
   programs = {
-    git = {
-      package = pkgs.gitAndTools.gitFull;
+    delta = {
       enable = true;
-      userName = "Michael Zuercher";
-      userEmail = "michzuerch@gmail.com";
+      enableGitIntegration = true;
+      options = {
+        navigate = true;
+        line-numbers = true;
+      };
+    };
+    git = {
+      package = pkgs.gitFull;
+      enable = true;
+      settings = {
+        user = {
+          name = "Michael Zuercher";
+          email = "michzuerch@gmail.com";
+          init.defaultBranch = "main";
+          branch.autosetuprebase = "always";
+          color.ui = true;
+          core = {
+            editor = "nvim";
+            symlinks = "false";
+            askPass = ""; # needs to be empty to use terminal for ask pass
+          };
+          credential.helper = "libsecret"; # want to make this more secure
+          github.user = "michzuerch";
+          pull.rebase = true;
+          push.default = "tracking";
+        };
+        aliases = {
+          cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
+          prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
+          root = "rev-parse --show-toplevel";
+        };
+      };
       ignores = [
         ".cache/"
         ".DS_Store"
@@ -19,33 +48,7 @@
         "result"
         "result-*"
       ];
-      delta = {
-        enable = true;
-        options = {
-          navigate = true;
-          line-numbers = true;
-        };
-      };
       lfs.enable = true;
-      aliases = {
-        cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
-        prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
-        root = "rev-parse --show-toplevel";
-      };
-      extraConfig = {
-        init.defaultBranch = "main";
-        branch.autosetuprebase = "always";
-        color.ui = true;
-        core = {
-          editor = "nvim";
-          symlinks = "false";
-          askPass = ""; # needs to be empty to use terminal for ask pass
-        };
-        credential.helper = "libsecret"; # want to make this more secure
-        github.user = "michzuerch";
-        pull.rebase = true;
-        push.default = "tracking";
-      };
     };
     lazygit = {
       enable = true;

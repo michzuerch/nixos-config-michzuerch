@@ -14,12 +14,14 @@
     dconf.enable = true;
     light.enable = true;
     mtr.enable = true;
-    thunar.enable = true;
-    thunar.plugins = with pkgs.xfce; [
-      exo
-      mousepad
-      thunar-archive-plugin
-      thunar-volman
-    ];
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        exo
+        mousepad
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
   };
 }

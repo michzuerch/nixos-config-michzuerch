@@ -18,10 +18,11 @@
       qemu = {
         runAsRoot = false;
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [pkgs.OVMFFull.fd];
+        # ovmf.enable = true;
+        # ovmf.packages = [pkgs.OVMFFull.fd];
       };
     };
+    spiceUSBRedirection.enable = true;
     waydroid.enable = true;
   };
 
@@ -52,7 +53,7 @@
     spice-protocol
     swtpm
     virglrenderer
-    # win-virtio
+    virtio-win
     win-spice
     quickemu
     adwaita-icon-theme

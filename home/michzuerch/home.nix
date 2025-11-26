@@ -8,16 +8,12 @@
     inputs.nur.modules.homeManager.default
     inputs.nix-index-database.homeModules.nix-index
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    inputs.nix-colors.homeManagerModules.default
     # inputs.nix-doom-emacs-unstraightened.homeModule
     inputs.plasma-manager.homeModules.plasma-manager
     inputs.hyprshell.homeModules.hyprshell
     ../profiles/complete.nix
     # ../profiles/onlyplasma6.nix
   ];
-
-  # colorScheme = inputs.nix-colors.colorSchemes.da-one-paper;
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   home = {
     username = "michzuerch";

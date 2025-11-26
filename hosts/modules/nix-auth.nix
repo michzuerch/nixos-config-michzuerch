@@ -1,10 +1,9 @@
 {
   pkgs,
   inputs,
-  system,
   ...
 }: {
   environment.systemPackages = [
-    inputs.nix-auth.packages.${system}.default
+    inputs.nix-auth.packages.x86_64-linux.default
   ];
 }

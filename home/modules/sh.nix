@@ -86,7 +86,7 @@
     cowsay
     flake-checker
     delta
-    du-dust
+    dust
     doggo
     dysk
     gping

@@ -5,7 +5,7 @@
 }: {
   wayland.windowManager.hyprland = {
     plugins = [
-      inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+      inputs.split-monitor-workspaces.packages.x86_64-linux.split-monitor-workspaces
     ];
     settings = {
       "plugin:split-monitor-workspaces" = {

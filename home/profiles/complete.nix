@@ -43,7 +43,7 @@
     ../modules/browsers/firefox.nix
     ../modules/browsers/chromium.nix
     ../modules/browsers/brave.nix
-    ../modules/browsers/librewolf.nix
+    # ../modules/browsers/librewolf.nix
     ../modules/browsers/zen.nix
     ../modules/hyprland
     ../modules/niri/niri.nix

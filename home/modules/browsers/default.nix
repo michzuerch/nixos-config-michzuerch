@@ -3,9 +3,9 @@
     ./firefox.nix
     ./chromium.nix
     ./brave.nix
-    #./qutebrowser.nix
+    ./qutebrowser.nix
     ./ladybird.nix
-    ./librewolf.nix
+    # ./librewolf.nix
     ./zen.nix
   ];
 }

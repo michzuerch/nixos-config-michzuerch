@@ -10,7 +10,6 @@
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     # inputs.nix-doom-emacs-unstraightened.homeModule
     inputs.plasma-manager.homeModules.plasma-manager
-    inputs.hyprshell.homeModules.hyprshell
     ../profiles/complete.nix
     # ../profiles/onlyplasma6.nix
   ];

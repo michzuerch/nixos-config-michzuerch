@@ -19,10 +19,6 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprshell = {
-      url = "github:H3rmt/hyprshell?ref=hyprshell-release";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     apple-fonts = {
       url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,10 +59,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nix-bitcoin = {
-    #   url = "github:fort-nix/nix-bitcoin/release";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-bitcoin = {
+      url = "github:fort-nix/nix-bitcoin/release";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # emacs-overlay = {
     #   url = "github:nix-community/emacs-overlay";
     #   flake = false;
@@ -162,7 +158,7 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
-          # inputs.nix-bitcoin.nixosModules.default
+          inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;
@@ -195,6 +191,7 @@
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
+          inputs.nix-bitcoin.nixosModules.default
           # inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
           {
@@ -232,7 +229,7 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
-          # inputs.nix-bitcoin.nixosModules.default
+          inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;

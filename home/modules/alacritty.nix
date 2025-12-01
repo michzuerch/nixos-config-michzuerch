@@ -7,19 +7,6 @@
         duration = 5;
         color = "#ffffff";
       };
-      colors = {
-        primary = {
-          background = "#040404";
-          foreground = "#c5c8c6";
-        };
-      };
-      font = {
-        normal = {
-          family = "JetBrainsMono Nerd Font";
-          style = "Medium";
-        };
-        size = 10;
-      };
       hints.enabled = [
         {
           regex = ''(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>"\\s{-}\\^⟨⟩`]+'';
@@ -31,7 +18,6 @@
       # shell.program = "${pkgs.zsh}/bin/zsh";
       window = {
         decorations = "full";
-        opacity = 0.85;
         padding = {
           x = 5;
           y = 5;

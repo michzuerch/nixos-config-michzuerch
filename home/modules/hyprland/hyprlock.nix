@@ -32,11 +32,6 @@
         placeholder_text = "Enter password";
         shadow_passes = 1;
         font_family = "JetBrains Mono";
-        check_color = "rgb(b7c5d3)";
-        fail_color = "rgb(f7768e)";
-        font_color = "rgb(d8e2ec)";
-        inner_color = "rgb(171d23)";
-        outer_color = "rgb(526270)";
       };
     };
   };

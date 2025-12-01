@@ -19,7 +19,6 @@
           radius = 15;
           width = 3;
         };
-        colors.background = "2e344080";
       };
     };
     swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)

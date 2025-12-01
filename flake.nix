@@ -19,6 +19,10 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     apple-fonts = {
       url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -150,6 +154,7 @@
         modules = [
           ./hosts/ThinkpadNomad/configuration.nix
           ./hosts/profiles/complete.nix
+          inputs.stylix.nixosModules.stylix
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
@@ -185,6 +190,7 @@
         modules = [
           ./hosts/ElitebookNomad/configuration.nix
           ./hosts/profiles/complete.nix
+          inputs.stylix.nixosModules.stylix
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default
@@ -221,6 +227,7 @@
         modules = [
           ./hosts/VM/configuration.nix
           ./hosts/profiles/complete.nix
+          inputs.stylix.nixosModules.stylix
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.nur.modules.nixos.default

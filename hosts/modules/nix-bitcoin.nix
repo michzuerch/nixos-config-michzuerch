@@ -17,12 +17,12 @@
     bitcoind = {
       enable = true;
       prune = 100000;
-      # txindex = true;
       dataDir = "/bitcoin";
     };
     clightning = {
       enable = true;
     };
+    # mempool.enable = true;
     # rtl = {
     #   enable = true;
     # };

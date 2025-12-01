@@ -6,12 +6,6 @@
       vim = {
         viAlias = false;
         vimAlias = true;
-        theme = {
-          enable = true;
-          name = "gruvbox";
-          style = "dark";
-          transparent = false;
-        };
         debugMode = {
           enable = false;
           level = 16;
@@ -79,7 +73,6 @@
         statusline = {
           lualine = {
             enable = true;
-            theme = "gruvbox";
           };
         };
 

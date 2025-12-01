@@ -2,7 +2,6 @@ _: {
   programs.kitty = {
     enable = true;
     settings = {
-      background_opacity = "0.85";
       modify_font = "cell_width 90%";
 
       scrollback_lines = 10000;

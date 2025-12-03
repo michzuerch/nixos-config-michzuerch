@@ -2,11 +2,9 @@
   description = "nixos michzuerch may 2025";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      #url = "github:nix-community/home-manager/release-25.05";
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hardware.url = "github:NixOS/nixos-hardware/master";
@@ -20,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      url = "github:nix-community/stylix";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     apple-fonts = {
@@ -197,7 +195,7 @@
           inputs.nixos-cosmic.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
-          inputs.nix-bitcoin.nixosModules.default
+          # inputs.nix-bitcoin.nixosModules.default
           # inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
           {

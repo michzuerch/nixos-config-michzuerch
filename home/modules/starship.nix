@@ -59,11 +59,11 @@
       };
 
       status = {
-        symbol = "";
-        success_symbol = "";
+        symbol = " ";
+        success_symbol = " ";
         # format = "[$symbol $status]";
-        format = "[$symbol$common_meaning$signal_name$maybe_int]($style)";
-        style = "bg:blue";
+        format = "$symbol $status($style)";
+        # style = "bg:blue";
         map_symbol = true;
         disabled = false;
 
@@ -123,8 +123,8 @@
 
       sudo = {
         symbol = "🧙  ";
-        disabled = true;
-        format = "[ $symbol ]";
+        disabled = false;
+        format = "$symbol";
       };
 
       aws = {
@@ -137,17 +137,20 @@
         eu-west-1 = "eu-w1";
       };
 
-      # cmd_duration = {
-      #   min_time = 500;
-      #   show_milliseconds = false;
-      #   # format = "[   $duration]";
-      #   format = "[$duration]";
-      #   disabled = false;
-      # };
+      cmd_duration = {
+        show_milliseconds = true;
+        format = "  $duration ";
+        style = "bg:cyan";
+        disabled = false;
+        show_notifications = false;
+        min_time_to_notify = 45000;
+
+        # format = "[   $duration]";
+      };
 
       lua = {
         symbol = " ";
-        format = "[[ $symbol( $version) ]]";
+        format = "$symbol( $version)";
       };
 
       bun = {

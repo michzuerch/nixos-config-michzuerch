@@ -50,7 +50,8 @@
       verbose = false;
       availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod"];
     };
-    kernelModules = ["acpi_call" "v4l2loopback"];
+    # kernelModules = ["acpi_call" "v4l2loopback"];
+    kernelModules = ["acpi_call"];
     kernelParams = [
       "quiet"
       "splash"

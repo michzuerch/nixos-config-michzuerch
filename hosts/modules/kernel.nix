@@ -6,6 +6,7 @@
   boot = {
     consoleLogLevel = 0;
     kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_6_17;
     kernelParams = [
       "quiet"
       "splash"
@@ -25,6 +26,16 @@
     # Build breaks 29.May 2025
     # kernelModules = ["v4l2loopback"];
     # extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+    kernelPatches = [
+      {
+        name = "Rust Support";
+        patch = null;
+        features = {
+          rust = true;
+        };
+      }
+    ];
+
     kernelModules = [];
     extraModulePackages = [];
     initrd = {

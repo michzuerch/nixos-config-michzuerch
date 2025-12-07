@@ -61,14 +61,10 @@
       status = {
         symbol = " ";
         success_symbol = " ";
-        # format = "[$symbol $status]";
         format = "$symbol $status($style)";
         # style = "bg:blue";
         map_symbol = true;
         disabled = false;
-
-        # symbol = '🔴 '
-        # success_symbol = '🟢 SUCCESS'
       };
 
       fill = {
@@ -83,26 +79,25 @@
         disabled = false;
       };
 
-      # git_status = {
-      #   format = "[[($all_status$ahead_behind )]]";
-      #   disabled = false;
-      # };
+      git_status = {
+        format = "($all_status$ahead_behind )";
+        disabled = false;
+      };
 
       git_metrics = {
         added_style = "bold blue";
         format = "[+$added]($added_style)/[-$deleted]($deleted_style) ";
-        # format = "[[+$added]/[-$deleted]]";
         disabled = false;
       };
 
       hostname = {
-        format = "[$ssh_symbol][$hostname ]";
+        format = "$ssh_symbol$hostname";
         ssh_only = true;
         detect_env_vars = [''!TMUX''];
       };
 
       helm = {
-        format = "via [⎈ $version] ";
+        format = "via ⎈ $version";
       };
 
       kubernetes = {
@@ -128,7 +123,7 @@
       };
 
       aws = {
-        format = "[  ][ $symbol ($profile)(\($region\)) ]";
+        format = "  $symbol ($profile)(\($region\))";
         symbol = "󰸏";
       };
 
@@ -144,8 +139,6 @@
         disabled = false;
         show_notifications = false;
         min_time_to_notify = 45000;
-
-        # format = "[   $duration]";
       };
 
       lua = {
@@ -155,87 +148,87 @@
 
       bun = {
         symbol = " ";
-        format = "[[ $symbol( $version) ]]";
+        format = "$symbol( $version)";
       };
 
       nodejs = {
         symbol = " ";
-        format = "[[ $symbol( $version) ]]";
+        format = "$symbol( $version)";
       };
 
       package = {
         symbol = " ";
-        format = "[$symbol$version]($style) ";
+        format = "$symbol( $version)";
         display_private = true;
       };
 
       c = {
         symbol = " ";
-        format = "[[ $symbol( $version) ]]";
+        format = "$symbol( $version)";
       };
 
       cpp = {
         symbol = " ";
-        format = "[[ $symbol( $version) ]]";
+        format = "$symbol( $version)";
       };
 
       rust = {
-        symbol = "";
-        format = "[[ $symbol( $version) ]]";
+        symbol = " ";
+        format = "$symbol( $version)";
       };
 
       golang = {
-        symbol = "";
-        format = "[[ $symbol( $version) ]]";
+        symbol = " ";
+        format = "$symbol( $version)";
       };
 
       php = {
-        symbol = "";
-        format = "[[ $symbol( $version) ]]";
+        symbol = " ";
+        format = "$symbol( $version)";
       };
 
       java = {
         symbol = " ";
-        format = "[[ $symbol( $version) ]]";
+        format = "$symbol( $version)";
       };
 
       kotlin = {
-        symbol = "";
-        format = "[[ $symbol( $version) ]]";
+        symbol = " ";
+        format = "$symbol( $version)";
       };
 
       haskell = {
-        symbol = "";
-        format = "[[ $symbol( $version) ]]";
+        symbol = " ";
+        format = "$symbol( $version)";
       };
 
       python = {
-        symbol = "";
-        format = "[[ $symbol( $version) ]]";
+        symbol = " ";
+        format = "$symbol( $version)";
       };
 
       terraform = {
         symbol = " ";
-        format = "[[ $symbol( $version$workspace)]]";
+        format = "$symbol( $version$workspace)";
       };
 
       docker_context = {
-        symbol = "";
-        format = "[[ $symbol( $context) ]]";
+        symbol = " ";
+        format = "$symbol( $context)";
       };
 
       line_break = {
         disabled = false;
       };
 
-      # character = {
-      #   success_symbol = "[󱞩]";
-      #   error_symbol = "[󱞩]";
-      #   vimcmd_symbol = "[]";
-      #   vimcmd_replace_symbol = "[]";
-      #   vimcmd_replace_one_symbol = "[]";
-      #   vimcmd_visual_symbol = "[]";
-      # };
+      character = {
+        success_symbol = "󱞩";
+        error_symbol = "󱞩";
+        vimcmd_symbol = "";
+        vimcmd_replace_symbol = "";
+        vimcmd_replace_one_symbol = "";
+        vimcmd_visual_symbol = "";
+      };
     };
   };
 }

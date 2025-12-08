@@ -54,32 +54,53 @@
     configFile = {
       PlasmaDiscoverUpdates.Global.RequiredNotificationInterval = -1;
       plasmashellrc."Notification Messages".klipperClearHistoryAskAgain = false;
-      ksmserverrc.General.loginMode = "emptySession";
-      ksmserverrc.General.shutdownType = 2;
-      kwinrc.MouseBindings.CommandActiveTitlebar2 = "Minimize";
-      kwinrc.MouseBindings.CommandAllWheel = "Maximize/Restore";
-      kwinrc.MouseBindings.CommandInactiveTitlebar2 = "Minimize";
-      kwinrc.MouseBindings.CommandTitlebarWheel = "Previous/Next Desktop";
-      kwinrc.Windows.DelayFocusInterval = 0;
-      kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
-      kwinrc.Windows.NextFocusPrefersMouse = true;
+      ksmserverrc.General = {
+        loginMode = "emptySession";
+        General.shutdownType = 2;
+      };
+      kwinrc = {
+        MouseBindings = {
+          CommandActiveTitlebar2 = "Minimize";
+          CommandAllWheel = "Maximize/Restore";
+          CommandInactiveTitlebar2 = "Minimize";
+          CommandTitlebarWheel = "Previous/Next Desktop";
+        };
+        Windows = {
+          DelayFocusInterval = 0;
+          FocusPolicy = "FocusFollowsMouse";
+          NextFocusPrefersMouse = true;
+        };
+      };
       kcminputrc.Mouse.XLbInptAccelProfileFlat = true;
       kded5rc.Module-device_automounter.autoload = false;
-      kactivitymanagerdrc.activities.Default = "Default";
-      kactivitymanagerdrc.activities.Communication = "Communication";
-      kactivitymanagerdrc.activities-icons.Default = "activities";
-      kactivitymanagerdrc.activities-icons.Communication = "activities";
-      kactivitymanagerdrc.main.currentActivity = "Default";
-      kxkbrc.Layout.Use = true;
-      kxkbrc.Layout.Options = "grp:win_space_toggle,caps:escape";
-      kxkbrc.Layout.ResetOldOptions = true;
-      kxkbrc.Layout.ShowLayoutIndicator = true;
+
+      kactivitymanagerdrc = {
+        activities = {
+          Default = "Default";
+          Communication = "Communication";
+        };
+        activities-icons = {
+          Default = "activities";
+          Communication = "activities";
+        };
+        main.currentActivity = "Default";
+      };
+      kxkbrc.Layout = {
+        Use = true;
+        Layout = {
+          Options = "grp:win_space_toggle,caps:escape";
+          ResetOldOptions = true;
+          ShowLayoutIndicator = true;
+        };
+      };
       systemsettingsrc.systemsettings_sidebar_mode.HighlightNonDefaultSettings = true;
-      "flameshot/flameshot.ini".General.showDesktopNotification = false;
-      "flameshot/flameshot.ini".General.showStartupLaunchMessage = false;
-      "flameshot/flameshot.ini".General.autoCloseIdleDaemon = true;
-      "flameshot/flameshot.ini".General.disabledTrayIcon = true;
-      "flameshot/flameshot.ini".General.saveLastRegion = true;
+      "flameshot/flameshot.ini".General = {
+        showDesktopNotification = false;
+        showStartupLaunchMessage = false;
+        autoCloseIdleDaemon = true;
+        disabledTrayIcon = true;
+        saveLastRegion = true;
+      };
     };
     dataFile = {
       "dolphin/view_properties/global/.directory"."Dolphin"."SortRole" = "modificationtime";

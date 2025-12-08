@@ -11,9 +11,11 @@
     ./users.nix
   ];
 
-  networking.hostName = "ElitebookNomad";
-  networking.networkmanager.enable = true;
-  networking.timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
+  networking = {
+    hostName = "ElitebookNomad";
+    networkmanager.enable = true;
+    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
+  };
 
   swapDevices = lib.mkForce [];
 

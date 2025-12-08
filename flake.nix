@@ -126,37 +126,28 @@
     inherit (self) outputs;
     lib = nixpkgs.lib // inputs.home-manager.lib;
     pkgs = nixpkgs.legacyPackages.${system};
+    forEachSystem = nixpkgs.lib.genAttrs ["aarch64-darwin" "aarch64-linux" "i686-linux" "x86_64-darwin" "x86_64-linux"];
+
+    formatterPackArgsPerSystem = forEachSystem (system: {
+      inherit nixpkgs system;
+      checkFiles = [./.];
+      config = {
+        tools = {
+          deadnix.enable = true;
+          nixpkgs-fmt.enable = false;
+          alejandra.enable = true;
+          statix.enable = true;
+        };
+      };
+    });
   in {
     inherit lib;
-    # formatter.x86_64-linux = pkgs.alejandra;
 
-    formatter.x86_64-linux = nix-formatter-pack.lib.mkFormatter {
-      inherit nixpkgs;
-      system = "x86_64-linux";
-      config = {
-        tools = {
-          deadnix.enable = true;
-          nixpkgs-fmt.enable = false;
-          alejandra.enable = true;
-          statix.enable = true;
-        };
-      };
-    };
+    checks = forEachSystem (system: {
+      nix-formatter-pack-check = nix-formatter-pack.lib.mkCheck formatterPackArgsPerSystem.${system};
+    });
 
-    checks.x86_64-linux.nix-formatter-pack = nix-formatter-pack.lib.mkCheck {
-      inherit nixpkgs;
-      system = "x86_64-linux";
-      config = {
-        tools = {
-          deadnix.enable = true;
-          nixpkgs-fmt.enable = false;
-          alejandra.enable = true;
-          statix.enable = true;
-        };
-      };
-      # specify which files to check
-      checkFiles = [./.];
-    };
+    formatter = forEachSystem (system: nix-formatter-pack.lib.mkFormatter formatterPackArgsPerSystem.${system});
 
     devShells.x86_64-linux.default = pkgs.mkShell {
       packages = with pkgs; [

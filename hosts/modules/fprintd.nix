@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   systemd.services.fprintd = {
     wantedBy = ["multi-user.target"];
     serviceConfig.Type = "simple";

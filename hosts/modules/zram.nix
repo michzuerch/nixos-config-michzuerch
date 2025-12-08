@@ -1,9 +1,9 @@
 {
   zramSwap = {
     enable = true;
-    priority = 100;
+    priority = 999;
     memoryPercent = 30;
-    swapDevices = 1;
-    algorithm = "zstd";
+    # swapDevices = 1;
+    algorithm = "lz4";
   };
 }

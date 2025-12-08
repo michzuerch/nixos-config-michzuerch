@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   # services.udev.packages = [pkgs.yubikey-personalization];
 
   # programs.ssh.startAgent = true;

@@ -36,7 +36,7 @@
     ../modules/security.nix
     ../modules/syncthing.nix
     ../modules/systemtools.nix
-    ../modules/stylix.nix
+    # ../modules/stylix.nix
     ../modules/time.nix
     ../modules/virtualisation.nix
     ../modules/xdg.nix

@@ -1,11 +1,8 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   boot = {
     consoleLogLevel = 0;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
+    # kernelPackages = pkgs.linuxPackages_latest;
     # kernelPackages = pkgs.linuxPackages_6_17;
     kernelParams = [
       "quiet"

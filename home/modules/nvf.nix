@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   programs.nvf = {
     enable = true;
     enableManpages = true;

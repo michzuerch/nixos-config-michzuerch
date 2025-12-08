@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   home.sessionVariables = {
     PGHOST = "localhost";
     PGUSER = "michzuerch";

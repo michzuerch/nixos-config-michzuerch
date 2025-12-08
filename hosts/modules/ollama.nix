@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   services = {
     ollama.enable = true;
     # open-webui.enable = true;

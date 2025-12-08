@@ -1,10 +1,10 @@
 {
-  description = "nixos michzuerch may 2025";
+  description = "nixos michzuerch december 2025";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hardware.url = "github:NixOS/nixos-hardware/master";
@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     apple-fonts = {
@@ -103,6 +103,9 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-formatter-pack = {
+      url = "github:Gerschtli/nix-formatter-pack";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -116,14 +119,44 @@
   outputs = {
     self,
     nixpkgs,
+    nix-formatter-pack,
     ...
   } @ inputs: let
+    system = "x86_64-linux";
     inherit (self) outputs;
     lib = nixpkgs.lib // inputs.home-manager.lib;
-    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
     inherit lib;
-    formatter.x86_64-linux = pkgs.alejandra;
+    # formatter.x86_64-linux = pkgs.alejandra;
+
+    formatter.x86_64-linux = nix-formatter-pack.lib.mkFormatter {
+      inherit nixpkgs;
+      system = "x86_64-linux";
+      config = {
+        tools = {
+          deadnix.enable = true;
+          nixpkgs-fmt.enable = false;
+          alejandra.enable = true;
+          statix.enable = true;
+        };
+      };
+    };
+
+    checks.x86_64-linux.nix-formatter-pack = nix-formatter-pack.lib.mkCheck {
+      inherit nixpkgs;
+      system = "x86_64-linux";
+      config = {
+        tools = {
+          deadnix.enable = true;
+          nixpkgs-fmt.enable = false;
+          alejandra.enable = true;
+          statix.enable = true;
+        };
+      };
+      # specify which files to check
+      checkFiles = [./.];
+    };
 
     devShells.x86_64-linux.default = pkgs.mkShell {
       packages = with pkgs; [
@@ -197,7 +230,7 @@
           inputs.disko.nixosModules.disko
           # inputs.nix-bitcoin.nixosModules.default
           # inputs.sops-nix.nixosModules.sops
-          inputs.home-manager.nixosModules.home-manager
+          # inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = false;

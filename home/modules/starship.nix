@@ -50,6 +50,7 @@
         truncation_symbol = "…/";
         # style = "fg:text bg:#3B76F0";
         style = "bg:#3B76F0 fg:#FCF392";
+        home_symbol = " ";
         read_only = "";
         substitutions = {
           "Documents" = "󰈙 ";

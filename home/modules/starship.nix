@@ -13,7 +13,7 @@
         "$directory"
         "[](fg:#3B76F0)"
         "$symbol($git_branch[](fg:#FCF392))"
-        "$symbol( $git_commit$git_status$git_metrics$git_state)$fill"
+        "$symbol( $git_commit$git_status$git_metrics$git_state)"
         "$lua"
         "$bun"
         "$nodejs"
@@ -62,6 +62,7 @@
       status = {
         symbol = " ";
         success_symbol = " ";
+        not_executable_symbol = "🚫 ";
         format = "$symbol $status($style)";
         # style = "bg:blue";
         map_symbol = true;
@@ -225,10 +226,10 @@
       character = {
         success_symbol = "󱞩";
         error_symbol = "󱞩";
-        vimcmd_symbol = "";
-        vimcmd_replace_symbol = "";
-        vimcmd_replace_one_symbol = "";
-        vimcmd_visual_symbol = "";
+        vimcmd_symbol = "";
+        vimcmd_replace_symbol = "";
+        vimcmd_replace_one_symbol = "";
+        vimcmd_visual_symbol = "";
       };
     };
   };

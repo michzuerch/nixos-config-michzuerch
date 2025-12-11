@@ -45,11 +45,12 @@
       };
 
       directory = {
-        format = "[ $path ]($style)";
+        format = "[$path $read_only]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
         # style = "fg:text bg:#3B76F0";
         style = "bg:#3B76F0 fg:#FCF392";
+        read_only = "";
         substitutions = {
           "Documents" = "󰈙 ";
           "Downloads" = " ";

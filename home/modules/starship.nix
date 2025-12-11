@@ -9,7 +9,7 @@
       command_timeout = 2000;
       format = lib.concatStrings [
         # "($container)"
-        "[❄️ ](fg:#3B76F0) "
+        "[❄️ ](fg:#3B76F0)"
         "$directory"
         "[](fg:#3B76F0)"
         "$symbol($git_branch[](fg:#FCF392))"
@@ -41,14 +41,15 @@
 
       container = {
         format = "[$symbol]";
-        symbol = " ";
+        symbol = "  ";
       };
 
       directory = {
         format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
-        style = "fg:text bg:#3B76F0";
+        # style = "fg:text bg:#3B76F0";
+        style = "bg:#3B76F0 fg:#FCF392";
         substitutions = {
           "Documents" = "󰈙 ";
           "Downloads" = " ";
@@ -73,7 +74,7 @@
       };
 
       git_branch = {
-        symbol = " ";
+        symbol = " ";
         format = "[  $symbol$branch(:$remote_branch) ]($style)";
         style = "fg:#1C3A5E bg:#FCF392";
         disabled = false;

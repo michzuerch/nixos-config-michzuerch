@@ -6,7 +6,6 @@
   imports = [
     inputs.nvf.homeManagerModules.default
     inputs.nur.modules.homeManager.default
-    inputs.stylix.homeModules.stylix
     inputs.nix-index-database.homeModules.nix-index
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     # inputs.nix-doom-emacs-unstraightened.homeModule

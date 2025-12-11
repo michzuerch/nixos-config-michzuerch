@@ -56,7 +56,7 @@
       plasmashellrc."Notification Messages".klipperClearHistoryAskAgain = false;
       ksmserverrc.General = {
         loginMode = "emptySession";
-        General.shutdownType = 2;
+        shutdownType = 2;
       };
       kwinrc = {
         MouseBindings = {
@@ -85,9 +85,9 @@
         };
         main.currentActivity = "Default";
       };
-      kxkbrc.Layout = {
-        Use = true;
+      kxkbrc = {
         Layout = {
+          Use = true;
           Options = "grp:win_space_toggle,caps:escape";
           ResetOldOptions = true;
           ShowLayoutIndicator = true;

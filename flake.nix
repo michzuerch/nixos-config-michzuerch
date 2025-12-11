@@ -1,6 +1,5 @@
 {
   description = "nixos michzuerch december 2025";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -78,10 +77,6 @@
     #   url = "github:marienz/nix-doom-emacs-unstraightened";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    prismlauncher = {
-      url = "github:PrismLauncher/PrismLauncher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -126,7 +121,8 @@
     inherit (self) outputs;
     lib = nixpkgs.lib // inputs.home-manager.lib;
     pkgs = nixpkgs.legacyPackages.${system};
-    forEachSystem = nixpkgs.lib.genAttrs ["aarch64-darwin" "aarch64-linux" "i686-linux" "x86_64-darwin" "x86_64-linux"];
+    supportedSystems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    forEachSystem = nixpkgs.lib.genAttrs supportedSystems;
 
     formatterPackArgsPerSystem = forEachSystem (system: {
       inherit nixpkgs system;
@@ -170,8 +166,9 @@
 
     nixosConfigurations = {
       ThinkpadNomad = lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs;
         };
         modules = [
           ./hosts/ThinkpadNomad/configuration.nix
@@ -191,7 +188,7 @@
               useGlobalPkgs = false;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit outputs inputs;
+                inherit inputs;
               };
               backupFileExtension = "bkp";
               users = {
@@ -206,8 +203,9 @@
         ];
       };
       ElitebookNomad = lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs;
         };
         modules = [
           ./hosts/ElitebookNomad/configuration.nix
@@ -221,13 +219,13 @@
           inputs.disko.nixosModules.disko
           # inputs.nix-bitcoin.nixosModules.default
           # inputs.sops-nix.nixosModules.sops
-          # inputs.home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit outputs inputs;
+                inherit inputs;
               };
               backupFileExtension = "bkp";
               users = {
@@ -243,8 +241,9 @@
       };
 
       VM = lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs;
         };
         modules = [
           ./hosts/VM/configuration.nix
@@ -280,8 +279,9 @@
       };
 
       installer = lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs;
         };
         modules = [
           ./hosts/installer/configuration.nix

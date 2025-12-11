@@ -11,11 +11,10 @@
     noto-fonts
     noto-fonts-lgc-plus
     texlivePackages.hebrew-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     font-awesome
     powerline-fonts
     powerline-symbols
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
   ];
 
   stylix = {
@@ -24,9 +23,10 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
 
     targets = {
-      neovim.enable = false;
-      waybar.enable = false;
-      wofi.enable = false;
+      neovim.enable = true;
+      waybar.enable = true;
+      wofi.enable = true;
+      hyprpaper.enable = false;
       hyprland.enable = false;
       hyprlock.enable = false;
     };

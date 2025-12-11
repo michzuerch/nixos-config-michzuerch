@@ -1,13 +1,8 @@
-{pkgs, ...}: {
+{
   gtk = {
     enable = true;
 
     gtk2.enable = false;
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-folders;
-    };
 
     gtk3.extraConfig = {
       Settings = ''

@@ -32,6 +32,10 @@ in {
     };
 
     targets = {
+      alacritty.enable = true;
+      anki.enable = true;
+      bat.enable = true;
+      blender.enable = true;
       neovim.enable = true;
       waybar.enable = true;
       wofi.enable = true;

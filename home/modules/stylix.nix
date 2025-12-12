@@ -74,12 +74,11 @@ in {
       helix.enable = true;
       hyprland.enable = true;
       hyprlock.enable = true;
+      hyprpaper.enable = true;
 
       neovim.enable = true;
       waybar.enable = true;
       wofi.enable = true;
-      # hyprpaper.enable = false;
-      # hyprland.enable = false;
     };
 
     cursor = {

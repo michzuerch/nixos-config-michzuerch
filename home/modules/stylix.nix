@@ -36,6 +36,27 @@ in {
       anki.enable = true;
       bat.enable = true;
       blender.enable = true;
+      btop.enable = true;
+      cava.enable = true;
+      cavalier.enable = true;
+      # chromium.enable = true;
+      # console.enable = true;
+      nixcord.enable = true;
+      vencord.enable = true;
+      vesktop.enable = true;
+      dunst.enable = true;
+      emacs.enable = true;
+      eog.enable = true;
+      fcitx5.enable = true;
+      feh.enable = true;
+      firefox = {
+        enable = true;
+        profileNames = ["michzuerch"];
+      };
+      fish.enable = true;
+      font-packages.enable = true;
+      fontconfig.enable = true;
+
       neovim.enable = true;
       waybar.enable = true;
       wofi.enable = true;

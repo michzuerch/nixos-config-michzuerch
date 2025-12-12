@@ -67,7 +67,6 @@ in {
         name = "Noto Serif";
         package = pkgs.noto-fonts;
       };
-
       sizes = {
         applications = fontSize;
         desktop = fontSize;
@@ -75,7 +74,7 @@ in {
         terminal = fontSize;
       };
     };
-
+    icons.enable = true;
     iconTheme = {
       enable = true;
       package = pkgs.papirus-icon-theme;

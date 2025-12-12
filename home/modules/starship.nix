@@ -14,6 +14,7 @@
         "[](fg:#3B76F0)"
         "$symbol($git_branch[](fg:#FCF392))"
         "$symbol( $git_commit$git_status$git_metrics$git_state)"
+        "$fill"
         "$lua"
         "$bun"
         "$nodejs"
@@ -48,6 +49,9 @@
         format = "[$path $read_only]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
+        fish_style_pwd_dir_length = 0;
+        use_logical_path = true;
+        use_os_path_sep = true;
         # style = "fg:text bg:#3B76F0";
         style = "bg:#3B76F0 fg:#FCF392";
         home_symbol = " ";

@@ -2,7 +2,11 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  theme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+  opacity = 0.95;
+  fontSize = 13;
+in {
   imports = [inputs.stylix.homeModules.stylix];
 
   home.packages = with pkgs; [
@@ -10,7 +14,6 @@
     jetbrains-mono
     noto-fonts
     noto-fonts-lgc-plus
-    texlivePackages.hebrew-fonts
     noto-fonts-color-emoji
     font-awesome
     powerline-fonts
@@ -19,8 +22,14 @@
 
   stylix = {
     enable = true;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    polarity = "either";
+    base16Scheme = theme;
+    opacity = {
+      applications = opacity;
+      desktop = opacity;
+      terminal = opacity;
+      popups = opacity;
+    };
 
     targets = {
       neovim.enable = true;
@@ -32,9 +41,13 @@
     };
 
     cursor = {
-      name = "DMZ-Black";
+      # name = "DMZ-Black";
+      # size = 24;
+      # package = pkgs.vanilla-dmz;
+
+      name = "Bibata-Modern-Ice";
       size = 24;
-      package = pkgs.vanilla-dmz;
+      package = pkgs.bibata-cursors;
     };
 
     fonts = {
@@ -56,8 +69,10 @@
       };
 
       sizes = {
-        terminal = 13;
-        applications = 11;
+        applications = fontSize;
+        desktop = fontSize;
+        popups = fontSize;
+        terminal = fontSize;
       };
     };
 

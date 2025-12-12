@@ -30,13 +30,11 @@
     ../modules/ollama.nix
     ../modules/openssh.nix
     ../modules/powermanagement.nix
-    # ../modules/prismlauncher.nix
     ../modules/rust.nix
     ../modules/scanner.nix
     ../modules/security.nix
     ../modules/syncthing.nix
     ../modules/systemtools.nix
-    # ../modules/stylix.nix
     ../modules/time.nix
     ../modules/virtualisation.nix
     ../modules/xdg.nix

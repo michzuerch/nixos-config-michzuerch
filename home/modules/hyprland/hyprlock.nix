@@ -1,4 +1,8 @@
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -22,7 +26,7 @@
       };
 
       background = {
-        path = "~/Wallpapers/windows11.jpg";
+        path = lib.mkDefault "~/Wallpapers/windows11.jpg";
       };
       input-field = {
         size = "200, 50";

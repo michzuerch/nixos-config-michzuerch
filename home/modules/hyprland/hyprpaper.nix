@@ -4,8 +4,8 @@
   # wallpaper = ,~/Wallpapers/Wolf2.jpg
   home.packages = [pkgs.hyprpaper];
 
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ~/Wallpapers/nixos-dark.png
-    wallpaper = ,~/Wallpapers/nixos-dark.png
-  '';
+  # home.file.".config/hypr/hyprpaper.conf".text = ''
+  #   preload = ~/Wallpapers/nixos-dark.png
+  #   wallpaper = ,~/Wallpapers/nixos-dark.png
+  # '';
 }

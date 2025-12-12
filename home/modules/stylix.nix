@@ -56,13 +56,30 @@ in {
       fish.enable = true;
       font-packages.enable = true;
       fontconfig.enable = true;
+      foot.enable = true;
+      forge.enable = true;
+      fuzzel.enable = true;
+      fzf.enable = true;
+      gdu.enable = true;
+      gedit.enable = true;
+      ghostty.enable = true;
+      # guitui.enable = true;
+      glance.enable = true;
+      gnome-text-editor.enable = true;
+      gnome.enable = true;
+      # grub.enable = true;
+      gtk.enable = true;
+      gtksourceview.enable = true;
+      halloy.enable = true;
+      helix.enable = true;
+      hyprland.enable = true;
+      hyprlock.enable = true;
 
       neovim.enable = true;
       waybar.enable = true;
       wofi.enable = true;
-      hyprpaper.enable = false;
-      hyprland.enable = false;
-      hyprlock.enable = false;
+      # hyprpaper.enable = false;
+      # hyprland.enable = false;
     };
 
     cursor = {

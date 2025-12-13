@@ -13,8 +13,8 @@ _: {
         };
 
         spellcheck = {
-          enable = true;
-          programmingWordlist.enable = true;
+          enable = false;
+          programmingWordlist.enable = false;
         };
 
         lsp = {
@@ -53,6 +53,7 @@ _: {
           rust = {
             enable = true;
             crates.enable = true;
+            extensions.creates-nvim.enable = true;
           };
           lua.enable = true;
           html.enable = true;

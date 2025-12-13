@@ -74,11 +74,62 @@ in {
       helix.enable = true;
       hyprland.enable = true;
       hyprlock.enable = true;
+      hyprpanel.enable = true;
       hyprpaper.enable = true;
+      k9s.enable = true;
+      kde.enable = true;
+      kitty.enable = true;
+      kubecolor.enable = true;
+      lazygit.enable = true;
+      librewolf = {
+        enable = true;
+        profileNames = ["michzuerch"];
+      };
+      # lightdm.enable = true;
+      mangohud.enable = true;
+      micro.enable = true;
+      mpv.enable = true;
+      nvf = {
+        enable = true;
+        transparentBackground = true;
+      };
+      nixos-icons.enable = true;
+      noctalia-shell.enable = true;
+      nushell.enable = true;
+      obsidian.enable = true;
+      opencode.enable = true;
+      # plymouth.enable=true;
+      qt.enable = true;
+      qutebrowser.enable = true;
 
-      neovim.enable = true;
+      # regreet.enable=true;
+      rio.enable = true;
+      river.enable = true;
+      rofi.enable = true;
+      starship.enable = true;
+      swaync.enable = true;
+      sxiv.enable = true;
+      tmux.enable = true;
+      tofi.enable = true;
+      vicinae.enable = true;
+      vivid.enable = true;
+      vscode.enable = true;
+
       waybar.enable = true;
+      wezterm.enable = true;
+      wob.enable = true;
       wofi.enable = true;
+      wpaperd.enable = true;
+      xfce.enable = true;
+      xresources.enable = true;
+      yazi.enable = true;
+      zathura.enable = true;
+      zed.enable = true;
+      zellij.enable = true;
+      zen-browser = {
+        enable = true;
+        profileNames = ["michzuerch"];
+      };
     };
 
     cursor = {

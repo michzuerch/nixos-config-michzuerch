@@ -19,6 +19,10 @@
       nerd-fonts.caskaydia-cove
       nerd-fonts.iosevka
       noto-fonts
+      jetbrains-mono
+      noto-fonts-color-emoji
+      powerline-fonts
+      powerline-symbols
     ];
   };
   environment.systemPackages = with pkgs; [

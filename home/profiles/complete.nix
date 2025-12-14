@@ -28,7 +28,7 @@
     ../modules/gtk.nix
     ../modules/sh.nix
     ../modules/starship.nix
-    # ../modules/stylix.nix
+    ../modules/stylix.nix
     ../modules/tmux.nix
     ../modules/torrent.nix
     ../modules/udiskie.nix

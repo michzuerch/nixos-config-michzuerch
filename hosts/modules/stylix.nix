@@ -7,21 +7,9 @@
   opacity = 0.95;
   fontSize = 13;
 in {
-  # imports = [inputs.stylix.homeModules.stylix];
-
-  home.packages = with pkgs; [
-    dejavu_fonts
-    jetbrains-mono
-    noto-fonts
-    noto-fonts-lgc-plus
-    noto-fonts-color-emoji
-    font-awesome
-    powerline-fonts
-    powerline-symbols
-  ];
-
   stylix = {
     enable = true;
+    autoEnable = true;
     polarity = "either";
     base16Scheme = theme;
     opacity = {
@@ -29,105 +17,6 @@ in {
       desktop = opacity;
       terminal = opacity;
       popups = opacity;
-    };
-
-    targets = {
-      alacritty.enable = true;
-      anki.enable = true;
-      bat.enable = true;
-      blender.enable = true;
-      btop.enable = true;
-      cava.enable = true;
-      cavalier.enable = true;
-      chromium.enable = true;
-      console.enable = true;
-      nixcord.enable = true;
-      vencord.enable = true;
-      vesktop.enable = true;
-      dunst.enable = true;
-      emacs.enable = true;
-      eog.enable = true;
-      fcitx5.enable = true;
-      feh.enable = true;
-      firefox = {
-        enable = true;
-        profileNames = ["michzuerch"];
-      };
-      fish.enable = true;
-      font-packages.enable = true;
-      fontconfig.enable = true;
-      foot.enable = true;
-      forge.enable = true;
-      fuzzel.enable = true;
-      fzf.enable = true;
-      gdu.enable = true;
-      gedit.enable = true;
-      ghostty.enable = true;
-      guitui.enable = true;
-      glance.enable = true;
-      gnome-text-editor.enable = true;
-      gnome.enable = true;
-      grub.enable = true;
-      gtk.enable = true;
-      gtksourceview.enable = true;
-      halloy.enable = true;
-      helix.enable = true;
-      hyprland.enable = true;
-      hyprlock.enable = true;
-      hyprpanel.enable = true;
-      hyprpaper.enable = true;
-      k9s.enable = true;
-      kde.enable = true;
-      kitty.enable = true;
-      kubecolor.enable = true;
-      lazygit.enable = true;
-      librewolf = {
-        enable = true;
-        profileNames = ["michzuerch"];
-      };
-      lightdm.enable = true;
-      mangohud.enable = true;
-      micro.enable = true;
-      mpv.enable = true;
-      nvf = {
-        enable = true;
-        transparentBackground = true;
-      };
-      nixos-icons.enable = true;
-      noctalia-shell.enable = true;
-      nushell.enable = true;
-      obsidian.enable = true;
-      opencode.enable = true;
-      plymouth.enable = true;
-      qt.enable = true;
-      qutebrowser.enable = true;
-      regreet.enable = true;
-      rio.enable = true;
-      river.enable = true;
-      rofi.enable = true;
-      starship.enable = true;
-      swaync.enable = true;
-      sxiv.enable = true;
-      tmux.enable = true;
-      tofi.enable = true;
-      vicinae.enable = true;
-      vivid.enable = true;
-      vscode.enable = true;
-      waybar.enable = true;
-      wezterm.enable = true;
-      wob.enable = true;
-      wofi.enable = true;
-      wpaperd.enable = true;
-      xfce.enable = true;
-      xresources.enable = true;
-      yazi.enable = true;
-      zathura.enable = true;
-      zed.enable = true;
-      zellij.enable = true;
-      zen-browser = {
-        enable = true;
-        profileNames = ["michzuerch"];
-      };
     };
 
     cursor = {

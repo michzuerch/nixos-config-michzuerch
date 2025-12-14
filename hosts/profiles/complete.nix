@@ -1,7 +1,7 @@
 {
   imports = [
     # ../modules/sops.nix
-
+    ../modules/stylix.nix
     ../modules/audio.nix
     ../modules/bluetooth.nix
     ../modules/console.nix

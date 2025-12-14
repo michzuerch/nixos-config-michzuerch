@@ -52,8 +52,7 @@ _: {
           svelte.enable = true;
           rust = {
             enable = true;
-            crates.enable = true;
-            extensions.creates-nvim.enable = true;
+            extensions.crates-nvim.enable = true;
           };
           lua.enable = true;
           html.enable = true;

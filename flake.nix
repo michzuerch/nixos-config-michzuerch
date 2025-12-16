@@ -121,7 +121,12 @@
     inherit (self) outputs;
     lib = nixpkgs.lib // inputs.home-manager.lib;
     pkgs = nixpkgs.legacyPackages.${system};
-    supportedSystems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    supportedSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
     forEachSystem = nixpkgs.lib.genAttrs supportedSystems;
 
     formatterPackArgsPerSystem = forEachSystem (system: {
@@ -143,7 +148,9 @@
       nix-formatter-pack-check = nix-formatter-pack.lib.mkCheck formatterPackArgsPerSystem.${system};
     });
 
-    formatter = forEachSystem (system: nix-formatter-pack.lib.mkFormatter formatterPackArgsPerSystem.${system});
+    formatter = forEachSystem (
+      system: nix-formatter-pack.lib.mkFormatter formatterPackArgsPerSystem.${system}
+    );
 
     devShells.x86_64-linux.default = pkgs.mkShell {
       packages = with pkgs; [

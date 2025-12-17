@@ -117,16 +117,19 @@
     nix-formatter-pack,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
     inherit (self) outputs;
     lib = nixpkgs.lib // inputs.home-manager.lib;
-    pkgs = nixpkgs.legacyPackages.${system};
+
     supportedSystems = [
       "x86_64-linux"
       "aarch64-linux"
       "x86_64-darwin"
       "aarch64-darwin"
     ];
+
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs supportedSystems (system: function nixpkgs.legacyPackages.${system});
+
     forEachSystem = nixpkgs.lib.genAttrs supportedSystems;
 
     formatterPackArgsPerSystem = forEachSystem (system: {
@@ -152,24 +155,28 @@
       system: nix-formatter-pack.lib.mkFormatter formatterPackArgsPerSystem.${system}
     );
 
-    devShells.x86_64-linux.default = pkgs.mkShell {
-      packages = with pkgs; [
-        age
-        sops
-        rops
-        git
-        gh
-        yazi
-        ripgrep-all
-        jq
-        pciutils
-        tree
-        fastfetch
-        gtop
-        sbctl
-        home-manager
-      ];
-    };
+    devShells = forAllSystems (pkgs: {
+      default = import ./shell.nix {inherit pkgs;};
+    });
+
+    # devShells.x86_64-linux.default = pkgs.mkShell {
+    #   packages = with pkgs; [
+    #     age
+    #     sops
+    #     rops
+    #     git
+    #     gh
+    #     yazi
+    #     ripgrep-all
+    #     jq
+    #     pciutils
+    #     tree
+    #     fastfetch
+    #     gtop
+    #     sbctl
+    #     home-manager
+    #   ];
+    # };
 
     nixosConfigurations = {
       ThinkpadNomad = lib.nixosSystem {

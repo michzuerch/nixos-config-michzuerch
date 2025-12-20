@@ -40,7 +40,7 @@ with pkgs;
 
     env = {
       NH_NOM = "1";
-      NH_LOG = "nh=trace";
+      # NH_LOG = "nh=trace";
       # RUST_SRC_PATH = "${rustPlatform.rustLibSrc}";
     };
   }

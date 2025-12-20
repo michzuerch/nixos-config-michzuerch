@@ -159,25 +159,6 @@
       default = import ./shell.nix {inherit pkgs;};
     });
 
-    # devShells.x86_64-linux.default = pkgs.mkShell {
-    #   packages = with pkgs; [
-    #     age
-    #     sops
-    #     rops
-    #     git
-    #     gh
-    #     yazi
-    #     ripgrep-all
-    #     jq
-    #     pciutils
-    #     tree
-    #     fastfetch
-    #     gtop
-    #     sbctl
-    #     home-manager
-    #   ];
-    # };
-
     nixosConfigurations = {
       ThinkpadNomad = lib.nixosSystem {
         system = "x86_64-linux";

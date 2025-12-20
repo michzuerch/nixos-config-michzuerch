@@ -1,6 +1,6 @@
 {
   pkgs,
-  # inputs,
+  lib,
   ...
 }: let
   theme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
@@ -9,6 +9,12 @@
 in {
   stylix = {
     enable = true;
+    targets = {
+      qt = {
+        enable = true;
+        platform = lib.mkDefault "qtct";
+      };
+    };
     autoEnable = true;
     polarity = "either";
     base16Scheme = theme;

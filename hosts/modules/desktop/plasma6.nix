@@ -14,6 +14,7 @@
     dolphin-plugins
     gwenview
     ark
+    partitionmanager
 
     # open with
     kservice

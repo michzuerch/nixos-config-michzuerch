@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    qbittorrent
+    # qbittorrent
+    jackett
+    qbittorrent-enhanced
     transmission_4
   ];
 }

@@ -191,7 +191,7 @@
           "org.kde.plasma.showdesktop"
         ];
         hiding = "none";
-        floating = false;
+        floating = true;
       }
     ];
 

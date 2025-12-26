@@ -40,7 +40,6 @@ _: {
           enableFormat = true;
           enableTreesitter = true;
           enableExtraDiagnostics = true;
-
           nix = {
             enable = true;
             extraDiagnostics = {
@@ -86,7 +85,25 @@ _: {
             lsp.enable = true;
             treesitter.enable = true;
           };
-          ts.enable = true;
+          ts = {
+            enable = true;
+            extensions = {
+              ts-error-translator.enable = true;
+            };
+            extraDiagnostics = {
+              enable = true;
+              types = ["eslint_d"];
+            };
+            format = {
+              enable = true;
+              type = ["prettier"];
+            };
+            lsp = {
+              enable = true;
+              servers = ["denols"];
+            };
+            treesitter.enable = true;
+          };
           astro = {
             enable = true;
             format = {
@@ -129,6 +146,14 @@ _: {
             lsp.enable = true;
             treesitter.enable = true;
           };
+          yaml = {
+            enable = true;
+            lsp = {
+              enable = true;
+              servers = ["yaml-language-server"];
+            };
+            treesitter.enable = true;
+          };
           rust = {
             enable = true;
             dap = {
@@ -144,12 +169,12 @@ _: {
                       enabled = true;
                       max_results = 8;
                       min_chars = 3;
-                      lsp = {
-                        enabled = true;
-                        completion = true;
-                        actions = true;
-                        hover = true;
-                      };
+                      # lsp = {
+                      #   enabled = true;
+                      #   completion = true;
+                      #   actions = true;
+                      #   hover = true;
+                      # };
                     };
                   };
                 };
@@ -236,7 +261,6 @@ _: {
             treesitter.enable = true;
           };
         };
-
         visuals = {
           nvim-scrollbar.enable = true;
           nvim-web-devicons.enable = true;
@@ -246,68 +270,54 @@ _: {
           highlight-undo.enable = true;
           indent-blankline.enable = true;
         };
-
         statusline = {
           lualine = {
             enable = true;
           };
         };
-
         autopairs.nvim-autopairs.enable = true;
-
         autocomplete = {
           nvim-cmp.enable = true;
           blink-cmp.enable = false;
         };
-
         snippets.luasnip.enable = true;
-
         filetree = {
           neo-tree = {
             enable = true;
           };
         };
-
         tabline = {
           nvimBufferline.enable = true;
         };
-
         treesitter.context.enable = true;
-
         binds = {
           whichKey.enable = true;
           cheatsheet.enable = true;
           hardtime-nvim.enable = false;
         };
-
         telescope.enable = true;
-
         git = {
           enable = true;
           gitsigns.enable = true;
           gitsigns.codeActions.enable = false;
           neogit.enable = true;
         };
-
         minimap = {
           minimap-vim.enable = false;
           codewindow.enable = true;
         };
-
         dashboard = {
           dashboard-nvim.enable = false;
           alpha.enable = true;
         };
-
         notify = {
           nvim-notify.enable = true;
         };
-
         projects = {
           project-nvim.enable = true;
         };
-
         utility = {
+          oil-nvim.enable = true;
           ccc.enable = true;
           vim-wakatime.enable = false;
           diffview-nvim.enable = true;
@@ -320,19 +330,16 @@ _: {
           leetcode-nvim.enable = true;
           multicursors.enable = true;
           smart-splits.enable = true;
-
           motion = {
             hop.enable = false;
             leap.enable = false;
             precognition.enable = false;
           };
-
           images = {
             image-nvim.enable = true;
             img-clip.enable = true;
           };
         };
-
         notes = {
           obsidian.enable = false;
           neorg.enable = false;
@@ -340,14 +347,12 @@ _: {
           mind-nvim.enable = true;
           todo-comments.enable = true;
         };
-
         terminal = {
           toggleterm = {
             enable = true;
             lazygit.enable = true;
           };
         };
-
         ui = {
           borders.enable = true;
           noice.enable = true;
@@ -369,7 +374,6 @@ _: {
           };
           fastaction.enable = true;
         };
-
         assistant = {
           chatgpt.enable = false;
           copilot = {
@@ -379,19 +383,15 @@ _: {
           codecompanion-nvim.enable = false;
           avante-nvim.enable = false;
         };
-
         session = {
           nvim-session-manager.enable = true;
         };
-
         gestures = {
           gesture-nvim.enable = false;
         };
-
         comments = {
           comment-nvim.enable = true;
         };
-
         presence = {
           neocord.enable = false;
         };

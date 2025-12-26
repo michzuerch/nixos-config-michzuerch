@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    protonvpn-gui
+  ];
   networking = {
     nameservers = [
       "8.8.8.8"
@@ -17,7 +20,8 @@
     wireguard.enable = true;
     firewall = {
       logRefusedConnections = true;
-      checkReversePath = "loose"; # loose instead of strict for wireguard connections
+      # checkReversePath = "loose"; # loose instead of strict for wireguard connections
+      checkReversePath = false; # loose instead of strict for wireguard connections
       allowedTCPPorts = [
         22000 # Syncthing
         53317 # LocalSend

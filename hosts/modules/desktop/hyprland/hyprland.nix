@@ -16,11 +16,11 @@
     mtr.enable = true;
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
-        exo
-        mousepad
-        thunar-archive-plugin
-        thunar-volman
+      plugins = with pkgs; [
+        xfce4-exo
+        xfce.mousepad
+        xfce.thunar-archive-plugin
+        xfce.thunar-volman
       ];
     };
   };

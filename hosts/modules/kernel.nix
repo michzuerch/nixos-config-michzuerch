@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    exfat
+    exfatprogs
+  ];
   boot = {
     consoleLogLevel = 0;
     # kernelPackages = pkgs.linuxPackages_zen;

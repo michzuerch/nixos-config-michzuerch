@@ -317,9 +317,13 @@ _: {
           project-nvim.enable = true;
         };
         utility = {
-          oil-nvim.enable = true;
+          oil-nvim = {
+            enable = true;
+            gitStatus.enable = true;
+          };
           ccc.enable = true;
           vim-wakatime.enable = false;
+
           diffview-nvim.enable = true;
           yanky-nvim = {
             enable = true;
@@ -327,7 +331,7 @@ _: {
           };
           icon-picker.enable = true;
           surround.enable = true;
-          leetcode-nvim.enable = true;
+          leetcode-nvim.enable = false;
           multicursors.enable = true;
           smart-splits.enable = true;
           motion = {

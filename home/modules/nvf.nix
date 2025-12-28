@@ -1,4 +1,8 @@
-_: {
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    sqlfluff
+  ];
+
   programs.nvf = {
     enable = true;
     enableManpages = true;
@@ -6,6 +10,15 @@ _: {
       vim = {
         viAlias = false;
         vimAlias = true;
+        withNodeJs = true;
+        searchCase = "smart";
+        options = {
+          foldcolumn = "1";
+          foldlevel = 99;
+          foldlevelstart = 99;
+          foldenable = true;
+        };
+
         debugMode = {
           enable = false;
           level = 16;
@@ -13,8 +26,10 @@ _: {
         };
 
         spellcheck = {
-          enable = false;
-          programmingWordlist.enable = false;
+          enable = true;
+          languages = ["en"];
+          programmingWordlist.enable = true;
+          vim-dirtytalk.enable = true;
         };
 
         lsp = {
@@ -44,7 +59,10 @@ _: {
             enable = true;
             extraDiagnostics = {
               enable = true;
-              types = ["deadnix" "statix"];
+              types = [
+                "deadnix"
+                "statix"
+              ];
             };
             format = {
               enable = true;
@@ -108,7 +126,7 @@ _: {
             enable = true;
             format = {
               # todo Add formatter for astro
-              enable = false;
+              enable = true;
               type = ["prettier"];
             };
             lsp.enable = true;
@@ -289,7 +307,10 @@ _: {
         tabline = {
           nvimBufferline.enable = true;
         };
-        treesitter.context.enable = true;
+        treesitter = {
+          context.enable = true;
+          autotagHtml.enable = true;
+        };
         binds = {
           whichKey.enable = true;
           cheatsheet.enable = true;
@@ -363,6 +384,7 @@ _: {
           colorizer.enable = true;
           modes-nvim.enable = true;
           illuminate.enable = true;
+          nvim-ufo.enable = true;
           breadcrumbs = {
             enable = true;
             navbuddy.enable = true;
@@ -373,7 +395,10 @@ _: {
               nix = "110";
               ruby = "120";
               java = "130";
-              go = ["90" "130"];
+              go = [
+                "90"
+                "130"
+              ];
             };
           };
           fastaction.enable = true;

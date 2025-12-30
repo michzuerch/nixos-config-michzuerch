@@ -2,6 +2,10 @@
   stylix = {
     enable = true;
     targets = {
+      qt = {
+        enable = true;
+        platform = "qtct";
+      };
       firefox = {
         enable = true;
         profileNames = ["michzuerch"];

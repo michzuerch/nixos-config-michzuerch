@@ -346,7 +346,7 @@
           vim-wakatime.enable = false;
           direnv.enable = true;
           diffview-nvim.enable = true;
-          snacks.enable = true;
+          snacks-nvim.enable = true;
           yazi-nvim.enable = true;
           yanky-nvim = {
             enable = true;

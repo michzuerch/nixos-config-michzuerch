@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -6,18 +6,26 @@ _: {
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "viins";
-    shellAliases = {
-      # ll = "ls -l";
-      # update = "sudo nixos-rebuild switch";
-    };
     history = {
       size = 10000;
-      save = 10000;
       ignoreAllDups = true;
-      ignoreSpace = true;
-      expireDuplicatesFirst = true;
-      share = true;
-      extended = true;
+      path = "${config.home.homeDirectory}/.config/.zsh/zsh_history";
     };
+
+    # DotDir
+    dotDir = "${config.home.homeDirectory}/.config/.zsh";
+
+    shellAliases = {
+      # ll = "ls -l";
+    };
+    # history = {
+    #   size = 10000;
+    #   save = 10000;
+    #   ignoreAllDups = true;
+    #   ignoreSpace = true;
+    #   expireDuplicatesFirst = true;
+    #   share = true;
+    #   extended = true;
+    # };
   };
 }

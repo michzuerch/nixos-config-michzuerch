@@ -14,11 +14,11 @@
     xfce.mousepad
     xfce.thunar-archive-plugin
     xfce.thunar-volman
-    xfce.xfce4-genmon-plugin
-    xfce.xfce4-netload-plugin
+    xfce4-genmon-plugin
+    xfce4-netload-plugin
     xfce.xfce4-power-manager
-    xfce.xfce4-pulseaudio-plugin
-    xfce.xfce4-weather-plugin
+    xfce4-pulseaudio-plugin
+    xfce4-weather-plugin
     xfce.xfwm4-themes
   ];
   environment.xfce.excludePackages = with pkgs; [

@@ -177,7 +177,7 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
-          inputs.nix-bitcoin.nixosModules.default
+          # inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;
@@ -252,7 +252,6 @@
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
-          inputs.nix-bitcoin.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = false;

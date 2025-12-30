@@ -344,8 +344,10 @@
           };
           ccc.enable = true;
           vim-wakatime.enable = false;
-
+          direnv.enable = true;
           diffview-nvim.enable = true;
+          snacks.enable = true;
+          yazi-nvim.enable = true;
           yanky-nvim = {
             enable = true;
             setupOpts.ring.storage = "memory";

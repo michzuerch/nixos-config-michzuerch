@@ -8,8 +8,8 @@
     inputs.nur.modules.homeManager.default
     inputs.nix-index-database.homeModules.nix-index
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    # inputs.nix-doom-emacs-unstraightened.homeModule
     inputs.plasma-manager.homeModules.plasma-manager
+    inputs.nix-doom-emacs.hmModule
     ../profiles/complete.nix
     # ../profiles/onlyplasma6.nix
   ];

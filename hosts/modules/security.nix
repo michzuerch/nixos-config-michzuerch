@@ -4,6 +4,7 @@
   #    interval = "Sat *-*-* 04:00:00";
   #  };
   environment.systemPackages = with pkgs; [
+    age
     vulnix #scan command: vulnix --system
     #clamav       #scan command: sudo freshclam; clamscan [options] [file/directory/-]
   ];

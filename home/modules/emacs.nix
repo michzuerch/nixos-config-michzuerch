@@ -1,9 +1,14 @@
-{pkgs, ...}: {
-  programs.emacs = {
+_: {
+  programs.doom-emacs = {
     enable = true;
-    package = pkgs.emacs; # replace with pkgs.emacs-gtk, or a version provided by the community overlay if desired.
-    extraConfig = ''
-      (setq standard-indent 2)
-    '';
+    doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
+    # and packages.el files
   };
+  # programs.emacs = {
+  #   enable = true;
+  #   package = pkgs.emacs; # replace with pkgs.emacs-gtk, or a version provided by the community overlay if desired.
+  #   extraConfig = ''
+  #     (setq standard-indent 2)
+  #   '';
+  # };
 }

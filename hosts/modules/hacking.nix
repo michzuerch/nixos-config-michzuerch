@@ -7,7 +7,7 @@
     aircrack-ng
     airgeddon
     bettercap
-    burpsuite
+    # burpsuite
     hash-identifier
     hashcat
     hashcat-utils
@@ -17,7 +17,7 @@
     kismet
     metasploit
     nmap
-    ngrep
+    # ngrep
     tcpdump
     recon-ng
     sherlock

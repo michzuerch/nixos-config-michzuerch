@@ -64,19 +64,10 @@
       url = "github:fort-nix/nix-bitcoin/release";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # emacs-overlay = {
-    #   url = "github:nix-community/emacs-overlay";
-    #   flake = false;
-    # };
-    # doom-emacs = {
-    #   url = "github:nix-community/nix-doom-emacs";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.emacs-overlay.follows = "emacs-overlay";
-    # };
-    # nix-doom-emacs-unstraightened = {
-    #   url = "github:marienz/nix-doom-emacs-unstraightened";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-doom-emacs = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";

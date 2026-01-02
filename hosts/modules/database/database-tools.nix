@@ -3,7 +3,7 @@
     dbeaver-bin
     mongodb-compass
     mongodb-tools
-    mongosh
+    # mongosh
     redli
     robo3t
     sqlboiler

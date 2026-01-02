@@ -18,9 +18,9 @@
       enable = true;
       plugins = with pkgs; [
         xfce4-exo
-        xfce.mousepad
-        xfce.thunar-archive-plugin
-        xfce.thunar-volman
+        mousepad
+        thunar-archive-plugin
+        thunar-volman
       ];
     };
   };

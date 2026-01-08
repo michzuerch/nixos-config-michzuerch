@@ -64,6 +64,9 @@
       url = "github:fort-nix/nix-bitcoin/release";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+    };
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";

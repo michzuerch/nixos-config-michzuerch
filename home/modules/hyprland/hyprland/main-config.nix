@@ -2,9 +2,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    xwayland.enable = true;
 
     settings = {
+      xwayland.enable = true;
       input = {
         kb_layout = "us,de";
         kb_options = "grp:alt_caps_toggle";
@@ -44,7 +44,7 @@
         animate_manual_resizes = false;
         enable_swallow = true;
         focus_on_activate = true;
-        new_window_takes_over_fullscreen = 2;
+        # new_window_takes_over_fullscreen = 2;
         middle_click_paste = false;
       };
     };

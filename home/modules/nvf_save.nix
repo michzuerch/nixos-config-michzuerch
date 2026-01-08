@@ -1,11 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     sqlfluff
-    tree-sitter
-    lldb
-    ghostscript_headless
-    tectonic
-    mermaid-cli
   ];
 
   programs.nvf = {
@@ -22,7 +17,6 @@
           foldlevel = 99;
           foldlevelstart = 99;
           foldenable = true;
-          wrap = false;
         };
 
         debugMode = {
@@ -126,7 +120,7 @@
               enable = true;
               servers = ["denols"];
             };
-            treesitter.enable = true;
+            treesitter.enable = false;
           };
           astro = {
             enable = true;
@@ -182,7 +176,7 @@
             enable = true;
             dap = {
               enable = true;
-              adapter = "lldb-dap";
+              adapter = "codelldb";
             };
             extensions = {
               crates-nvim = {
@@ -193,12 +187,12 @@
                       enabled = true;
                       max_results = 8;
                       min_chars = 3;
-                      lsp = {
-                        enabled = true;
-                        completion = true;
-                        actions = true;
-                        hover = true;
-                      };
+                      # lsp = {
+                      #   enabled = true;
+                      #   completion = true;
+                      #   actions = true;
+                      #   hover = true;
+                      # };
                     };
                   };
                 };
@@ -304,7 +298,7 @@
           nvim-cmp.enable = true;
           blink-cmp.enable = false;
         };
-        snippets.luasnip.enable = false;
+        snippets.luasnip.enable = true;
         filetree = {
           neo-tree = {
             enable = true;
@@ -352,7 +346,7 @@
           vim-wakatime.enable = false;
           direnv.enable = true;
           diffview-nvim.enable = true;
-          snacks-nvim.enable = false;
+          snacks-nvim.enable = true;
           yazi-nvim.enable = true;
           yanky-nvim = {
             enable = true;

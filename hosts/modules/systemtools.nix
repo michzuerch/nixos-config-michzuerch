@@ -1,3 +1,6 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [busybox];
+  programs = {
+    partition-manager.enable = true;
+  };
+  environment.systemPackages = with pkgs; [busybox hydra-check];
 }

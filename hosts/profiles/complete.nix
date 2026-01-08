@@ -19,7 +19,7 @@
     ../modules/hacking.nix
     ../modules/i18n.nix
     ../modules/info-fetchers.nix
-    ../modules/jackett.nix
+    #../modules/jackett.nix
     ../modules/kernel.nix
     ../modules/macchanger.nix
     ../modules/networking.nix
@@ -36,6 +36,7 @@
     ../modules/security.nix
     ../modules/syncthing.nix
     ../modules/systemtools.nix
+    ../modules/system-monitoring.nix
     ../modules/time.nix
     ../modules/virtualisation.nix
     ../modules/xdg.nix
@@ -47,8 +48,8 @@
     ../modules/desktop/niri/niri.nix
     ../modules/desktop/xfce.nix
     ../modules/desktop/plasma6.nix
-    # ../modules/desktop/cinnamon.nix
-    # ../modules/desktop/gnome.nix
+    ../modules/desktop/cinnamon.nix
+    #../modules/desktop/gnome.nix
     # ../modules/desktop/cosmic.nix
     # ../modules/nix-bitcoin.nix # Problem with nh os switch, dont install
   ];

@@ -1,15 +1,15 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # darktable
-    # font-manager
+    darktable
+    font-manager
     gimp
-    # glaxnimate
+    glaxnimate
     kdePackages.gwenview
     inkscape-with-extensions
     pinta
     hypnotix
     krita
-    scribus
+    #scribus
     imagemagick
   ];
 }

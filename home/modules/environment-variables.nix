@@ -16,5 +16,6 @@
     GTK_USE_PORTAL = "1";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
     DIRENV_LOG_FORMAT = "";
+    DOOMDIR = "$HOME/.config/doom";
   };
 }

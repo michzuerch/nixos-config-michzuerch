@@ -4,7 +4,7 @@
     ../modules/clock-rs.nix
     ../modules/dconf.nix
     ../modules/discord.nix
-    ../modules/emacs.nix
+    ../modules/doom-emacs.nix
     ../modules/environment-variables.nix
     ../modules/fish.nix
     ../modules/flatpak.nix

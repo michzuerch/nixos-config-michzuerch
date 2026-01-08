@@ -15,10 +15,10 @@
       # "$mainMod,       B, exec, pkill -SIGUSR2 waybar"
       # "$mainMod SHIFT, B, exec, pkill -SIGUSR1 waybar"
       "$mainMod,       L, exec, loginctl lock-session"
-      "$mainMod SHIFT  P, exec, hyprpicker -a -n"
+      # "$mainMod SHIFT  P, exec, hyprpicker -a -n"
       "$mainMod,       N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
       "$mainMod SHIFT, S, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave area"
-      "$mainMod,       O, hyprexpo:expo, toggle"
+      # "$mainMod,       O, hyprexpo:expo, toggle"
 
       "$mainMod,       Tab, focusmonitor, +1"
       "$mainMod SHIFT, Tab, focusmonitor, +1"

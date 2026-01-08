@@ -8,8 +8,5 @@
       allow_tearing = false;
       layout = "master";
     };
-    xwayland = {
-      force_zero_scaling = true;
-    };
   };
 }

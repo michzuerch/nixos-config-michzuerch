@@ -4,7 +4,6 @@
     systemd.enable = true;
 
     settings = {
-      xwayland.enable = true;
       input = {
         kb_layout = "us,de";
         kb_options = "grp:alt_caps_toggle";

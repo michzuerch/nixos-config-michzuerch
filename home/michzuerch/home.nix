@@ -17,7 +17,7 @@
   home = {
     username = "michzuerch";
     homeDirectory = "/home/michzuerch";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     enableNixpkgsReleaseCheck = false;
     packages = with pkgs; [
       nautilus

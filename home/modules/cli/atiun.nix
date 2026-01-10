@@ -7,7 +7,7 @@
       dialect = "us";
       style = "compact";
       inline_height = 15;
-      store_failed = false;
+      store_failed = true;
     };
   };
 }

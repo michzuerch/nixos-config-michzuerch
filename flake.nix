@@ -40,9 +40,12 @@
       url = "github:k3d3/claude-desktop-linux-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf-nixpkgs = {
+      url = "github:NixOS/nixpkgs/cad22e7d996aea55ecab064e84834289143e44a0";
+    };
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nvf-nixpkgs";
     };
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";

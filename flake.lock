@@ -456,11 +456,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768000767,
-        "narHash": "sha256-H5YzwtdsE4j2m+9H3bBi25N1x8BPE2ZwMS0Tuuu74Yk=",
+        "lastModified": 1768043775,
+        "narHash": "sha256-kIXg7IMUfPSIX6TvvAJzIFKWo/fumbx6etEdmYVfDlY=",
         "owner": "nix-community",
         "repo": "flake-firefox-nightly",
-        "rev": "8a30a5fe24c7e6dbc2fd7538b7b649786fcbec47",
+        "rev": "d24fc86070eb11db748a9a3a41a3ad4c119841de",
         "type": "github"
       },
       "original": {
@@ -1874,7 +1874,7 @@
         "mnw": "mnw",
         "ndg": "ndg",
         "nixpkgs": [
-          "nixpkgs"
+          "nvf-nixpkgs"
         ],
         "systems": "systems_8"
       },
@@ -1889,6 +1889,22 @@
       "original": {
         "owner": "notashelf",
         "repo": "nvf",
+        "type": "github"
+      }
+    },
+    "nvf-nixpkgs": {
+      "locked": {
+        "lastModified": 1767116409,
+        "narHash": "sha256-5vKw92l1GyTnjoLzEagJy5V5mDFck72LiQWZSOnSicw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cad22e7d996aea55ecab064e84834289143e44a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cad22e7d996aea55ecab064e84834289143e44a0",
         "type": "github"
       }
     },
@@ -2069,6 +2085,7 @@
         "nsearch": "nsearch",
         "nur": "nur",
         "nvf": "nvf",
+        "nvf-nixpkgs": "nvf-nixpkgs",
         "plasma-manager": "plasma-manager",
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",

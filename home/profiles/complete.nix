@@ -40,7 +40,7 @@
     ../modules/zoxide.nix
     ../modules/zsh.nix
     ../modules/cli
-    #../modules/nvf.nix
+    ../modules/nvf.nix
     ../modules/zathura.nix
     ../modules/browsers/firefox.nix
     ../modules/browsers/chromium.nix

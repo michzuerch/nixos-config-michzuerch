@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     sqlfluff
-    tree-sitter
+    # tree-sitter
     lldb
     ghostscript_headless
     tectonic
@@ -10,11 +10,9 @@
 
   programs.nvf = {
     enable = true;
-    enableManpages = true;
+    enableManpages = false;
     settings = {
       vim = {
-        viAlias = false;
-        vimAlias = true;
         withNodeJs = true;
         searchCase = "smart";
         options = {

@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     exfat
     exfatprogs
+    linuxKernel.packages.linux_6_18.sysdig # Move to kernel.nix???
   ];
   boot = {
     consoleLogLevel = 0;

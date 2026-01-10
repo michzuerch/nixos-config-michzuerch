@@ -81,11 +81,9 @@
 
   home.packages = with pkgs; [
     bandwhich
-    bat
     chatgpt-cli
     cowsay
     flake-checker
-    delta
     dust
     doggo
     dysk

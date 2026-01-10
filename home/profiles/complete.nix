@@ -14,6 +14,7 @@
     ../modules/gtk.nix
     ../modules/graphic.nix
     ../modules/helix.nix
+    ../modules/jujutsu.nix
     ../modules/kitty.nix
     ../modules/latex.nix
     ../modules/libreoffice.nix
@@ -39,7 +40,7 @@
     ../modules/zoxide.nix
     ../modules/zsh.nix
     ../modules/cli
-    ../modules/nvf.nix
+    #../modules/nvf.nix
     ../modules/zathura.nix
     ../modules/browsers/firefox.nix
     ../modules/browsers/chromium.nix

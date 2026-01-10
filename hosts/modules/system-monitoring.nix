@@ -7,6 +7,5 @@
     atop
     iftop
     iotop
-    linuxKernel.packages.linux_6_18.sysdig # Move to kernel.nix???
   ];
 }

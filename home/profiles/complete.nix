@@ -27,6 +27,7 @@
     ../modules/pgbench.nix
     ../modules/plasma.nix
     ../modules/gtk.nix
+    ../modules/quickshell.nix
     ../modules/sh.nix
     ../modules/starship.nix
     ../modules/stylix.nix

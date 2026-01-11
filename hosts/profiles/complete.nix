@@ -19,7 +19,7 @@
     ../modules/hacking.nix
     ../modules/i18n.nix
     ../modules/info-fetchers.nix
-    #../modules/jackett.nix
+    ../modules/jackett.nix
     ../modules/kernel.nix
     ../modules/macchanger.nix
     ../modules/networking.nix

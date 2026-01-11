@@ -7,7 +7,7 @@
     atop
     iftop
     iotop
-    linuxPackages_latest.perf
+    perf
     perf-tools
   ];
 }

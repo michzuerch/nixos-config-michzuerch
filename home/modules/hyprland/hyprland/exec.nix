@@ -1,18 +1,18 @@
 {
   wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "waybar"
+      #"waybar"
       "systemctl --user start hyprpolkitagent"
-      "pypr --debug /tmp/pypr.log"
+      #"pypr --debug /tmp/pypr.log"
       "swaync"
-      "hyprpaper"
+      #"hyprpaper"
       "copyq --start-server"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
-      "nm-applet --indicator"
-      "blueman-applet"
-      "swayosd-server"
-      # "hyprctl setcursor Bibata-Modern-Ice 24 &"
+      #"nm-applet --indicator"
+      #"blueman-applet"
+      #"swayosd-server"
+      #"hyprctl setcursor Bibata-Modern-Ice 24 &"
     ];
   };
 }

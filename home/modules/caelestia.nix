@@ -13,8 +13,18 @@ _: {
       };
     };
     settings = {
-      bar.status = {
-        showBattery = false;
+      appearance = {
+        rounding = {
+          scale = 0.9866195575842698;
+        };
+      };
+      bar = {
+        status = {
+          showBattery = true;
+        };
+        clock = {
+          showIcon = false;
+        };
       };
       paths.wallpaperDir = "~/Images";
     };

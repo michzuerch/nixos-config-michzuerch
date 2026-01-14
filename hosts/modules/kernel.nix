@@ -2,13 +2,11 @@
   environment.systemPackages = with pkgs; [
     exfat
     exfatprogs
-    linuxKernel.packages.linux_6_18.sysdig # Move to kernel.nix???
+    linuxKernel.packages.linux_6_18.sysdig
   ];
   boot = {
     consoleLogLevel = 0;
-    # kernelPackages = pkgs.linuxPackages_zen;
-    kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackages_6_17;
+    kernelPackages = pkgs.linuxPackages_latest; # _zen, _hardened, _rt, _rt_latest, etc.
     kernelParams = [
       "quiet"
       "splash"
@@ -46,4 +44,5 @@
       kernelModules = ["i915" "kvm-intel"];
     };
   };
+  systemd.settings.Manager = {DefaultTimeoutStopSec = "10s";};
 }

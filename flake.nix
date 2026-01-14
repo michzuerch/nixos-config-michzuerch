@@ -16,18 +16,23 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    caelestia-cli = {
+      url = "github:caelestia-dots/cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    apple-fonts = {
-      url = "github:Lyndeno/apple-fonts.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # apple-fonts = {
+    #   url = "github:Lyndeno/apple-fonts.nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nsearch = {
       url = "github:niksingh710/nsearch";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,12 +49,9 @@
       url = "github:k3d3/claude-desktop-linux-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf-nixpkgs = {
-      url = "github:NixOS/nixpkgs/cad22e7d996aea55ecab064e84834289143e44a0";
-    };
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nvf-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";

@@ -2,7 +2,7 @@
   imports = [
     ../modules/alacritty.nix
     ../modules/clock-rs.nix
-    ../modules/caelestia.nix
+    ../modules/caelestia
     ../modules/dconf.nix
     ../modules/discord.nix
     ../modules/doom-emacs.nix

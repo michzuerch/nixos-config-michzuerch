@@ -77,6 +77,8 @@
       systemd-boot = {
         enable = true;
         memtest86.enable = true;
+        consoleMode = "auto";
+        configurationLimit = 8;
       };
     };
     plymouth = {

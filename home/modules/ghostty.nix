@@ -23,7 +23,7 @@
       selection-invert-fg-bg = true;
 
       # Theme
-      theme = "gruvbox";
+      #theme = "gruvbox";
       background-opacity = 0.66;
 
       cursor-style = "bar";
@@ -36,8 +36,8 @@
       mouse-hide-while-typing = true;
 
       window-theme = "ghostty";
-      # window-padding-x = 4;
-      # window-padding-y = 6;
+      window-padding-x = 10;
+      window-padding-y = 10;
       window-padding-balance = true;
       window-padding-color = "background";
       window-inherit-working-directory = true;
@@ -54,41 +54,45 @@
       clipboard-paste-protection = false;
 
       keybind = [
-        "shift+end=unbind"
-        "shift+home=unbind"
-        "ctrl+shift+left=unbind"
-        "ctrl+shift+right=unbind"
-        "shift+enter=text:\n"
+        "ctrl+j=goto_split:left"
+        "ctrl+i=goto_split:up"
+        "ctrl+k=goto_split:down"
+        "ctrl+l=goto_split:right"
+        "shift+ctrl+j=new_split:left"
+        "shift+ctrl+i=new_split:up"
+        "shift+ctrl+k=new_split:down"
+        "shift+ctrl+l=new_split:right"
+        "shift+ctrl+tab=new_tab"
       ];
     };
-    themes.gruvbox = {
-      background = "1d2021";
-      foreground = "fbf1c7";
+    # themes.gruvbox = {
+    #   background = "1d2021";
+    #   foreground = "fbf1c7";
 
-      cursor-color = "D5C4A1";
+    #   cursor-color = "D5C4A1";
 
-      selection-foreground = "282828";
-      selection-background = "98971A";
+    #   selection-foreground = "282828";
+    #   selection-background = "98971A";
 
-      palette = [
-        "0=#32302f"
-        "1=#cc241d"
-        "2=#98971a"
-        "3=#d79921"
-        "4=#458588"
-        "5=#b16286"
-        "6=#689d6a"
-        "7=#ebdbb2"
+    #   palette = [
+    #     "0=#32302f"
+    #     "1=#cc241d"
+    #     "2=#98971a"
+    #     "3=#d79921"
+    #     "4=#458588"
+    #     "5=#b16286"
+    #     "6=#689d6a"
+    #     "7=#ebdbb2"
 
-        "8=#928374"
-        "9=#fb4934"
-        "10=#b8bb26"
-        "11=#fabd2f"
-        "12=#83a598"
-        "13=#d3869b"
-        "14=#8ec07c"
-        "15=#fbf1c7"
-      ];
-    };
+    #     "8=#928374"
+    #     "9=#fb4934"
+    #     "10=#b8bb26"
+    #     "11=#fabd2f"
+    #     "12=#83a598"
+    #     "13=#d3869b"
+    #     "14=#8ec07c"
+    #     "15=#fbf1c7"
+    #   ];
+    # };
   };
 }

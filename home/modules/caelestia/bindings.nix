@@ -2,40 +2,40 @@
   wayland.windowManager.hyprland.settings = {
     bindin = [
       # Launcher
-      "$mod, mouse:272, global, caelestia:launcherInterrupt"
-      "$mod, mouse:273, global, caelestia:launcherInterrupt"
-      "$mod, mouse:274, global, caelestia:launcherInterrupt"
-      "$mod, mouse:275, global, caelestia:launcherInterrupt"
-      "$mod, mouse:276, global, caelestia:launcherInterrupt"
-      "$mod, mouse:277, global, caelestia:launcherInterrupt"
-      "$mod, mouse_up, global, caelestia:launcherInterrupt"
-      "$mod, mouse_down, global, caelestia:launcherInterrupt"
+      "$mainMod, mouse:272, global, caelestia:launcherInterrupt"
+      "$mainMod, mouse:273, global, caelestia:launcherInterrupt"
+      "$mainMod, mouse:274, global, caelestia:launcherInterrupt"
+      "$mainMod, mouse:275, global, caelestia:launcherInterrupt"
+      "$mainMod, mouse:276, global, caelestia:launcherInterrupt"
+      "$mainMod, mouse:277, global, caelestia:launcherInterrupt"
+      "$mainMod, mouse_up, global, caelestia:launcherInterrupt"
+      "$mainMod, mouse_down, global, caelestia:launcherInterrupt"
     ];
     bind = [
       # Launcher
-      "$mod, SPACE, global, caelestia:launcher"
-      "$mod, X, global, caelestia:session" # Powermenu
+      "$mainMod, SPACE, global, caelestia:launcher"
+      "$mainMod, X, global, caelestia:session" # Powermenu
 
       # Misc
-      "$mod, L, global, caelestia:lock"
-      "$mod, N, exec, caelestia shell drawers toggle sidebar"
+      "$mainMod, L, global, caelestia:lock"
+      "$mainMod, N, exec, caelestia shell drawers toggle sidebar"
 
       # Utilities
-      "$mod+Shift, SPACE, exec, caelestia shell gameMode toggle" # Toggle Focus/Game mode
-      "$mod+Shift, S, global, caelestia:screenshotFreeze" # Capture region (freeze)
-      "$mod+Shift+Alt, S, global, caelestia:screenshot" # Capture region
-      "$mod+Alt, R, exec, caelestia record -s" # Record screen with sound
+      "$mainMod+Shift, SPACE, exec, caelestia shell gameMode toggle" # Toggle Focus/Game mode
+      "$mainMod+Shift, S, global, caelestia:screenshotFreeze" # Capture region (freeze)
+      "$mainMod+Shift+Alt, S, global, caelestia:screenshot" # Capture region
+      "$mainMod+Alt, R, exec, caelestia record -s" # Record screen with sound
       "Ctrl+Alt, R, exec, caelestia record" # Record screen
-      "$mod+Shift+Alt, R, exec, caelestia record -r" # Record region
+      "$mainMod+Shift+Alt, R, exec, caelestia record -r" # Record region
 
-      "$mod+Shift, E, exec, pkill fuzzel || caelestia emoji -p"
+      "$mainMod+Shift, E, exec, pkill fuzzel || caelestia emoji -p"
     ];
     bindl = [
       # Brightness
       ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
       ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
-      "$mod, F2, exec, nightshift-toggle"
-      "$mod, F3, exec, nightshift-toggle"
+      "$mainMod, F2, exec, nightshift-toggle"
+      "$mainMod, F3, exec, nightshift-toggle"
 
       # Media
       ", XF86AudioPlay, global, caelestia:mediaToggle"

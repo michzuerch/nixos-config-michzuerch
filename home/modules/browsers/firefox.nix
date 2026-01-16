@@ -272,10 +272,8 @@
       };
     };
   };
-  xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "text/xml" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
+
+  home.sessionVariables = {
+    DEFAULT_BROWSER = "${inputs.firefox.packages.x86_64-linux.firefox-devedition-bin}/bin/brave";
   };
 }

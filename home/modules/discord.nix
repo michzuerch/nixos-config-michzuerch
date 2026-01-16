@@ -1,9 +1,8 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    # discord
-    # (discord.override {
-    #  withVencord = true;
-    # })
-    # webcord-vencord
-  ];
+{inputs, ...}: {
+  imports = [inputs.nixcord.homeModules.nixcord];
+
+  programs.nixcord = {
+    enable = true;
+    config = {frameless = true;};
+  };
 }

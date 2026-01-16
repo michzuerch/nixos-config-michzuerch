@@ -13,6 +13,7 @@
     ];
     bind = [
       # Launcher
+      "$mainMod, D, global, caelestia:launcher"
       "$mainMod, SPACE, global, caelestia:launcher"
       "$mainMod, X, global, caelestia:session" # Powermenu
 
@@ -34,8 +35,8 @@
       # Brightness
       ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
       ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
-      "$mainMod, F2, exec, nightshift-toggle"
-      "$mainMod, F3, exec, nightshift-toggle"
+      #"$mainMod, F2, exec, nightshift-toggle"
+      #"$mainMod, F3, exec, nightshift-toggle"
 
       # Media
       ", XF86AudioPlay, global, caelestia:mediaToggle"

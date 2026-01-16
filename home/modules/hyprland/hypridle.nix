@@ -9,23 +9,23 @@
         lock_cmd = "pidof hyprlock || hyprlock";
       };
       listener = [
-        {
-          timeout = 60;
-          on-timeout = "brightnessctl -s set 30";
-          on-resume = "brightnessctl -r";
-        }
+        # {
+        #   timeout = 60;
+        #   on-timeout = "brightnessctl -s set 30";
+        #   on-resume = "brightnessctl -r";
+        # }
         {
           timeout = 180;
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 300;
+          timeout = 3600;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
-          timeout = 1200;
-          on-timeout = "sysemctl suspend";
+          timeout = 7200;
+          on-timeout = "systemctl suspend";
         }
       ];
     };

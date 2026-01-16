@@ -39,11 +39,11 @@
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "cursor"
-          "windsurf"
+          "discord"
         ];
       android_sdk.accept_license = true;
     };
+
     permittedInsecurePackages = ["ventoy-1.1.05" "darktable"];
   };
 }

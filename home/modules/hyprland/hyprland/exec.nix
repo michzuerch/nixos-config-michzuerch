@@ -2,6 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       #"waybar"
+      "caelestia-shell"
       "systemctl --user start hyprpolkitagent"
       #"pypr --debug /tmp/pypr.log"
       "swaync"
@@ -11,7 +12,7 @@
       "wl-paste --type image --watch cliphist store"
       #"nm-applet --indicator"
       #"blueman-applet"
-      #"swayosd-server"
+      "swayosd-server"
       #"hyprctl setcursor Bibata-Modern-Ice 24 &"
     ];
   };

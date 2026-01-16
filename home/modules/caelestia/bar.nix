@@ -9,7 +9,7 @@
       showLockStatus = false;
       showBluetooth = true;
       showAudio = true;
-      showKbLayout = false;
+      showKbLayout = true;
       showNetwork = true;
     };
     workspaces = {
@@ -50,7 +50,7 @@
       }
       {
         id = "clock";
-        enabled = true;
+        enabled = false;
       }
       {
         id = "statusIcons";

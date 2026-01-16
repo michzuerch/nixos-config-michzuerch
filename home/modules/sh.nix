@@ -107,6 +107,7 @@
     sd
     sqlite
     tig
+    trash-cli
     p7zip
     tokei
     unzip

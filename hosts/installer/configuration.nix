@@ -14,8 +14,6 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" "bcachefs"];
 
-  nixpkgs.config.pulseaudio = true;
-
   environment.systemPackages = with pkgs; [
     alacritty
     alejandra
@@ -79,6 +77,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   nixpkgs = {
+    config.pulseaudio = true;
     config.allowUnfree = false;
     hostPlatform = "x86_64-linux";
   };

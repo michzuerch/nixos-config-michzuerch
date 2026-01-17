@@ -9,12 +9,11 @@
     nmon
     glances
     netdata
-    #monit
+    monit
     vulkan-tools
     clinfo
     vdpauinfo
     libva-utils
-    #nvtop
     dig
     speedtest-rs
   ];

@@ -35,15 +35,25 @@
     };
   };
   nixpkgs.config = {
-    allowUnfree = true;
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "discord"
-        ];
-      android_sdk.accept_license = true;
-    };
-
+    allowUnfree = false;
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "broadcom-bt-firmware"
+        "b43-firmware"
+        "consul"
+        "facetimehd-calibration"
+        "facetimehd-firmware"
+        "nomad"
+        "caido"
+        "discord"
+        "proton-authenticator"
+        "hplip"
+        "mongodb-compass"
+        "burpsuite"
+        "proton-authenticator"
+        "xow_dongle-firmware"
+      ];
+    android_sdk.accept_license = true;
     permittedInsecurePackages = ["ventoy-1.1.05" "darktable"];
   };
 }

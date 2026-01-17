@@ -27,7 +27,7 @@
     ../modules/obs-studio.nix
     ../modules/pgbench.nix
     ../modules/plasma.nix
-    ../modules/proton.nix
+    #../modules/proton.nix
     ../modules/gtk.nix
     ../modules/quickshell.nix
     ../modules/sh.nix

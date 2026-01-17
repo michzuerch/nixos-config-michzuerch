@@ -1,8 +1,8 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     protonvpn-gui
     proton-pass
-    proton-authenticator
+    proton-authenticator # unfree
   ];
 
   # Fix Proton Authenticator desktop entry

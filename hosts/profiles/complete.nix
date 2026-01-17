@@ -31,12 +31,14 @@
     ../modules/ollama.nix
     ../modules/openssh.nix
     ../modules/powermanagement.nix
+    ../modules/proton.nix
     ../modules/rust.nix
     ../modules/scanner.nix
     ../modules/security.nix
     ../modules/syncthing.nix
     ../modules/systemtools.nix
     ../modules/system-monitoring.nix
+    ../modules/stirling-pdf.nix
     ../modules/time.nix
     ../modules/virtualisation.nix
     ../modules/xdg.nix

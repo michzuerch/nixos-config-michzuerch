@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    protonvpn-gui
-  ];
   networking = {
     nameservers = [
       "8.8.8.8"

@@ -65,12 +65,6 @@
         };
         gui = {
           showIcons = true;
-          # theme = {
-          #   lightTheme = false;
-          #   activeBorderColor = ["green" "bold"];
-          #   inactiveBorderColor = ["grey"];
-          #   selectedLineBgColor = ["blue"];
-          # };
           theme = {
             activeBorderColor = ["green" "bold"];
             inactiveBorderColor = ["grey"];

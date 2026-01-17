@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.wireshark.enable = true;
 
   users.extraGroups.wireshark.members = ["michzuerch"];
@@ -8,6 +12,7 @@
     airgeddon
     bettercap
     burpsuite
+    caido
     hash-identifier
     hashcat
     hashcat-utils
@@ -15,9 +20,11 @@
     john
     johnny
     kismet
+    inputs.eleakxir.packages.${pkgs.stdenv.hostPlatform.system}.leak-utils
     metasploit
     nmap
     ngrep
+    nuclei
     tcpdump
     recon-ng
     sherlock
@@ -26,8 +33,13 @@
     wavemon
     wifite2
     wireguard-tools
-    wireshark
     tshark
     termshark
   ];
+
+  services.eleakxir = {
+    enable = true;
+    port = 9198;
+    folders = ["/var/lib/eleakxir/leaks/"]; # Folders with parquet files
+  };
 }

@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixcord.url = "github:kaylorben/nixcord";
+    eleakxir.url = "github:anotherhadi/eleakxir";
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -175,6 +176,7 @@
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
+          inputs.eleakxir.nixosModules.eleakxir
           inputs.home-manager.nixosModules.home-manager
           # inputs.nix-bitcoin.nixosModules.default
           {
@@ -213,6 +215,7 @@
           inputs.disko.nixosModules.disko
           # inputs.nix-bitcoin.nixosModules.default
           # inputs.sops-nix.nixosModules.sops
+          inputs.eleakxir.nixosModules.eleakxir
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -250,6 +253,7 @@
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.disko.nixosModules.disko
           inputs.sops-nix.nixosModules.sops
+          inputs.eleakxir.nixosModules.eleakxir
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {

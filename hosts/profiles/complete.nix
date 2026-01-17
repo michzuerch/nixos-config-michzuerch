@@ -31,7 +31,6 @@
     ../modules/ollama.nix
     ../modules/openssh.nix
     ../modules/powermanagement.nix
-    ../modules/proton.nix
     ../modules/rust.nix
     ../modules/scanner.nix
     ../modules/security.nix

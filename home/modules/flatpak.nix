@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [inputs.nix-flatpak.homeManagerModules.nix-flatpak];
   home.packages = with pkgs; [
     flatpak
     gnome-software

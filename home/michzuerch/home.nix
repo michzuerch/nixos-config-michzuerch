@@ -4,12 +4,9 @@
   ...
 }: {
   imports = [
-    inputs.nvf.homeManagerModules.default
     inputs.nur.modules.homeManager.default
     inputs.nix-index-database.homeModules.nix-index
-    inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    inputs.plasma-manager.homeModules.plasma-manager
-    inputs.nix-doom-emacs-unstraightened.homeModule
+
     #inputs.caelestia-shell.homeManagerModules.default
     ../profiles/complete.nix
     # ../profiles/onlyplasma6.nix

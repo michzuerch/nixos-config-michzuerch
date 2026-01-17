@@ -40,12 +40,6 @@
 
     dircolors.enable = true;
 
-    nix-index = {
-      enable = true;
-      enableZshIntegration = true;
-      enableFishIntegration = false;
-    };
-
     direnv = {
       enable = true;
       silent = true;

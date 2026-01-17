@@ -22,7 +22,17 @@
           foldenable = true;
           wrap = false;
         };
-
+        mini = {
+          starter.enable = true;
+          comment.enable = true;
+          # cursorword.enable = true;
+          icons.enable = true;
+          indentscope.enable = true;
+          notify.enable = true;
+          pairs.enable = true;
+          diff.enable = true;
+          git.enable = true;
+        };
         debugMode = {
           enable = false;
           level = 16;

@@ -8,7 +8,7 @@
     ./k9s.nix
     ./lf.nix
     ./mc.nix
-    ./nix-index-comma.nix
+    ./nix-index.nix
     ./yazi.nix
   ];
 }

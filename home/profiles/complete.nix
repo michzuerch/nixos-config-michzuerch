@@ -27,6 +27,7 @@
     ../modules/obs-studio.nix
     ../modules/pgbench.nix
     ../modules/plasma.nix
+    ../modules/proton.nix
     ../modules/gtk.nix
     ../modules/quickshell.nix
     ../modules/sh.nix
@@ -42,7 +43,7 @@
     ../modules/zoxide.nix
     ../modules/zsh.nix
     ../modules/cli
-    ../modules/nvf.nix
+    ../modules/nvf
     ../modules/zathura.nix
     ../modules/browsers/firefox.nix
     ../modules/browsers/chromium.nix

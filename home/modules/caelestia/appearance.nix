@@ -21,8 +21,8 @@ in {
       };
       font.family = {
         material = "Material Symbols Rounded";
-        mono = fonts.monospace.name;
-        sans = fonts.sansSerif.name;
+        mono = "CaskaydiaCove NF";
+        sans = "Rubik";
       };
     };
     utilities = {

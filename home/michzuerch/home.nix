@@ -5,8 +5,6 @@
 }: {
   imports = [
     inputs.nur.modules.homeManager.default
-    #inputs.nix-index-database.homeModules.nix-index
-
     #inputs.caelestia-shell.homeManagerModules.default
     ../profiles/complete.nix
     # ../profiles/onlyplasma6.nix

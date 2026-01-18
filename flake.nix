@@ -105,6 +105,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-anywhere = {
+      url = "github:numtide/nixos-anywhere";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.disko.follows = "disko";
+    };
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";

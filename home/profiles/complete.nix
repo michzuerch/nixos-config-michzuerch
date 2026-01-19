@@ -4,7 +4,7 @@
     ../modules/clock-rs.nix
     ../modules/caelestia
     ../modules/dconf.nix
-    ../modules/discord.nix
+    #../modules/discord.nix
     ../modules/doom-emacs.nix
     ../modules/environment-variables.nix
     ../modules/fish.nix
@@ -29,7 +29,6 @@
     ../modules/plasma.nix
     #../modules/proton.nix
     ../modules/gtk.nix
-    ../modules/quickshell.nix
     ../modules/sh.nix
     ../modules/starship.nix
     ../modules/stylix.nix

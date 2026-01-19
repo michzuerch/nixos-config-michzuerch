@@ -4,7 +4,6 @@
   ...
 }: let
   rounding = 30 + 12 * 2;
-  inherit (config.stylix) fonts;
 in {
   home.packages = with pkgs; [
     papirus-icon-theme

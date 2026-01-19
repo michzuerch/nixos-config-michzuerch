@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     protonvpn-gui
     proton-pass
-    proton-authenticator # unfree
+    #proton-authenticator # unfree
   ];
 
   # Fix Proton Authenticator desktop entry

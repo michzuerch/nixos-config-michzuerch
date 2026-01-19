@@ -46,12 +46,11 @@
         "nomad"
         "caido"
         "discord"
-        "proton-authenticator"
         "hplip"
         "mongodb-compass"
         "burpsuite"
-        "proton-authenticator"
         "xow_dongle-firmware"
+        "proton-authenticator"
       ];
     android_sdk.accept_license = true;
     permittedInsecurePackages = ["ventoy-1.1.05" "darktable"];

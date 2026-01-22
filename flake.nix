@@ -8,10 +8,14 @@
     };
     hardware.url = "github:NixOS/nixos-hardware/master";
     nix-auth.url = "github:numtide/nix-auth";
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #hyprland = {
+    #  url = "github:hyprwm/Hyprland";
+    #  inputs.nixpkgs.follows = "nixpkgs"; #follows breaks the cache
+    #};
+    #split-monitor-workspaces = {
+    #  url = "github:Duckonaut/split-monitor-workspaces";
+    #  inputs.hyprland.follows = "hyprland";
+    #};
     nixcord.url = "github:kaylorben/nixcord";
     eleakxir.url = "github:anotherhadi/eleakxir";
     caelestia-shell = {
@@ -39,7 +43,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
-      url = "github:nix-community/fenix";
+      url = "github:nix-community/fenix/monthly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     claude-desktop = {
@@ -49,10 +53,6 @@
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
     };
     alejandra = {
       url = "github:kamadorueda/alejandra";

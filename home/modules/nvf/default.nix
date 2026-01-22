@@ -12,7 +12,6 @@
     ./snacks.nix
     ./keymaps.nix
     ./utils.nix
-    ./mini.nix
   ];
 
   programs.nvf = {

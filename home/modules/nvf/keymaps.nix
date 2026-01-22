@@ -2,11 +2,9 @@
   programs.nvf.settings.vim = {
     globals.mapleader = " ";
     binds = {
-      whichKey = {
-        enable = true;
-        # TODO: registers
-        register = {};
-      };
+      whichKey.enable = true;
+      cheatsheet.enable = true;
+      hardtime-nvim.enable = false;
     };
     keymaps = [
       # General Mappings

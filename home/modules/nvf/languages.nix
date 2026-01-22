@@ -53,6 +53,7 @@
       formatOnSave = true;
       inlayHints.enable = true;
       null-ls.enable = true;
+      nvim-docs-view.enable = true;
       servers.nixd.settings.nil.nix.autoArchive = true;
       otter-nvim = {
         enable = true;
@@ -81,14 +82,43 @@
         };
       };
     };
+    debugger = {
+      nvim-dap = {
+        enable = true;
+        ui.enable = true;
+      };
+    };
+
     languages = {
       enableDAP = true;
       enableExtraDiagnostics = true;
       enableFormat = true;
       enableTreesitter = true;
 
-      astro.enable = true;
-      go.enable = true;
+      nix = {
+        enable = true;
+        extraDiagnostics = {
+          enable = true;
+          types = [
+            "deadnix"
+            "statix"
+          ];
+        };
+        format = {
+          enable = true;
+          type = ["alejandra"];
+        };
+        lsp.enable = true;
+        treesitter.enable = true;
+      };
+      astro = {
+        enable = true;
+        format = {
+          # todo Add formatter for astro
+          enable = true;
+          type = ["prettier"];
+        };
+      };
       markdown = {
         enable = true;
         format.type = ["prettierd"];
@@ -102,13 +132,176 @@
       ts = {
         enable = true;
         extensions.ts-error-translator.enable = true;
+        extraDiagnostics = {
+          enable = true;
+          types = ["eslint_d"];
+        };
+        format = {
+          enable = true;
+          type = ["prettier"];
+        };
+        lsp = {
+          enable = true;
+          servers = ["denols"];
+        };
       };
-      css.enable = true;
-      svelte.enable = true;
-      html.enable = true;
-      bash.enable = true;
-      nix.enable = true;
-      tailwind.enable = true;
+      css = {
+        enable = true;
+        format = {
+          enable = true;
+          type = ["prettier"];
+        };
+      };
+      svelte = {
+        enable = true;
+        extraDiagnostics = {
+          enable = true;
+          types = ["eslint_d"];
+        };
+        format = {
+          enable = true;
+          type = ["prettier"];
+        };
+        lsp = {
+          enable = true;
+          servers = ["svelte"];
+        };
+      };
+      bash = {
+        enable = true;
+        extraDiagnostics = {
+          enable = true;
+          types = ["shellcheck"];
+        };
+        format = {
+          enable = true;
+          type = ["shfmt"];
+        };
+      };
+      tailwind = {
+        enable = true;
+        lsp = {
+          enable = true;
+          servers = ["tailwindcss"];
+        };
+      };
+      json = {
+        enable = true;
+        format = {
+          enable = true;
+          type = ["jsonfmt"];
+        };
+      };
+      yaml = {
+        enable = true;
+        lsp = {
+          enable = true;
+          servers = ["yaml-language-server"];
+        };
+      };
+      rust = {
+        enable = true;
+        dap = {
+          enable = true;
+          adapter = "lldb-dap";
+        };
+        extensions = {
+          crates-nvim = {
+            enable = true;
+            setupOpts = {
+              completion = {
+                crates = {
+                  enabled = true;
+                  max_results = 8;
+                  min_chars = 3;
+                  lsp = {
+                    enabled = true;
+                    completion = true;
+                    actions = true;
+                    hover = true;
+                  };
+                };
+              };
+            };
+          };
+        };
+        format = {
+          enable = true;
+          type = ["rustfmt"];
+        };
+        lsp = {
+          enable = true;
+          opts = ''
+            ['rust-analyzer'] = {
+              cargo = {allFeature = true},
+              checkOnSave = true,
+              procMacro = {
+                enable = true,
+              },
+            },
+          '';
+        };
+      };
+      lua = {
+        enable = true;
+        extraDiagnostics = {
+          enable = true;
+          types = ["luacheck"];
+        };
+        format = {
+          enable = true;
+          type = ["stylua"];
+        };
+        lsp = {
+          enable = true;
+          lazydev.enable = true;
+          servers = ["lua-language-server"];
+        };
+      };
+      html = {
+        enable = true;
+        extraDiagnostics = {
+          enable = true;
+          types = ["htmlhint"];
+        };
+        format = {
+          enable = true;
+          type = ["superhtml"];
+        };
+        lsp = {
+          enable = true;
+          servers = ["emmet-ls"];
+        };
+        treesitter = {
+          enable = true;
+          autotagHtml = true;
+        };
+      };
+      go = {
+        enable = true;
+        dap.enable = true;
+        format = {
+          enable = true;
+          type = ["gofmt"];
+        };
+        lsp.enable = true;
+        treesitter.enable = true;
+      };
+      sql = {
+        enable = true;
+        extraDiagnostics = {
+          enable = true;
+          types = ["sqlfluff"];
+        };
+        format = {
+          enable = true;
+          type = ["sqlfluff"];
+        };
+        lsp = {
+          enable = true;
+          servers = ["sqls"];
+        };
+      };
     };
     formatter = {
       conform-nvim = {

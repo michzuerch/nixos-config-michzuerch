@@ -1,9 +1,5 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  rounding = 30 + 12 * 2;
+{pkgs, ...}: let
+  rounding = 10 + 12 * 2;
 in {
   home.packages = with pkgs; [
     papirus-icon-theme

@@ -1,8 +1,9 @@
-{lib, ...}: {
+_: {
   programs.nvf.settings.vim = {
     viAlias = false;
     vimAlias = true;
     withNodeJs = true;
+    searchCase = "smart";
     # syntaxHighlighting = true;
     options = {
       autoindent = true;
@@ -30,11 +31,16 @@
       registers = "unnamedplus";
       providers.wl-copy.enable = true;
     };
-    theme = {
+    debugMode = {
+      enable = false;
+      level = 16;
+      logFile = "/tmp/nvim.log";
+    };
+    spellcheck = {
       enable = true;
-      name = lib.mkForce "catppuccin";
-      style = lib.mkForce "mocha";
-      transparent = lib.mkForce true;
+      languages = ["en"];
+      programmingWordlist.enable = true;
+      vim-dirtytalk.enable = true;
     };
   };
 }

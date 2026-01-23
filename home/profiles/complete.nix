@@ -44,11 +44,7 @@
     ../modules/cli
     ../modules/nvf
     ../modules/zathura.nix
-    ../modules/browsers/firefox.nix
-    ../modules/browsers/chromium.nix
-    ../modules/browsers/brave.nix
-    ../modules/browsers/librewolf.nix
-    ../modules/browsers/zen.nix
+    ../modules/browsers
     ../modules/hyprland
     ../modules/niri/niri.nix
   ];

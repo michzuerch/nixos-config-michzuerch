@@ -87,6 +87,16 @@ in {
       useTwelveHourClock = false;
       weatherLocation = lib.mkDefault "Konstanz";
     };
+    cli = {
+      enable = true;
+      settings = {
+        theme = {
+          enableTerm = false;
+          enableBtop = false;
+          enableGtk = false;
+        };
+      };
+    };
 
     paths.wallpaperDir = "~/wallpapers";
   };

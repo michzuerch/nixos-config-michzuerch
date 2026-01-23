@@ -24,15 +24,22 @@
             symlinks = "false";
             askPass = ""; # needs to be empty to use terminal for ask pass
           };
-          credential.helper = "libsecret"; # want to make this more secure
+          #credential.helper = "libsecret"; # want to make this more secure
+          credential.helper = "${pkgs.git.override {withLibsecret = true;}}/bin/git-credential-libsecret";
           github.user = "michzuerch";
           pull.rebase = true;
-          push.default = "tracking";
+          push = {
+            default = "tracking";
+            autoSetupRemote = true;
+          };
         };
         aliases = {
           cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
           prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
           root = "rev-parse --show-toplevel";
+          ci = "commit";
+          co = "checkout";
+          s = "status";
         };
       };
       ignores = [
@@ -50,6 +57,10 @@
         "result-*"
       ];
       lfs.enable = true;
+    };
+    gitui = {
+      enable = true;
+      package = pkgs.gitui;
     };
     lazygit = {
       enable = true;
@@ -79,5 +90,11 @@
       };
     };
   };
+  #services = {
+  #  git-sync = {
+  #    enable = true;
+  #    package = pkgs.git-sync;
+  #  };
+  #};
   home.packages = with pkgs; [act github-desktop github-runner];
 }

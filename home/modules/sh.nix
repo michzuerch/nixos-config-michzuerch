@@ -36,8 +36,6 @@
       enableFishIntegration = true;
     };
 
-    gitui.enable = false;
-
     dircolors.enable = true;
 
     direnv = {

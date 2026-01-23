@@ -1,14 +1,25 @@
 {
   imports = [
     ./atiun.nix
+    ./bash.nix
+    ./bat.nix
     ./btop.nix
+    ./broot.nix
+    ./delta.nix
+    ./direnv.nix
+    ./eza.nix
     ./f3.nix
     ./fastfetch.nix
+    ./fd.nix
+    ./fzf.nix
     ./git.nix
     ./k9s.nix
+    ./jq.nix
     ./lf.nix
     ./mc.nix
     ./nix-index.nix
+    ./pandoc.nix
     ./yazi.nix
+    ./tealdeer.nix
   ];
 }

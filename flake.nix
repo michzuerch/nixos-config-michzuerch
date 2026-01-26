@@ -238,6 +238,84 @@
         ];
       };
 
+      HP15s = lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./hosts/HP15s/configuration.nix
+          ./hosts/profiles/complete.nix
+          inputs.stylix.nixosModules.stylix
+          inputs.nvf.nixosModules.default
+          inputs.nix-index-database.nixosModules.nix-index
+          inputs.nur.modules.nixos.default
+          inputs.nixos-cosmic.nixosModules.default
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+          inputs.disko.nixosModules.disko
+          # inputs.nix-bitcoin.nixosModules.default
+          # inputs.sops-nix.nixosModules.sops
+          inputs.eleakxir.nixosModules.eleakxir
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              backupFileExtension = "bkp";
+              users = {
+                michzuerch = {
+                  imports = [
+                    ./home/michzuerch/home.nix
+                  ];
+                };
+              };
+            };
+          }
+        ];
+      };
+
+      Ideapad5 = lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./hosts/Ideapad5/configuration.nix
+          ./hosts/profiles/complete.nix
+          inputs.stylix.nixosModules.stylix
+          inputs.nvf.nixosModules.default
+          inputs.nix-index-database.nixosModules.nix-index
+          inputs.nur.modules.nixos.default
+          inputs.nixos-cosmic.nixosModules.default
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+          inputs.disko.nixosModules.disko
+          # inputs.nix-bitcoin.nixosModules.default
+          # inputs.sops-nix.nixosModules.sops
+          inputs.eleakxir.nixosModules.eleakxir
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              backupFileExtension = "bkp";
+              users = {
+                michzuerch = {
+                  imports = [
+                    ./home/michzuerch/home.nix
+                  ];
+                };
+              };
+            };
+          }
+        ];
+      };
+
       VM = lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {

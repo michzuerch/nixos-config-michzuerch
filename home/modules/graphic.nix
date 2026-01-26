@@ -9,7 +9,7 @@
     pinta
     hypnotix
     krita
-    #scribus
+    scribus
     imagemagick
   ];
 }

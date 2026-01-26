@@ -4,7 +4,7 @@
     jellyfin-ffmpeg
     # handbrake
     kodi-wayland
-    kdePackages.kdenlive
+    # kdePackages.kdenlive
     losslesscut-bin
     qmediathekview
     mpv

@@ -42,7 +42,8 @@
     ../modules/zoxide.nix
     ../modules/zsh.nix
     ../modules/cli
-    ../modules/nvf
+    #../modules/nvf
+    #../modules/nvf
     ../modules/zathura.nix
     ../modules/browsers
     ../modules/hyprland

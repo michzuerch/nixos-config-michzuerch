@@ -2,7 +2,6 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       #"waybar"
-      "caelestia-shell"
       "systemctl --user start hyprpolkitagent"
       #"pypr --debug /tmp/pypr.log"
       "swaync"

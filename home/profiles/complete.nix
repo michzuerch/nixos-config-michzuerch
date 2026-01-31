@@ -2,7 +2,8 @@
   imports = [
     ../modules/alacritty.nix
     ../modules/clock-rs.nix
-    ../modules/caelestia
+    #../modules/caelestia
+    ../modules/noctalia.nix
     ../modules/dconf.nix
     #../modules/discord.nix
     ../modules/doom-emacs.nix
@@ -43,6 +44,7 @@
     ../modules/zsh.nix
     ../modules/cli
     ../modules/nvf
+    #../modules/nixvim.nix
     ../modules/zathura.nix
     ../modules/browsers
     ../modules/hyprland

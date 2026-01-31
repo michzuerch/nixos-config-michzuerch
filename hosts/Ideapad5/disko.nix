@@ -2,7 +2,7 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/disk/by-id/ata-SanDisk_SD8SN8U-512G-1006_162686420836";
+        device = "/dev/disk/by-id/ata-SD8SN8U-512G-1006_162686420836";
         type = "disk";
         content = {
           type = "gpt";

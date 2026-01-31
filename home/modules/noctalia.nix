@@ -2,7 +2,17 @@
   imports = [
     inputs.noctalia.homeModules.default
   ];
+  wayland.windowManager.hyprland.settings = {
+    "$mainMod" = "SUPER";
 
+    bind = [
+      "$mainMod,       D, exec, noctalia-shell ipc call launcher toggle"
+    ];
+
+    exec-once = [
+      "noctalia-shell"
+    ];
+  };
   # configure options
   programs.noctalia-shell = {
     enable = true;

@@ -9,6 +9,7 @@
     inputs.caelestia-shell.homeManagerModules.default
     ./bindings.nix
     ./bar.nix
+    ./exec.nix
     ./launcher.nix
     ./appearance.nix
     ./scheme.nix

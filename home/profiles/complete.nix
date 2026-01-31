@@ -43,8 +43,8 @@
     ../modules/zoxide.nix
     ../modules/zsh.nix
     ../modules/cli
-    #../modules/nvf
-    ../modules/nixvim.nix
+    ../modules/nvf
+    #../modules/nixvim.nix
     ../modules/zathura.nix
     ../modules/browsers
     ../modules/hyprland

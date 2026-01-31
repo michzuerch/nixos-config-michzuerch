@@ -40,6 +40,7 @@
     ../modules/stirling-pdf.nix
     ../modules/time.nix
     ../modules/virtualisation.nix
+    ../modules/ventoy.nix
     ../modules/xdg.nix
     ../modules/zram.nix
     ../modules/zsh.nix

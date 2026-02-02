@@ -51,8 +51,9 @@
         "burpsuite"
         "xow_dongle-firmware"
         "proton-authenticator"
+        "ventoy"
       ];
     android_sdk.accept_license = true;
-    permittedInsecurePackages = ["ventoy-1.1.05" "darktable"];
+    permittedInsecurePackages = ["ventoy-1.1.10" "darktable"];
   };
 }

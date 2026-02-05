@@ -49,7 +49,7 @@
         "hplip"
         "mongodb-compass"
         "burpsuite"
-        "xow_dongle-firmware"
+        "xone-dongle-firmware"
         "proton-authenticator"
         "ventoy"
       ];

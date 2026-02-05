@@ -18,6 +18,8 @@
     alacritty
     alejandra
     cryptsetup
+    chntpw
+
     disko
     fastfetch
     fzf

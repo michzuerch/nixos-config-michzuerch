@@ -24,6 +24,7 @@
     };
     spiceUSBRedirection.enable = true;
     waydroid.enable = true;
+    virtualbox.host.enable = true;
   };
 
   users.extraGroups = {

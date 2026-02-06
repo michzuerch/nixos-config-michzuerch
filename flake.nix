@@ -331,7 +331,7 @@
         };
         modules = [
           ./hosts/VM/configuration.nix
-          ./hosts/profiles/complete.nix
+          ./hosts/profiles/minimal-hyprland.nix
           inputs.stylix.nixosModules.stylix
           inputs.nvf.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
@@ -353,7 +353,7 @@
               users = {
                 michzuerch = {
                   imports = [
-                    ./home/michzuerch/home.nix
+                    ./home/michzuerch-minimal/home.nix
                   ];
                 };
               };

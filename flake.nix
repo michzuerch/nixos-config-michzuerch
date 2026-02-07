@@ -369,6 +369,34 @@
         };
         modules = [
           ./hosts/installer/configuration.nix
+          ./hosts/profiles/installer.nix
+          inputs.stylix.nixosModules.stylix
+          inputs.nvf.nixosModules.default
+          inputs.nix-index-database.nixosModules.nix-index
+          inputs.nur.modules.nixos.default
+          inputs.nixos-cosmic.nixosModules.default
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+          inputs.disko.nixosModules.disko
+          inputs.sops-nix.nixosModules.sops
+          inputs.eleakxir.nixosModules.eleakxir
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit outputs inputs;
+              };
+              backupFileExtension = "backup";
+              users = {
+                michzuerch = {
+                  imports = [
+                    ./home/michzuerch-minimal/home.nix
+                  ];
+                };
+              };
+            };
+          }
         ];
       };
     };

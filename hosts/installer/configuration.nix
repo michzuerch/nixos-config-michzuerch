@@ -6,6 +6,8 @@
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+    ./users.nix
+    ./local-packages.nix
   ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;

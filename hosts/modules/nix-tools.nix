@@ -3,5 +3,6 @@
     alejandra
     deadnix
     statix
+    nix-inspect
   ];
 }

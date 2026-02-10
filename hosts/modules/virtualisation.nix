@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   virtualisation = {
     podman = {
       enable = true;
@@ -24,17 +25,13 @@
     };
     spiceUSBRedirection.enable = true;
     waydroid.enable = true;
-<<<<<<< HEAD
-    virtualbox.host.enable = true;
-=======
     virtualbox.host.enable = false;
->>>>>>> development
   };
 
   users.extraGroups = {
-    vboxusers.members = ["michzuerch"];
-    kvm.members = ["michzuerch"];
-    libvirtd.members = ["michzuerch"];
+    vboxusers.members = [ "michzuerch" ];
+    kvm.members = [ "michzuerch" ];
+    libvirtd.members = [ "michzuerch" ];
   };
 
   environment.systemPackages = with pkgs; [

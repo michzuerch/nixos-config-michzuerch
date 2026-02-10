@@ -5,10 +5,9 @@
   ...
 }: {
   imports = [
-    # "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
-    # "${modulesPath}/installer/cd-dvd/installation-cd-minimal-new-kernel.nix"
-    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-combined.nix"
-    "${modulesPath}/installer/cd-dvd/channel.nix"
+    "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+    ./users.nix
+    ./local-packages.nix
   ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -18,6 +17,8 @@
     alacritty
     alejandra
     cryptsetup
+    chntpw
+
     disko
     fastfetch
     fzf

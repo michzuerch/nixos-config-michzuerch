@@ -5,14 +5,11 @@
     ../modules/bluetooth.nix
     ../modules/console.nix
     ../modules/displaymanager.nix
-    ../modules/distrobox.nix
     ../modules/environment-variables.nix
     ../modules/firewall.nix
     ../modules/fonts.nix
     ../modules/fwupd.nix
     ../modules/gc.nix
-    ../modules/graphics.nix
-    ../modules/hacking.nix
     ../modules/i18n.nix
     ../modules/kernel.nix
     ../modules/networking.nix
@@ -21,7 +18,6 @@
     ../modules/nix-settings.nix
     ../modules/nix-tools.nix
     ../modules/nix-auth.nix
-    ../modules/openssh.nix
     ../modules/powermanagement.nix
     ../modules/security.nix
     ../modules/systemtools.nix

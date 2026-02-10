@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   virtualisation = {
     podman = {
       enable = true;
@@ -29,9 +28,9 @@
   };
 
   users.extraGroups = {
-    vboxusers.members = [ "michzuerch" ];
-    kvm.members = [ "michzuerch" ];
-    libvirtd.members = [ "michzuerch" ];
+    vboxusers.members = ["michzuerch"];
+    kvm.members = ["michzuerch"];
+    libvirtd.members = ["michzuerch"];
   };
 
   environment.systemPackages = with pkgs; [

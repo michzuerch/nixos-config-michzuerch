@@ -14,36 +14,25 @@
   boot.supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" "bcachefs"];
 
   environment.systemPackages = with pkgs; [
-    alacritty
     alejandra
     cryptsetup
-    chntpw
-
     disko
     fastfetch
-    fzf
     jql
     pciutils
     parted
     gtop
     neovim
-    yazi
     gh
     bat
     ripgrep
-    vscodium
+    #vscodium
     tmux
     tree
     nano
     sbctl
     rsync
   ];
-
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-    useXkbConfig = false;
-  };
 
   programs = {
     zsh.enable = true;

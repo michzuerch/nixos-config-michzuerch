@@ -13,12 +13,12 @@
     homeDirectory = "/home/michzuerch";
     stateVersion = "26.05";
     enableNixpkgsReleaseCheck = false;
-    packages = with pkgs; [
-      nautilus
-      kdePackages.dolphin
-      kdePackages.dolphin-plugins
-      lxappearance
-      showmethekey
-    ];
+    # packages = with pkgs; [
+    #   nautilus
+    #   kdePackages.dolphin
+    #   kdePackages.dolphin-plugins
+    #   lxappearance
+    #   showmethekey
+    # ];
   };
 }

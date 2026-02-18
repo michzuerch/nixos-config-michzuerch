@@ -3,11 +3,9 @@
     ../modules/stylix.nix
     ../modules/audio.nix
     ../modules/bluetooth.nix
-    ../modules/console.nix
     ../modules/displaymanager.nix
     ../modules/environment-variables.nix
-    ../modules/firewall.nix
-    ../modules/fonts.nix
+    ../modules/fonts-minimal.nix
     ../modules/fwupd.nix
     ../modules/gc.nix
     ../modules/i18n.nix
@@ -23,7 +21,6 @@
     ../modules/systemtools.nix
     ../modules/system-monitoring.nix
     ../modules/time.nix
-    ../modules/virtualisation.nix
     ../modules/xdg.nix
     ../modules/zram.nix
     ../modules/zsh.nix

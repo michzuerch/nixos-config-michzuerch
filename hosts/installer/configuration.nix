@@ -64,7 +64,7 @@
   image.fileName = lib.mkForce "nixos-live-michzuerch.iso";
   isoImage.squashfsCompression = "zstd -Xcompression-level 6";
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
 
   nixpkgs = {
     config.pulseaudio = true;

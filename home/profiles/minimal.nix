@@ -7,7 +7,6 @@
     ../modules/environment-variables.nix
     ../modules/nixpkgs.nix
     ../modules/gtk.nix
-    ../modules/graphic.nix
     ../modules/mime.nix
     ../modules/multimedia.nix
     ../modules/gtk.nix
@@ -18,12 +17,19 @@
     ../modules/udiskie.nix
     ../modules/vscodium.nix
     ../modules/wallpapers.nix
-    ../modules/zoxide.nix
     ../modules/zsh.nix
-    ../modules/cli
+    ../modules/cli/atiun.nix
+    ../modules/cli/bash.nix
+    ../modules/cli/bat.nix
+    ../modules/cli/btop.nix
+    ../modules/cli/dircolors.nix
+    ../modules/cli/direnv.nix
+    ../modules/cli/fastfetch.nix
+    ../modules/cli/git.nix
+    ../modules/cli/fzf.nix
     ../modules/nvf
     #../modules/nixvim.nix
-    ../modules/browsers
+    ../modules/browsers/firefox.nix
     ../modules/hyprland
   ];
 }

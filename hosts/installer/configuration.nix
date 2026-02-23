@@ -14,36 +14,25 @@
   boot.supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" "bcachefs"];
 
   environment.systemPackages = with pkgs; [
-    alacritty
     alejandra
     cryptsetup
-    chntpw
-
     disko
     fastfetch
-    fzf
     jql
     pciutils
     parted
     gtop
     neovim
-    yazi
     gh
     bat
     ripgrep
-    vscodium
+    #vscodium
     tmux
     tree
     nano
     sbctl
     rsync
   ];
-
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-    useXkbConfig = false;
-  };
 
   programs = {
     zsh.enable = true;
@@ -75,7 +64,7 @@
   image.fileName = lib.mkForce "nixos-live-michzuerch.iso";
   isoImage.squashfsCompression = "zstd -Xcompression-level 6";
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
 
   nixpkgs = {
     config.pulseaudio = true;

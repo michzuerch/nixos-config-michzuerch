@@ -1,0 +1,926 @@
+#!/usr/bin/env bash
+# Check if arion docker images have newer versions available
+#
+# Usage: nix run .#check-arion-images -- [options]
+#        Or run directly if jq and curl are in PATH
+#
+# Options:
+#   --write         Write updated versions to JSON files (excludes infrastructure images)
+#   -v|--verbose    Show verbose output
+#   --image <ref>   Check a single image without evaluating nixos config
+#   --docker-auth   Use credentials from ~/.local/share/containers/auth.json for Docker Hub
+set -euo pipefail
+
+# Parse arguments
+WRITE_MODE=false
+VERBOSE=false
+SINGLE_IMAGE=""
+USE_DOCKER_AUTH=false
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --write)
+            WRITE_MODE=true
+            shift
+            ;;
+        -v|--verbose)
+            VERBOSE=true
+            shift
+            ;;
+        --image)
+            SINGLE_IMAGE="$2"
+            shift 2
+            ;;
+        --docker-auth)
+            USE_DOCKER_AUTH=true
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            echo "Usage: $0 [--write] [-v|--verbose] [--image <image>] [--docker-auth]"
+            exit 1
+            ;;
+    esac
+done
+
+verbose() {
+    if [[ "$VERBOSE" == "true" ]]; then
+        echo "$@" >&2
+    fi
+}
+
+# Infrastructure images that don't need frequent updates
+# These will be reported in a separate section
+INFRA_IMAGES=(
+    "meilisearch"
+    "postgres"
+    "redis"
+    "mariadb"
+    "mysql"
+    "mongo"
+    "elasticsearch"
+    "memcached"
+    "rabbitmq"
+    "valkey"
+    "sonic"
+)
+
+# Check for required commands
+for cmd in jq curl; do
+    if ! command -v "$cmd" &> /dev/null; then
+        echo "Error: $cmd is required but not found in PATH"
+        echo "Run with: nix shell nixpkgs#jq nixpkgs#curl -c $0"
+        exit 1
+    fi
+done
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Determine the repo root
+# When running from nix store, use current working directory
+# When running standalone (e.g., ./scripts/check-arion-images.sh), derive from script location
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ "$SCRIPT_DIR" == /nix/store/* ]]; then
+    REPO_ROOT="$(pwd)"
+else
+    REPO_ROOT="$(dirname "$SCRIPT_DIR")"
+fi
+
+cd "$REPO_ROOT"
+
+# Skip nix evaluation if checking a single image
+if [[ -z "$SINGLE_IMAGE" ]]; then
+    echo "Extracting arion images from all nixosConfigurations..."
+
+    # Nix expression to extract all images from arion projects
+    read -r -d '' NIX_EXPR << 'EOF' || true
+let
+  flake = builtins.getFlake (toString ./.);
+  lib = flake.inputs.nixpkgs.lib;
+
+  # Extract images from a single nixosConfiguration
+  extractImages = name: config:
+    let
+      arionProjects = config.config.virtualisation.arion.projects or {};
+      projectImages = lib.mapAttrsToList (projName: proj:
+        let
+          services = proj.settings.services or {};
+          serviceImages = lib.mapAttrsToList (svcName: svc:
+            let
+              image = svc.service.image or null;
+            in
+            if image != null then [{
+              inherit name image;
+              project = projName;
+              service = svcName;
+            }] else []
+          ) services;
+        in
+        lib.flatten serviceImages
+      ) arionProjects;
+    in
+    lib.flatten projectImages;
+
+  # Extract from all configurations
+  allImages = lib.mapAttrsToList extractImages flake.nixosConfigurations;
+in
+lib.flatten allImages
+EOF
+
+    # Get all images as JSON
+    IMAGES_JSON=$(nix eval --json --impure --expr "$NIX_EXPR" 2>/dev/null || echo "[]")
+
+    if [[ "$IMAGES_JSON" == "[]" ]]; then
+        echo "No arion images found or evaluation failed."
+        exit 0
+    fi
+fi
+
+# Parse image reference into components
+# Format: [registry/]repository[:tag|@digest]
+parse_image() {
+    local image="$1"
+    local registry="" repo="" tag=""
+
+    # Remove digest if present (we only care about tags)
+    image="${image%%@*}"
+
+    # Extract tag
+    if [[ "$image" == *:* ]]; then
+        tag="${image##*:}"
+        image="${image%:*}"
+    else
+        tag="latest"
+    fi
+
+    # Determine registry and repo
+    # If the first component contains a dot or colon, it's a registry
+    local first_part="${image%%/*}"
+    if [[ "$first_part" == *"."* ]] || [[ "$first_part" == *":"* ]] || [[ "$first_part" == "localhost" ]]; then
+        registry="$first_part"
+        repo="${image#*/}"
+    else
+        # Docker Hub
+        registry="docker.io"
+        # Handle library images (single name like "redis", "postgres")
+        if [[ "$image" != */* ]]; then
+            repo="library/$image"
+        else
+            repo="$image"
+        fi
+    fi
+
+    echo "$registry|$repo|$tag"
+}
+
+# Get credentials from containers auth.json
+get_registry_auth() {
+    local registry="$1"
+    local auth_file="${HOME}/.local/share/containers/auth.json"
+
+    if [[ ! -f "$auth_file" ]]; then
+        return
+    fi
+
+    # Try different key formats used for Docker Hub
+    local auth=""
+    case "$registry" in
+        docker.io)
+            auth=$(jq -r '.auths["docker.io"].auth // .auths["https://index.docker.io/v1/"].auth // .auths["registry-1.docker.io"].auth // empty' "$auth_file" 2>/dev/null)
+            ;;
+        *)
+            auth=$(jq -r --arg reg "$registry" '.auths[$reg].auth // empty' "$auth_file" 2>/dev/null)
+            ;;
+    esac
+
+    if [[ -n "$auth" ]]; then
+        echo "$auth" | base64 -d
+    fi
+}
+
+# Fetch all tags from a Docker Registry V2 API endpoint with pagination
+# Args: base_url auth_header (optional)
+fetch_tags_paginated() {
+    local base_url="$1"
+    local auth_header="${2:-}"
+
+    local url="${base_url}?n=1000"
+    local all_tags=""
+
+    while [[ -n "$url" ]]; do
+        local response headers body
+        if [[ -n "$auth_header" ]]; then
+            response=$(curl -sS -D - -H "$auth_header" "$url" 2>/dev/null)
+        else
+            response=$(curl -sS -D - "$url" 2>/dev/null)
+        fi
+
+        # Split headers and body (separated by blank line)
+        headers=$(echo "$response" | sed -n '1,/^\r*$/p')
+        body=$(echo "$response" | sed '1,/^\r*$/d')
+
+        # Extract tags from body
+        local tags
+        tags=$(echo "$body" | jq -r '.tags[]?' 2>/dev/null)
+        if [[ -n "$tags" ]]; then
+            if [[ -n "$all_tags" ]]; then
+                all_tags="${all_tags}"$'\n'"${tags}"
+            else
+                all_tags="$tags"
+            fi
+        fi
+
+        # Check for Link header with next page
+        local link_header
+        link_header=$(echo "$headers" | grep -i '^link:' | head -1)
+
+        if [[ -n "$link_header" && "$link_header" == *"rel=\"next\""* ]]; then
+            # Extract path from Link header: </v2/repo/tags/list?...>; rel="next"
+            local next_path
+            next_path=$(echo "$link_header" | sed -n 's/.*<\([^>]*\)>.*/\1/p')
+            if [[ -n "$next_path" ]]; then
+                # Extract host from base_url and combine with path
+                local host
+                host=$(echo "$base_url" | sed -n 's|\(https://[^/]*\).*|\1|p')
+                url="${host}${next_path}"
+            else
+                url=""
+            fi
+        else
+            url=""
+        fi
+    done
+
+    echo "$all_tags"
+}
+
+# Get auth token for Docker Hub
+get_dockerhub_token() {
+    local repo="$1"
+
+    if [[ "$USE_DOCKER_AUTH" == "true" ]]; then
+        local creds
+        creds=$(get_registry_auth "docker.io")
+        if [[ -n "$creds" ]]; then
+            verbose "  Using Docker Hub credentials from auth.json"
+            curl -s -u "$creds" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:$repo:pull" | jq -r '.token'
+            return
+        fi
+    fi
+
+    curl -s "https://auth.docker.io/token?service=registry.docker.io&scope=repository:$repo:pull" | jq -r '.token'
+}
+
+# Get tags from Docker Hub
+get_dockerhub_tags() {
+    local repo="$1"
+    local token
+    token=$(get_dockerhub_token "$repo")
+    fetch_tags_paginated "https://registry-1.docker.io/v2/$repo/tags/list" "Authorization: Bearer $token"
+}
+
+# Get auth token for GHCR
+get_ghcr_token() {
+    local repo="$1"
+    curl -s "https://ghcr.io/token?scope=repository:$repo:pull" | jq -r '.token' 2>/dev/null || echo ""
+}
+
+# Get tags from GHCR (GitHub Container Registry)
+get_ghcr_tags() {
+    local repo="$1"
+    local token
+    token=$(get_ghcr_token "$repo")
+
+    local auth_header=""
+    if [[ -n "$token" && "$token" != "null" ]]; then
+        auth_header="Authorization: Bearer $token"
+    fi
+
+    fetch_tags_paginated "https://ghcr.io/v2/$repo/tags/list" "$auth_header"
+}
+
+# Get tags from GCR (Google Container Registry)
+get_gcr_tags() {
+    local repo="$1"
+    fetch_tags_paginated "https://gcr.io/v2/$repo/tags/list"
+}
+
+# Get tags from LinuxServer.io registry (backed by GHCR)
+get_lscr_tags() {
+    local repo="$1"
+    # LSCR is backed by GHCR, so use GHCR token and API
+    get_ghcr_tags "$repo"
+}
+
+# Get tags from any OCI registry
+get_generic_tags() {
+    local registry="$1"
+    local repo="$2"
+    fetch_tags_paginated "https://$registry/v2/$repo/tags/list"
+}
+
+# =============================================================================
+# Forge integration for registries that need release API instead of tag listing
+# =============================================================================
+
+# Registry to forge mapping
+# Format: "registry|forge_type|forge_url"
+# - registry: exact registry hostname to match
+# - forge_type: github, gitea, forgejo
+# - forge_url: forge host and repo path, can use {repo} or {image} placeholders
+#   - {repo} = full image repo (e.g., linuxserver/qbittorrent)
+#   - {image} = image name only (e.g., qbittorrent)
+REGISTRY_FORGE_MAP=(
+    "lscr.io|github|github.com/linuxserver/docker-{image}"
+    "gitea.baerentsen.space|gitea|gitea.baerentsen.space/{repo}"
+)
+
+# Get latest release from Gitea/Forgejo forge
+# Args: forge_url (host/owner/repo)
+forge_gitea_latest() {
+    local forge_url="$1"
+    local host="${forge_url%%/*}"
+    local repo="${forge_url#*/}"
+    local release_json
+    release_json=$(curl -s "https://$host/api/v1/repos/$repo/releases/latest" 2>/dev/null)
+    if [[ -n "$release_json" ]]; then
+        echo "$release_json" | jq -r '.tag_name // empty' 2>/dev/null || echo ""
+    fi
+}
+
+# Get latest release from GitHub
+# Args: forge_url (github.com/owner/repo)
+forge_github_latest() {
+    local forge_url="$1"
+    local repo="${forge_url#github.com/}"
+    local release_json
+    release_json=$(curl -s "https://api.github.com/repos/$repo/releases/latest" 2>/dev/null)
+    if [[ -n "$release_json" ]]; then
+        echo "$release_json" | jq -r '.tag_name // empty' 2>/dev/null || echo ""
+    fi
+}
+
+# Get latest release from forge for a registry/repo
+# Args: registry repo
+# Returns: latest release tag or empty
+get_forge_latest() {
+    local registry="$1"
+    local repo="$2"
+    local image="${repo##*/}"
+
+    for mapping in "${REGISTRY_FORGE_MAP[@]}"; do
+        local map_registry forge_type forge_url_template
+        IFS='|' read -r map_registry forge_type forge_url_template <<< "$mapping"
+
+        if [[ "$registry" == "$map_registry" ]]; then
+            # Expand placeholders in forge_url
+            local forge_url="$forge_url_template"
+            forge_url="${forge_url//\{repo\}/$repo}"
+            forge_url="${forge_url//\{image\}/$image}"
+
+            verbose "  Forge lookup: $registry -> $forge_type @ $forge_url"
+
+            case "$forge_type" in
+                github)
+                    forge_github_latest "$forge_url"
+                    ;;
+                gitea|forgejo)
+                    forge_gitea_latest "$forge_url"
+                    ;;
+                *)
+                    verbose "  Unknown forge type: $forge_type"
+                    return 1
+                    ;;
+            esac
+            return
+        fi
+    done
+    return 1
+}
+
+# Check if an image name matches an infrastructure pattern
+is_infra_image() {
+    local repo="$1"
+    local image_basename="${repo##*/}"  # Get the last component of the path
+    image_basename="${image_basename%%:*}"  # Remove any tag
+
+    for pattern in "${INFRA_IMAGES[@]}"; do
+        if [[ "$image_basename" == "$pattern" ]] || [[ "$image_basename" == *"$pattern"* ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+# Find JSON file for a project
+find_json_file() {
+    local project="$1"
+    local json_file
+    json_file=$(find "$REPO_ROOT/modules" -name "${project}.json" -type f 2>/dev/null | head -1)
+    echo "$json_file"
+}
+
+# Update a service tag in a JSON file
+update_json_tag() {
+    local json_file="$1"
+    local service="$2"
+    local new_tag="$3"
+
+    if [[ ! -f "$json_file" ]]; then
+        echo "Warning: JSON file not found: $json_file" >&2
+        return 1
+    fi
+
+    # Update the JSON file using jq
+    local tmp_file
+    tmp_file=$(mktemp)
+    if jq --arg service "$service" --arg tag "$new_tag" '.[$service] = $tag' "$json_file" > "$tmp_file"; then
+        mv "$tmp_file" "$json_file"
+        return 0
+    else
+        rm -f "$tmp_file"
+        return 1
+    fi
+}
+
+# Associative array to collect updates for JSON files
+declare -A json_updates
+
+# Get all tags for an image
+get_tags() {
+    local registry="$1"
+    local repo="$2"
+
+    case "$registry" in
+        docker.io)
+            get_dockerhub_tags "$repo"
+            ;;
+        ghcr.io)
+            get_ghcr_tags "$repo"
+            ;;
+        gcr.io)
+            get_gcr_tags "$repo"
+            ;;
+        lscr.io)
+            get_lscr_tags "$repo"
+            ;;
+        *)
+            get_generic_tags "$registry" "$repo"
+            ;;
+    esac
+}
+
+# Compare version strings (semver-like)
+# Returns: -1 if v1 < v2, 0 if v1 == v2, 1 if v1 > v2
+compare_versions() {
+    local v1="$1"
+    local v2="$2"
+
+    # Strip leading 'v' if present
+    v1="${v1#v}"
+    v2="${v2#v}"
+
+    # Use sort -V for version comparison
+    if [[ "$v1" == "$v2" ]]; then
+        echo 0
+    elif [[ "$(printf '%s\n%s' "$v1" "$v2" | sort -V | head -n1)" == "$v1" ]]; then
+        echo -1
+    else
+        echo 1
+    fi
+}
+
+# Check if a tag looks like a version (not latest, not a hash, etc.)
+is_version_tag() {
+    local tag="$1"
+    # Match patterns like: 1.2.3, v1.2.3, 1.2, v1.2, 0.29.1, 2.3.6, etc.
+    # Also match variants like 16-alpine, v0.5.8
+    [[ "$tag" =~ ^v?[0-9]+(\.[0-9]+)*(-[a-zA-Z0-9]+)?$ ]]
+}
+
+# Extract the base version pattern from a tag
+# e.g., "16-alpine" -> version prefix "16", suffix "-alpine"
+get_version_pattern() {
+    local tag="$1"
+    local version_part suffix_part
+
+    # Strip leading v
+    tag="${tag#v}"
+
+    # Split on first dash after version numbers
+    if [[ "$tag" =~ ^([0-9]+(\.[0-9]+)*)(-.+)?$ ]]; then
+        version_part="${BASH_REMATCH[1]}"
+        suffix_part="${BASH_REMATCH[3]:-}"
+        echo "$version_part|$suffix_part"
+    else
+        echo "$tag|"
+    fi
+}
+
+# Find the latest version among tags that match a pattern
+find_latest_matching() {
+    local current_tag="$1"
+    shift
+    local tags=("$@")
+
+    local current_pattern
+    current_pattern=$(get_version_pattern "$current_tag")
+    local current_version="${current_pattern%%|*}"
+    local current_suffix="${current_pattern#*|}"
+
+    local latest_version="$current_version"
+    local latest_tag="$current_tag"
+    local had_v_prefix=""
+    [[ "$current_tag" == v* ]] && had_v_prefix="v"
+
+    for tag in "${tags[@]}"; do
+        # Skip non-version tags
+        if ! is_version_tag "$tag"; then
+            continue
+        fi
+
+        local tag_pattern
+        tag_pattern=$(get_version_pattern "$tag")
+        local tag_version="${tag_pattern%%|*}"
+        local tag_suffix="${tag_pattern#*|}"
+
+        # Only compare tags with the same suffix pattern
+        if [[ "$tag_suffix" != "$current_suffix" ]]; then
+            continue
+        fi
+
+        # Check if tag has v prefix
+        local tag_had_v=""
+        [[ "$tag" == v* ]] && tag_had_v="v"
+
+        # Only compare if v-prefix matches
+        if [[ "$had_v_prefix" != "$tag_had_v" ]]; then
+            continue
+        fi
+
+        local cmp
+        cmp=$(compare_versions "$tag_version" "$latest_version")
+        if [[ "$cmp" -gt 0 ]]; then
+            latest_version="$tag_version"
+            latest_tag="$tag"
+        fi
+    done
+
+    echo "$latest_tag"
+}
+
+# Find the latest versioned tag (for :latest images that need pinning)
+# Prefers v-prefixed semver tags, then plain semver, then any version-like tag
+find_latest_version() {
+    local tags=("$@")
+    local best_tag=""
+    local best_version=""
+    local best_score=0  # Higher is better: 3=v-prefixed semver, 2=plain semver, 1=other version
+
+    for tag in "${tags[@]}"; do
+        # Skip non-version tags
+        if ! is_version_tag "$tag"; then
+            continue
+        fi
+
+        local tag_pattern
+        tag_pattern=$(get_version_pattern "$tag")
+        local tag_version="${tag_pattern%%|*}"
+        local tag_suffix="${tag_pattern#*|}"
+
+        # Skip tags with suffixes for cleaner recommendations (prefer "1.2.3" over "1.2.3-alpine")
+        # unless we haven't found anything yet
+        if [[ -n "$tag_suffix" && -n "$best_tag" && -z "$(get_version_pattern "$best_tag" | cut -d'|' -f2)" ]]; then
+            continue
+        fi
+
+        # Calculate score
+        local score=1
+        if [[ "$tag" == v* ]]; then
+            # v-prefixed versions (v1.2.3)
+            if [[ "$tag_version" == *.*.* ]]; then
+                score=3  # v-prefixed semver
+            else
+                score=2
+            fi
+        else
+            # Non-v-prefixed
+            if [[ "$tag_version" == *.*.* ]]; then
+                score=2  # Plain semver
+            else
+                score=1
+            fi
+        fi
+
+        # If this tag has a better score, or same score but higher version
+        if [[ $score -gt $best_score ]]; then
+            best_score=$score
+            best_version="$tag_version"
+            best_tag="$tag"
+        elif [[ $score -eq $best_score ]]; then
+            local cmp
+            cmp=$(compare_versions "$tag_version" "$best_version")
+            if [[ "$cmp" -gt 0 ]]; then
+                best_version="$tag_version"
+                best_tag="$tag"
+            fi
+        fi
+    done
+
+    echo "$best_tag"
+}
+
+# Handle single image check mode
+if [[ -n "$SINGLE_IMAGE" ]]; then
+    parsed=$(parse_image "$SINGLE_IMAGE")
+    registry="${parsed%%|*}"
+    rest="${parsed#*|}"
+    repo="${rest%%|*}"
+    tag="${rest#*|}"
+
+    echo "Image: $SINGLE_IMAGE"
+    echo "Registry: $registry"
+    echo "Repository: $repo"
+    echo "Current tag: $tag"
+    echo ""
+
+    # Try forge-based release lookup first
+    forge_latest=$(get_forge_latest "$registry" "$repo" 2>/dev/null || true)
+    if [[ -n "$forge_latest" ]]; then
+        echo "Latest release (via forge): $forge_latest"
+        current_clean="${tag#v}"
+        latest_clean="${forge_latest#v}"
+        if [[ "$current_clean" == "$latest_clean" ]]; then
+            echo -e "${GREEN}Up to date${NC}"
+        else
+            echo -e "Update available: ${RED}$forge_latest${NC}"
+        fi
+        exit 0
+    fi
+
+    # Fall back to registry tag listing
+    verbose "Fetching tags from $registry for $repo..."
+    tags_raw=$(get_tags "$registry" "$repo" 2>/dev/null)
+
+    if [[ -z "$tags_raw" ]]; then
+        echo -e "${RED}ERROR${NC}: Failed to fetch tags from $registry"
+        exit 1
+    fi
+
+    mapfile -t tags <<< "$tags_raw"
+    echo "Found ${#tags[@]} tags"
+
+    if [[ "$tag" == "latest" ]]; then
+        latest=$(find_latest_version "${tags[@]}")
+        if [[ -n "$latest" ]]; then
+            echo -e "Recommended pin: ${GREEN}$latest${NC}"
+        else
+            echo -e "${YELLOW}No versioned tags found${NC}"
+        fi
+    elif is_version_tag "$tag"; then
+        latest=$(find_latest_matching "$tag" "${tags[@]}")
+        if [[ "$latest" == "$tag" ]]; then
+            echo -e "${GREEN}Up to date${NC}"
+        else
+            echo -e "Latest matching: ${RED}$latest${NC}"
+        fi
+    else
+        echo -e "${YELLOW}Non-version tag, showing latest versions:${NC}"
+        latest=$(find_latest_version "${tags[@]}")
+        if [[ -n "$latest" ]]; then
+            echo "  Latest version: $latest"
+        fi
+    fi
+
+    if [[ "$VERBOSE" == "true" ]]; then
+        echo ""
+        echo "All version tags:"
+        for t in "${tags[@]}"; do
+            if is_version_tag "$t"; then
+                echo "  $t"
+            fi
+        done | sort -V | tail -20
+    fi
+
+    exit 0
+fi
+
+echo ""
+echo "Checking for updates..."
+echo ""
+
+# Track statistics
+updates_found=0
+infra_updates_found=0
+up_to_date=0
+errors=0
+skipped=0
+unpinned=0
+
+# Arrays to collect output for different sections
+declare -a regular_updates=()
+declare -a infra_updates=()
+declare -a ok_messages=()
+declare -a pin_messages=()
+declare -a skip_messages=()
+declare -a error_messages=()
+
+# Process each image (using process substitution to avoid subshell variable scoping issue)
+while read -r entry; do
+    machine=$(echo "$entry" | jq -r '.name')
+    project=$(echo "$entry" | jq -r '.project')
+    service=$(echo "$entry" | jq -r '.service')
+    image=$(echo "$entry" | jq -r '.image')
+
+    # Parse the image
+    parsed=$(parse_image "$image")
+    registry="${parsed%%|*}"
+    rest="${parsed#*|}"
+    repo="${rest%%|*}"
+    tag="${rest#*|}"
+
+    # Try forge-based release lookup for registries with known forge mappings
+    forge_latest=$(get_forge_latest "$registry" "$repo" 2>/dev/null || true)
+    if [[ -n "$forge_latest" ]]; then
+        verbose "  Found latest release via forge: $forge_latest"
+        # Strip leading v for comparison if present in one but not other
+        current_clean="${tag#v}"
+        latest_clean="${forge_latest#v}"
+        if [[ "$current_clean" == "$latest_clean" ]]; then
+            ok_messages+=("${GREEN}OK${NC} $machine/$project/$service: $image")
+            ((up_to_date++)) || true
+        else
+            if is_infra_image "$repo"; then
+                infra_updates+=("${RED}UPDATE${NC} $machine/$project/$service: $image -> $forge_latest")
+                ((infra_updates_found++)) || true
+            else
+                regular_updates+=("${RED}UPDATE${NC} $machine/$project/$service: $image -> $forge_latest")
+                ((updates_found++)) || true
+                # Store for writing: project|service|new_tag
+                json_updates["$project|$service"]="$forge_latest"
+            fi
+        fi
+        continue
+    fi
+    # Fall through to regular tag checking if forge lookup didn't work
+
+    # Get available tags
+    verbose "Fetching tags from $registry for $repo..."
+    tags_raw=$(get_tags "$registry" "$repo" 2>/dev/null)
+    if [[ -z "$tags_raw" ]]; then
+        error_messages+=("${RED}ERROR${NC} $machine/$project/$service: $image (failed to fetch tags from $registry)")
+        ((errors++)) || true
+        continue
+    fi
+
+    # Convert to array
+    mapfile -t tags <<< "$tags_raw"
+
+    # Handle 'latest' tags - find best version to pin to
+    if [[ "$tag" == "latest" ]]; then
+        latest=$(find_latest_version "${tags[@]}")
+        if [[ -n "$latest" ]]; then
+            verbose "  Found latest version: $latest"
+            pin_messages+=("${YELLOW}PIN${NC} $machine/$project/$service: $image -> $latest")
+            ((unpinned++)) || true
+        else
+            skip_messages+=("${YELLOW}SKIP${NC} $machine/$project/$service: $image (no versioned tags found)")
+            ((skipped++)) || true
+        fi
+        continue
+    fi
+
+    # Skip non-version tags
+    if ! is_version_tag "$tag"; then
+        skip_messages+=("${YELLOW}SKIP${NC} $machine/$project/$service: $image (non-version tag)")
+        ((skipped++)) || true
+        continue
+    fi
+
+    # Find latest matching version
+    latest=$(find_latest_matching "$tag" "${tags[@]}")
+    verbose "  Found latest matching version: $latest"
+
+    if [[ "$latest" == "$tag" ]]; then
+        ok_messages+=("${GREEN}OK${NC} $machine/$project/$service: $image")
+        ((up_to_date++)) || true
+    else
+        if is_infra_image "$repo"; then
+            infra_updates+=("${RED}UPDATE${NC} $machine/$project/$service: $image -> $latest")
+            ((infra_updates_found++)) || true
+        else
+            regular_updates+=("${RED}UPDATE${NC} $machine/$project/$service: $image -> $latest")
+            ((updates_found++)) || true
+            # Store for writing: project|service|new_tag
+            json_updates["$project|$service"]="$latest"
+        fi
+    fi
+done < <(echo "$IMAGES_JSON" | jq -c '.[]')
+
+# Output results in sections
+if [[ ${#regular_updates[@]} -gt 0 ]]; then
+    echo "========================"
+    echo "Updates Available"
+    echo "========================"
+    for msg in "${regular_updates[@]}"; do
+        echo -e "$msg"
+    done
+    echo ""
+fi
+
+if [[ ${#infra_updates[@]} -gt 0 ]]; then
+    echo "========================"
+    echo "Infrastructure Updates (low priority)"
+    echo "========================"
+    for msg in "${infra_updates[@]}"; do
+        echo -e "$msg"
+    done
+    echo ""
+fi
+
+if [[ ${#pin_messages[@]} -gt 0 ]]; then
+    echo "========================"
+    echo "Unpinned Images"
+    echo "========================"
+    for msg in "${pin_messages[@]}"; do
+        echo -e "$msg"
+    done
+    echo ""
+fi
+
+if [[ ${#ok_messages[@]} -gt 0 ]]; then
+    echo "========================"
+    echo "Up to Date"
+    echo "========================"
+    for msg in "${ok_messages[@]}"; do
+        echo -e "$msg"
+    done
+    echo ""
+fi
+
+if [[ ${#skip_messages[@]} -gt 0 ]]; then
+    echo "========================"
+    echo "Skipped"
+    echo "========================"
+    for msg in "${skip_messages[@]}"; do
+        echo -e "$msg"
+    done
+    echo ""
+fi
+
+if [[ ${#error_messages[@]} -gt 0 ]]; then
+    echo "========================"
+    echo "Errors"
+    echo "========================"
+    for msg in "${error_messages[@]}"; do
+        echo -e "$msg"
+    done
+    echo ""
+fi
+
+echo "========================"
+echo "Summary:"
+echo "  Up to date: $up_to_date"
+echo "  Updates available: $updates_found"
+echo "  Infrastructure updates: $infra_updates_found"
+echo "  Unpinned (latest): $unpinned"
+echo "  Skipped: $skipped"
+echo "  Errors: $errors"
+
+# Write updates to JSON files if --write is specified
+if [[ "$WRITE_MODE" == "true" ]] && [[ ${#json_updates[@]} -gt 0 ]]; then
+    echo ""
+    echo "========================"
+    echo "Writing updates to JSON files..."
+    echo "========================"
+
+    written=0
+    write_errors=0
+
+    for key in "${!json_updates[@]}"; do
+        project="${key%%|*}"
+        service="${key#*|}"
+        new_tag="${json_updates[$key]}"
+
+        json_file=$(find_json_file "$project")
+        if [[ -z "$json_file" ]]; then
+            echo -e "${RED}ERROR${NC} No JSON file found for project: $project"
+            ((write_errors++)) || true
+            continue
+        fi
+
+        if update_json_tag "$json_file" "$service" "$new_tag"; then
+            echo -e "${GREEN}UPDATED${NC} $json_file: $service -> $new_tag"
+            ((written++)) || true
+        else
+            echo -e "${RED}ERROR${NC} Failed to update $json_file"
+            ((write_errors++)) || true
+        fi
+    done
+
+    echo ""
+    echo "Write summary: $written updated, $write_errors errors"
+fi
